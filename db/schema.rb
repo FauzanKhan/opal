@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150107224609) do
+ActiveRecord::Schema.define(version: 20150108162714) do
 
   create_table "colleges", force: :cascade do |t|
     t.string   "college_name"
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20150107224609) do
   create_table "students", primary_key: "email", force: :cascade do |t|
     t.string   "password"
     t.string   "name"
-    t.integer  "college_id"
+    t.string   "college"
     t.string   "course"
     t.string   "branch"
     t.integer  "year"
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 20150107224609) do
   create_table "tpos", primary_key: "email", force: :cascade do |t|
     t.string   "password"
     t.string   "name"
-    t.integer  "college_id"
+    t.string   "college"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

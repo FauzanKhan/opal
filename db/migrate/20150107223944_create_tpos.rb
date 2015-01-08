@@ -4,8 +4,7 @@ class CreateTpos < ActiveRecord::Migration
       t.primary_key :email
       t.string :password
       t.string :name
-      t.integer :college_id
-
+      t.string :college
       t.timestamps null: false
     end
   end
