@@ -9,6 +9,11 @@ Rails.application.routes.draw do
   get 'tpos/signup'
   get 'students/signup'
 
+  resources :tpos
+  resources :students
+  resources :welcome
+  resources :sessions
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

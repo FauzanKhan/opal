@@ -1,4 +1,4 @@
-$(document).ready(function(){
+/*$(document).ready(function(){
 	function goto_link(class_name, e){
 			e.preventDefault();
 			if(!($(class_name).hasClass('curr_active'))){
@@ -30,4 +30,4 @@ $(document).ready(function(){
 			goto_link('.forgot_password_form_container', e);
 		});	
 
-});
+});*/

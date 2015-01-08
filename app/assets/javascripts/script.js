@@ -15,6 +15,10 @@ $(document).ready(function(){
 		}
 		
 		doc_width_adjust();
+
+		$(document).on('page:load', function() {
+    		doc_width_adjust();
+		});
 		
 		$(window).resize(function(){
 			window_height = $(window).height();
@@ -22,4 +26,4 @@ $(document).ready(function(){
 			doc_width_adjust()
 		});
 		
-	})
+	});

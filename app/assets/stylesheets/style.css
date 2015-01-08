@@ -47,6 +47,9 @@ a:hover{
 	-moz-transition:all 500ms ease-in-out;
 	transition:all 500ms ease-in-out;
 	}
+#primary_nav li a.login_link{
+	font-weight: bolder;
+}
 #primary_nav li span{
 	background:rgba(63, 183, 121, .8);
 	height:0px;
@@ -88,6 +91,10 @@ a:hover{
     width: 100%;
 	position:relative;
 	}
+.window_span{
+	width:100%;
+	height:643px;
+}
 .intro_wrapper .container{
 	position:relative;
 	}
@@ -153,8 +160,7 @@ a:hover{
 .form_container{
 	text-align:center;
 	position: relative;
-	top: 35%;
-	margin-bottom:40px;
+	top: 34%;
 	transform:translateY(-30%);
 	}
 .form_container p{
@@ -164,6 +170,7 @@ a:hover{
 .form_container .form_content{
 	width:100%;
 	text-align:center;
+	-webkit-animation-delay:200ms;
 	}
 .form_container .form_content form{
 	width:420px;
