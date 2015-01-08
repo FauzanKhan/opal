@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150108162714) do
+ActiveRecord::Schema.define(version: 20150108192057) do
 
   create_table "colleges", force: :cascade do |t|
     t.string   "college_name"
@@ -33,7 +33,8 @@ ActiveRecord::Schema.define(version: 20150108162714) do
     t.datetime "updated_at",    null: false
   end
 
-  create_table "students", primary_key: "email", force: :cascade do |t|
+  create_table "students", id: false, force: :cascade do |t|
+    t.string   "email"
     t.string   "password"
     t.string   "name"
     t.string   "college"
@@ -41,16 +42,23 @@ ActiveRecord::Schema.define(version: 20150108162714) do
     t.string   "branch"
     t.integer  "year"
     t.string   "applications"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "password_digest"
   end
 
-  create_table "tpos", primary_key: "email", force: :cascade do |t|
+  add_index "students", ["email"], name: "index_students_on_email", unique: true
+
+  create_table "tpos", id: false, force: :cascade do |t|
+    t.string   "email"
     t.string   "password"
     t.string   "name"
     t.string   "college"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "password_digest"
   end
+
+  add_index "tpos", ["email"], name: "index_tpos_on_email", unique: true
 
 end
