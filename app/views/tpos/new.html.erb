@@ -18,11 +18,6 @@
                         <div class="form-group">
                             <%= f.label :college, :class => "control-label" %>
                             <%= f.collection_select(:college, College.all, :college_name, :college_name, {}, {:class=>'form-control'}) %>
-                            <!--<select class="form-control">
-                            	<option>IEC College of Engineering and Technology</option>
-                            	<option>IEC College of Engineering and Technology</option>
-                            	<option>IEC College of Engineering and Technology</option>
-                            </select>-->
                         </div>
                         <div class="form-group">
                             <%= f.label :password, :class => "control-label" %>

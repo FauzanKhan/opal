@@ -1,10 +1,10 @@
-<% if @tpo.errors.any? %>
+<% if @student.errors.any? %>
 	<div id="error_explaination">
 		<div class="alert alert-danger">
-			The form containes <%= pluralize(@tpo.errors.count, "error") %> :
+			The form containes <%= pluralize(@student.errors.count, "error") %> :
 		</div>
 		<ul class="error_list">
-			<% @tpo.errors.full_messages.each do |message| %>
+			<% @student.errors.full_messages.each do |message| %>
 				<li><%= message %></li>
 			<% end %>
 		</ul>
