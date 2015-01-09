@@ -221,7 +221,7 @@ a:hover{
 .forgot_pass_link a, .redirect_links a{
 	color:#CCC;
 	}
-.login_form_container .login_form .btn{
+.login_form_container .login_form .sign_up_btn{
 	background:rgba(0,0,0,0.2);
 	color:#FFF;
 	position:relative;
@@ -229,7 +229,11 @@ a:hover{
 	border-color:#6A6A6A;
 	float:right;
 	}
-.form_container .form_content .btn .hover_span{
+.form_container .form_content .submit_btn_wrapper{
+	position:relative;
+	border:0px solid #CCC;
+}
+.form_container .form_content .submit_btn_wrapper .hover_span{
 	height:100%;
 	width:0px;
 	background:rgba(63, 183, 121, .8);
@@ -241,6 +245,14 @@ a:hover{
 	-moz-transition:all 300ms ease;
 	transition:all 300ms ease;
 	}
+.form_container .form_content .submit_btn_wrapper .btn{
+	position:absolute;
+	top:0px;
+	left:0px;
+	margin: 0px;
+	height:100%;
+	width:100%;
+}
 .form_container .form_content label{
 	font-weight:bolder;
 	font-size:15px;
@@ -347,4 +359,30 @@ footer .container{
 }
 .form-control:-ms-input-placeholder { /* Internet Explorer 10+ */
    color:    #AEAEAE;
+}
+
+.form_content .error_explaination{
+	border-radius:0px;
+	color:#C41E3A;
+} 
+.form_content #error_explaination div.alert.alert-danger{
+	border-radius:0px;
+	border:1px solid #C41E3A;
+	color:#C41E3A;
+	background:rgba(196,30,58,.2);
+}
+.form_content #error_explaination ul.error_list li{
+	color:#C41E3A;
+}
+.alert-danger{
+	border-radius:0px;
+	border:1px solid #C41E3A;
+	color:#C41E3A;
+	background:rgba(196,30,58,.2);
+}
+.alert-success{
+	color:#007F00;
+	background:rgba(0,127,0,0.2);
+	border-radius:0px;
+	border:1px solid #007F00;
 }

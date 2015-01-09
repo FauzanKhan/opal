@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150108192057) do
+ActiveRecord::Schema.define(version: 20150109142532) do
 
   create_table "colleges", force: :cascade do |t|
     t.string   "college_name"
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 20150108192057) do
 
   add_index "students", ["email"], name: "index_students_on_email", unique: true
 
-  create_table "tpos", id: false, force: :cascade do |t|
+  create_table "tpos", force: :cascade do |t|
     t.string   "email"
     t.string   "password"
     t.string   "name"
@@ -58,7 +58,5 @@ ActiveRecord::Schema.define(version: 20150108192057) do
     t.datetime "updated_at",      null: false
     t.string   "password_digest"
   end
-
-  add_index "tpos", ["email"], name: "index_tpos_on_email", unique: true
 
 end

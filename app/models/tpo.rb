@@ -1,5 +1,5 @@
 class Tpo < ActiveRecord::Base
-	self.primary_key = 'email'
+	#self.primary_key = 'email'
 	before_save { self.email = email.downcase }
 	validates :email, 
 			   presence: true,
