@@ -6,6 +6,9 @@
                 <div class="login_form form_content animated flipInX">
                 	<p>LogIn to your account</p>
                     <%= form_for(:session, url: sessions_path) do |f| %>
+                    <% if flash[:danger] %>
+                        <div class="alert alert-danger"><%= flash[:danger] %></div>
+                    <% end %>
                         <div class="form-group">
                             <%= f.label :email, :class => "control-label" %>
                             <%= f.email_field :email, :class => "form-control", :placeholder => "Eg.: username@example.com" %>

@@ -45,13 +45,9 @@
 				</div>
 		    </nav>
 		</header>
-		<div class="container">
-			<% flash.each do |message_type, message| %> 
-				<div class="alert alert-<%= message_type %>" ><%= message %></div>
-			<% end %>
-		</div>
 
 		<%= yield %>
+		
 		<footer>
 			<div class="container">
 		        <div class="copyright">copyright &copy; simplifica.com</div>
