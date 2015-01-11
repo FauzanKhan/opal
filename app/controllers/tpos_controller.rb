@@ -13,6 +13,7 @@ class TposController < ApplicationController
 		@tpo = Tpo.new(tpo_params)
 		@tpo.name = params[:tpo][:name].titleize
 		if @tpo.save
+			log_in @tpo
 			flash[:success] = "Welcome to simplifica"
 			redirect_to @tpo
 		else

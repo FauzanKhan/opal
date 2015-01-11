@@ -1,7 +1,8 @@
 <% provide(:title, @tpo.name) %>
 
-<p class="lead" style="z-index:99999999999999999;color:black"><%= @tpo.email %></p>
+<p class="lead"><%= @tpo.email %></p>
 <br/>
-<p class="lead" style="z-index:999999999999999999;color:black"><%= @tpo.name %></p>
+<p class="lead"><%= @tpo.name %></p>
 <br/>
-<p class="lead" style="z-index:99999999999999999;color:black"><%= @tpo.college %></p>
+<p class="lead"><%= @tpo.college %></p>
+<%= link_to "Log out", session_path, method: "delete" %>

@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150109203452) do
+ActiveRecord::Schema.define(version: 20150111185158) do
+
+  create_table "all_users", force: :cascade do |t|
+    t.string   "email"
+    t.string   "name"
+    t.string   "college"
+    t.string   "user_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "colleges", force: :cascade do |t|
     t.string   "college_name"
@@ -45,6 +54,8 @@ ActiveRecord::Schema.define(version: 20150109203452) do
     t.string  "education"
     t.string  "experience"
     t.string  "applications"
+    t.string  "remember_digest"
+    t.string  "remember_token"
   end
 
   create_table "tpos", force: :cascade do |t|
@@ -55,6 +66,8 @@ ActiveRecord::Schema.define(version: 20150109203452) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.string   "password_digest"
+    t.string   "remember_digest"
+    t.string   "remember_token"
   end
 
 end

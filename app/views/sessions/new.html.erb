@@ -5,22 +5,29 @@
             <div class="login_form_container form_container curr_active">
                 <div class="login_form form_content animated flipInX">
                 	<p>LogIn to your account</p>
-                    <form>
+                    <%= form_for(:session, url: sessions_path) do |f| %>
                         <div class="form-group">
-                            <label class="control-label">Username/Email</label>
-                            <input type="email" class="form-control" placeholder="Eg.: username@example.com" />
+                            <%= f.label :email, :class => "control-label" %>
+                            <%= f.email_field :email, :class => "form-control", :placeholder => "Eg.: username@example.com" %>
                         </div>
                         <div class="form-group">
-                            <label class="control-label">Password</label>
-                            <input type="password" class="form-control" placeholder="Your Password"/>
+                            <%= f.label :password, :class => "control-label" %>
+                            <%= f.password_field :password, :class => "form-control", :placeholder => "Your Profie Password" %>
                         </div>
                         <div class="redirect_links">
+                            <%= f.label :remember_me, :class => "cbox" do%>
+                                <%= f.check_box :remember_me %>
+                                <span>Remember me</span>
+                            <% end %> | 
                         	<a href="#" class="forgot_password_link">Forgot Password?</a> <br/> 
                             <%= link_to "SignUp as Student", new_student_path %> | 
                             <%= link_to "SignUp as College", new_tpo_path %>
                         </div>
-                        <a class="btn btn-lg btn-default" type="submit"><span class="hover_span"></span><b>LogIn</b></a>
-                    </form>
+                        <div class="submit_btn_wrapper btn btn-lg"><span style="visibility:hidden">Sign Up</span>
+                            <%= f.submit "Log In", :class => "btn btn-default btn-lg sign_up_btn" %>
+                            <span class="hover_span"></span>
+                        </div>
+                    <% end %>
                </div>
             </div>
             <div class="forgot_password_form_container form_container">

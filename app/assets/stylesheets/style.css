@@ -17,8 +17,10 @@
 body{
 	overflow-x:hidden;
 	font-family:idealist, tahoma;
-	color:#FFF;
 	}
+.body_wrapper{
+	color:#FFF;
+}
 a:hover{
 	text-decoration:none;
 	}
@@ -232,6 +234,7 @@ a:hover{
 .form_container .form_content .submit_btn_wrapper{
 	position:relative;
 	border:0px solid #CCC;
+	background:rgba(0,0,0,0);
 }
 .form_container .form_content .submit_btn_wrapper .hover_span{
 	height:100%;
@@ -252,6 +255,7 @@ a:hover{
 	margin: 0px;
 	height:100%;
 	width:100%;
+	border:1px solid #6A6A6A;
 }
 .form_container .form_content label{
 	font-weight:bolder;
@@ -385,4 +389,12 @@ footer .container{
 	background:rgba(0,127,0,0.2);
 	border-radius:0px;
 	border:1px solid #007F00;
+}
+.cbox input{
+	transform : translateY(2px);
+}
+.cbox span{
+	font-weight:normal;
+	margin-left: 1px;
+	font-size:14px;
 }

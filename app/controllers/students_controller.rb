@@ -9,6 +9,7 @@ class StudentsController < ApplicationController
 		@student = Student.new(student_params)
 		@student.name = params[:student][:name].titleize
 		if @student.save
+			log_in @student
 			flash[:success] = "Welcome to simplifica"
 			redirect_to @student
 		else
