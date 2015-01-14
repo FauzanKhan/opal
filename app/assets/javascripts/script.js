@@ -12,6 +12,11 @@ $(document).ready(function(){
 				$('.window_span').css('height', 900+'px');//.css('width', window_width+'px');
 				$('.intro_wrapper .container').css('height', 900+'px');
 			}
+
+			if($('.form_container').height() >( ($('.window_span').height())-100)){
+				$('.window_span').css('height', 1000+'px');//.css('width', window_width+'px');
+				$('.intro_wrapper .container').css('height', 1000+'px');
+			}
 		}
 		
 		doc_width_adjust();

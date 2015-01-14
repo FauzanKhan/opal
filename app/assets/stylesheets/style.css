@@ -24,7 +24,7 @@ body{
 a:hover{
 	text-decoration:none;
 	}
-.navbar{
+.navbar.navbar-default{
 	background:rgba(255,255,255,0);
 	border:0px;
 	box-shadow:0px 0px;
@@ -37,6 +37,10 @@ a:hover{
 .navbar-brand a{
 	color:#FFF;
 	}
+.navbar-brand a:hover{
+	color:#FFF;
+	text-decoration:none;
+}
 .navbar-brand a span{
 	font-size:46px;
 	}
