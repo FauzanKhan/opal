@@ -33,9 +33,13 @@
 					<li class="pull-right dropdown_container"><a href="#"><span class="fa fa-cog"></span> Account <span class="caret"></a>
 						<ul class="dropdown_list list-unstyled">
 							<li class="arrow_up"></li>
-							<li><a href="#"><span class="fa fa-cogs"></span> Account Settings</a></li>
-							<li class="divider"></li>
-							<li><a href="#"><span class="fa fa-edit"></span> Edit Profile</a></li>
+							<li>
+								<% if current_user.user_type == 'tpo' %>
+									<%= link_to edit_tpo_path(current_user) do %>
+										<span class="fa fa-edit"></span> Edit Profile
+									<% end %>
+								<% end %>
+							</li>
 							<li class="divider"></li>
 							<li>
 								<%= link_to session_path, method: "delete" do %>

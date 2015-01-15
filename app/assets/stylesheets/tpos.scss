@@ -1,3 +1,48 @@
 // Place all the styles related to the Tpos controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$primary_blue : rgb(45, 174, 191);
+$primary_green : rgb(111, 201, 154);
+@mixin green_hover{
+  	background:$primary_green;
+  	color:#FFF;
+  	border:1px solid darken($primary_green, 5%);
+  	&:hover{
+  		color:#FFF;
+  		background:lighten($primary_green,10%);
+  	};
+}
+@mixin blue_hover{
+  	background:$primary_blue;
+  	color:#FFF;
+  	border:1px solid darken($primary_blue, 5%);
+  	&:hover{
+  		color:#FFF;
+  		background:lighten($primary_blue,10%);
+  	};
+}
+.tpo_edit_form_container{
+	text-align:center;
+
+	.tpo_edit_form{
+		width:500px;
+		margin:0px auto;
+		text-align:left;
+		display: inline-block;
+
+		h3{
+			text-align:center;
+			colr:#444;
+		}
+
+		form{
+			.form-control{
+				border-radius:0px;
+			}
+			.btn{
+				border-radius:0px;
+				@include blue_hover;
+			}
+		}
+	}
+}

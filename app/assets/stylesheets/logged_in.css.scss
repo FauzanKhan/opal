@@ -18,6 +18,13 @@ body{
   		background:lighten($primary_green,10%);
   	};
 }
+@mixin blue_hover{
+  	background:$primary_blue;
+  	border:1px solid darken($primary_blue, 5%);
+  	&:hover{
+  		background:lighten($primary_blue,10%);
+  	};
+}
 @mixin arrow_up{
 	width: 0; 
 	height: 0; 
@@ -212,4 +219,7 @@ nav.navbar{
 		}
 	}
 
+}
+.alert{
+	border-radius:0px;
 }

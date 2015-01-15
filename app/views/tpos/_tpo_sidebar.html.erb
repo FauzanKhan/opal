@@ -1,0 +1,9 @@
+<div class="col-lg-2 col-md-2 col-sm-2 user_content_wrapper">
+	<div class="user_pic_container">
+			<img src="#" class="user_pic" />
+	</div>
+		<a href="#" class="tpo_name"><%= @tpo.name %></a>
+		<% if @tpo.email == current_user.email %>
+			<a href="#" class="btn btn-block btn-info"><span class="fa fa-plus"> </span> Post a Job</a>
+		<% end %>
+</div>

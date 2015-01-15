@@ -383,13 +383,13 @@ footer .container{
 	border-radius:0px;
 	color:#C41E3A;
 } 
-.form_content #error_explaination div.alert.alert-danger{
+.form_content #error_explaination div.alert.alert-danger, .alert.alert-danger{
 	border-radius:0px;
 	border:1px solid #C41E3A;
 	color:#C41E3A;
 	background:rgba(196,30,58,.2);
 }
-.form_content #error_explaination ul.error_list li{
+.form_content #error_explaination ul.error_list li, ul.error_list li{
 	color:#C41E3A;
 }
 .alert-danger{
