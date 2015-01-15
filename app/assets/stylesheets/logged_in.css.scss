@@ -18,6 +18,13 @@ body{
   		background:lighten($primary_green,10%);
   	};
 }
+@mixin arrow_up{
+	width: 0; 
+	height: 0; 
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+	border-bottom: 5px solid #FFF;
+}
 nav.navbar{
 	background: $primary_blue;
 	color:#FFF;
@@ -44,8 +51,7 @@ nav.navbar{
 		}
 	}
 	.nav.navbar-nav{
-		display:block;
-		width:90%;
+		width:92%;
 		margin-left:30px;
 		text-align:center;
 		li{
@@ -70,7 +76,7 @@ nav.navbar{
 		li.search_form{
 			margin-top:9px;
 			text-align:center;
-			width:50%;
+			width:52%;
 			margin-left:25px;
 			margin-right:25px;
 			position:relative;
@@ -110,12 +116,21 @@ nav.navbar{
 				width:200px;
 				left:-1px;
 				margin-top:0px;
-				border:1px solid darken($primary_blue, 5%);
-				background: $primary_blue;
+				border:1px solid #CCC;
+				border-top:1px solid darken($primary_blue, 5%);
+				background: #FFF;
 				li{
 					padding:10px 12px;
-					a:hover{
-						text-decoration:none;
+					&:hover{
+						a{
+						color:#FFF;
+						}
+					}
+					a{	
+						color:#666;
+						&:hover{
+							text-decoration:none;
+						}
 					}
 				}
 				li.divider{
@@ -123,7 +138,15 @@ nav.navbar{
 					height:0px;
 					padding:0px;
 					margin:0 auto;
-					border-bottom:1px solid darken($primary_blue, 5%);
+					border-bottom:1px solid #CCC;
+				}
+				li.arrow_up{
+					@include arrow_up;
+					padding:0px;
+					margin:0px;
+					position:absolute;
+					top:-5px;
+					left:10px;
 				}
 			}
 		}

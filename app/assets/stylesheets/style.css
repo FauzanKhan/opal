@@ -13,6 +13,7 @@
 *{
 	margin:0;
 	padding:0;
+
 	}
 body{
 	overflow-x:hidden;
@@ -20,6 +21,7 @@ body{
 	}
 .body_wrapper{
 	color:#FFF;
+	font-family:idealist, tahoma;
 }
 a:hover{
 	text-decoration:none;
@@ -145,6 +147,10 @@ a:hover{
 	-moz-transition:background 300ms ease;
 	transition:background 300ms ease;
 	}*/
+.introduction .btn:hover{
+	background:rgba(0,0,0,0.2);
+	color:#FFF;
+}
 .sign_hover_span{
 	height:100%;
 	width:0px;
@@ -226,6 +232,10 @@ a:hover{
 	}
 .forgot_pass_link a, .redirect_links a{
 	color:#CCC;
+	}
+.forgot_pass_link a:hover, .redirect_links a:hover{
+	color:#CCC;
+	text-decoration:none;
 	}
 .login_form_container .login_form .sign_up_btn{
 	background:rgba(0,0,0,0.2);
