@@ -38,6 +38,7 @@ nav.navbar{
 		padding:12px 15px 10px 15px;
 		margin:0px;
 		margin-left:35px;
+		margin-right:35px;
 		background:lighten($primary_blue, 5%);
 		border-left:1px solid darken($primary_blue, 5%);
 		border-right:1px solid darken($primary_blue, 5%);
@@ -51,8 +52,7 @@ nav.navbar{
 		}
 	}
 	.nav.navbar-nav{
-		width:92%;
-		margin-left:30px;
+		width:90%;
 		text-align:center;
 		li{
 			margin-bottom:0px;
@@ -76,7 +76,7 @@ nav.navbar{
 		li.search_form{
 			margin-top:9px;
 			text-align:center;
-			width:52%;
+			width:45%;
 			margin-left:25px;
 			margin-right:25px;
 			position:relative;

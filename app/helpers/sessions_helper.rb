@@ -8,12 +8,14 @@ module SessionsHelper
     	user.remember
     	cookies.permanent.signed[:user_id] = user.id
     	cookies.permanent[:remember_token] = user.remember_token
+      cookies.permanent.signed[:user_email] = user.email
   	end
 
   	def forget(user)
   		user.forget
   		cookies.delete(:user_id)
   		cookies.delete(:remember_token)
+      cookies.delete(:user_email)
   	end
 
 	def current_user
@@ -22,7 +24,8 @@ module SessionsHelper
   			@current_user ||= Student.find_by(id: user_id) || Tpo.find_by(id: user_id)
 
   		elsif (user_id = cookies.signed[:user_id])
-  			user = Student.find_by(id: user_id) || Tpo.find_by(id: user_id)
+        user_email = cookies.signed[:user_email]
+  			user = Student.find_by(id: user_id, email: user_email) || Tpo.find_by(id: user_id, email: user_email)
 
   			if user && user.authenticated?(cookies[:remember_token])
   				log_in user
