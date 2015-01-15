@@ -22,16 +22,12 @@
 					<li class="pull-left"><a href="#"><span class="fa fa-home"></span> Home</a></li>
 					<li class="divider"></li>
 					<li class="pull-left"><a href="#"><img src="" height:"20" width="20" />
-						<% if @tpo %>
-							<%= @tpo.name %>
-						<% elsif @student %>
-							<%= @student.name %>
-						<% end %>
+						<%= current_user.name %>
 					</a>
 					<li class="search_form">
 						<form role="search">
 							<input type="text" placeholder="Search opportunities by Position, Location or Company" class="form-control">
-							<button class="btn btn-default btn-md"><span class="fa fa-search"><span></button>
+							<button class="btn btn-default btn-sm"><span class="fa fa-search"><span></button>
 						</form>
 					</li>
 					<li class="pull-right dropdown_container"><a href="#"><span class="fa fa-cog"></span> Account <span class="caret"></a>

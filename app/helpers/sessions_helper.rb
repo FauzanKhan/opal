@@ -2,13 +2,14 @@ module SessionsHelper
 	
 	def log_in(user)
 		session[:user_id] = user.id
+    session[:user_email] = user.email
 	end
 
 	def remember(user)
     	user.remember
     	cookies.permanent.signed[:user_id] = user.id
     	cookies.permanent[:remember_token] = user.remember_token
-      cookies.permanent.signed[:user_email] = user.email
+      cookies.permanent[:user_email] = user.email
   	end
 
   	def forget(user)
@@ -21,12 +22,12 @@ module SessionsHelper
 	def current_user
 
 		if (user_id = session[:user_id])
-  			@current_user ||= Student.find_by(id: user_id) || Tpo.find_by(id: user_id)
+        user_email = session[:user_email]
+  			@current_user ||= Tpo.find_by(id: user_id, email: user_email) || Student.find_by(id: user_id, email: user_email)
 
   		elsif (user_id = cookies.signed[:user_id])
-        user_email = cookies.signed[:user_email]
-  			user = Student.find_by(id: user_id, email: user_email) || Tpo.find_by(id: user_id, email: user_email)
-
+        user_email = cookies[:user_email]
+  			user = Tpo.find_by(id: user_id, email: user_email) || Student.find_by(id: user_id, email: user_email)
   			if user && user.authenticated?(cookies[:remember_token])
   				log_in user
   				@current_user = user
