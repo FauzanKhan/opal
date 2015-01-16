@@ -32,6 +32,12 @@ body{
 	border-right: 5px solid transparent;
 	border-bottom: 5px solid #FFF;
 }
+.btn.blue{
+	@include blue_hover;
+}
+.btn.green{
+	@include green_hover;
+}
 nav.navbar{
 	background: $primary_blue;
 	color:#FFF;
@@ -44,8 +50,7 @@ nav.navbar{
 		font-size:40px;
 		padding:12px 15px 10px 15px;
 		margin:0px;
-		margin-left:35px;
-		margin-right:35px;
+		margin-right:12px;
 		background:lighten($primary_blue, 5%);
 		border-left:1px solid darken($primary_blue, 5%);
 		border-right:1px solid darken($primary_blue, 5%);
@@ -61,6 +66,9 @@ nav.navbar{
 	.nav.navbar-nav{
 		width:90%;
 		text-align:center;
+		flex-direction:row;
+		flex-wrap:wrap;
+		justify-content: center;
 		li{
 			margin-bottom:0px;
 			margin:0px;
@@ -81,34 +89,42 @@ nav.navbar{
 			}
 		}
 		li.search_form{
-			float:none;
-			text-align:center;
-			width:48%;
 			display:inline-block;
-			margin:0 auto;
 			margin-top:10px;
 			position:relative;
 
+			&:hover{
+				background: $primary_blue;
+			}
+
 			input.form-control{
 				height:30px;
-				border-radius:0px;
-				border:1px solid darken($primary_blue, 5%);
-				background:#EEE;
+				border-radius:2px;
+				border:1px solid darken($primary_blue, 10%);
+				background:rgba(0,0,0,0.1);
+				color: #FFF;
+				box-shadow:0px 0px 0px 0px;
+				
+				&:focus{
+					box-shadow:0px 0px 0px;
+				}
 			}
 
 			button.btn{
 				position:absolute;
-				right:1px;
+				right:15px;
 				top:1px;
 				color:#FFF;
-				border-radius:0px;
+				border-radius:0px 2px 2px 0px;
 				background:lighten($primary_blue, 10%);
 				border:0px solid #FFf;
 				border-left:1px solid darken($primary_blue, 5%);
+				border-right:1px solid darken($primary_blue, 5%);
 			}	
 		}
 		li.dropdown_container{
 			position:relative;
+			float:right;
 			&:hover{
 				ul.dropdown_list{
 					display:block;
@@ -175,6 +191,7 @@ nav.navbar{
 			border-right:1px solid #EEE;
 			font-size:18px;
 			color:#333;
+			word-wrap:break-word;
 			.user_pic_container{
 				width:100%;
 				height:130px;
@@ -188,14 +205,10 @@ nav.navbar{
 				margin-bottom:20px;
 			}
 			a.btn{
-				margin-top:20px;
+				margin-top:10px;
 				font-size:15px;
 				font-weight:bold;
 				border-radius:0px;
-				@include green_hover;
-				span{
-					font-size:12px;
-				}
 			}
 		}
 		.dynamic_content_wrapper{

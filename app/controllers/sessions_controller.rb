@@ -9,11 +9,11 @@ class SessionsController < ApplicationController
 		if student && student.authenticate(params[:session][:password])
 			log_in student
 			params[:session][:remember_me] == '1' ? remember(student) : forget(student)
-			redirect_to student
+			redirect_back_or student
 		elsif tpo && tpo.authenticate(params[:session][:password])
 			log_in tpo
 			params[:session][:remember_me] == '1' ? remember(tpo) : forget(tpo)
-			redirect_to tpo
+			redirect_back_or tpo
 		else
 			flash.now[:danger] = "Invalid email/password combination"
 			render 'new'

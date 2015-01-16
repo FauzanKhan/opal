@@ -1,0 +1,24 @@
+<div class="col-lg-2 col-md-2 col-sm-2 user_content_wrapper student_sidebar">
+	<div class="user_pic_container">
+			<img src="#" class="user_pic" />
+	</div>
+	<% if @student == current_user %>
+		<a href="#" class="user_name"><%= current_user.name %></a>
+		<%= link_to edit_student_path, :class => "btn btn-block btn-info blue" do %>
+			<span class="fa fa-edit"></span> Edit Profile
+		<% end %>
+		<%= link_to @current_students_tpo, :class => "btn btn-block btn-success green" do %>
+			<span class="fa fa-eye"></span> Visit TPO
+		<% end %>
+	<% else %>
+		<div class="student_contact_info">
+			<p><span class="fa fa-envelope"></span> <%= current_user.email %></p>
+			<p><span class="fa fa-phone"></span> dummy<br/></p>
+			<div class="student_web_links">
+				<a href="#" class="btn btn-sm"><span class="fa fa-globe"></span></a>
+				<a href="#" class="btn btn-sm"><span class="fa fa-github-square"></span></a>
+				<a href="#" class="btn btn-sm"><span class="fa fa-linkedin-square"></span></a>
+			</div>
+		</div>
+	<% end %>
+</div>

@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :students
   resources :welcome
   resources :sessions
+  resources :all_users
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

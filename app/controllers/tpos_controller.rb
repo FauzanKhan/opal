@@ -53,6 +53,7 @@ class TposController < ApplicationController
 
 		def logged_in_user
 			unless logged_in?
+				store_url
 				flash[:danger] = "Please LogIn to access this page"
 				redirect_to new_session_path
 			end
