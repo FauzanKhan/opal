@@ -6,19 +6,3 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Tpo.create!(name:  "Example Tpo",
-             email: "tpo@railstutorial.org",
-             password:              "123123123",
-             college: "IEC College of Engineering & Technology",
-             admin: true)
-
-50.times do |n|
-  name  = Faker::Name.name
-  email = "tpo-#{n+1}@railstutorial.org"
-  password = "password"
-  Tpo.create!(name:  name,
-               email: email,
-               password: password,
-               college: college)
-end
-
