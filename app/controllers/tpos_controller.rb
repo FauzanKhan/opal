@@ -1,10 +1,26 @@
 class TposController < ApplicationController
 
-	before_action :logged_in_user, only: [:edit, :update, :show]
+	#before_action :admin_user, only: [:index]
+	before_action :logged_in_user, only: [:edit, :update, :show, :index]
 	before_action :correct_user, only: [:edit, :update]
+	before_action :admin_user,     only: :destroy
 
 	def new
 		@tpo = Tpo.new
+	end
+
+	def index
+		@users = AllUser.all
+		#users_hash = Hash.new()
+		#n = 1
+		#@users.each do |user|
+		#	users_hash[n.to_s][:name] = user.name
+		#	users_hash[n.to_s][:email] = user.email
+		#	users_hash[n.to_s][:college] = user.college
+		#	users_hash[n.to_s][:type] = user.user_type
+		#	n += 1
+		#end
+		#=end
 	end
 
 	def show
@@ -62,6 +78,11 @@ class TposController < ApplicationController
 		def correct_user
 			@user = Tpo.find(params[:id])
 			redirect_to root_path unless @user == current_user
+		end
+
+		def admin_user
+			@user = Tpo.find(params[:id])
+			redirect_to root_path unless @user.admin
 		end
 
 		#def update_all_user(old_email, new_email)

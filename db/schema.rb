@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150115182140) do
+ActiveRecord::Schema.define(version: 20150117170821) do
 
   create_table "all_users", force: :cascade do |t|
     t.string   "email"
@@ -64,13 +64,14 @@ ActiveRecord::Schema.define(version: 20150115182140) do
     t.string   "password"
     t.string   "name"
     t.string   "college"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.string   "password_digest"
     t.string   "remember_digest"
     t.string   "remember_token"
     t.string   "user_type"
     t.string   "job_title"
+    t.boolean  "admin",           default: false
   end
 
 end

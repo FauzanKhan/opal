@@ -11,6 +11,7 @@ class StudentsController < ApplicationController
 	def create
 		@student = Student.new(student_params)
 		@student.name = params[:student][:name].titleize
+		@student.user_type = 'student'
 		if @student.save
 			log_in @student
 			flash[:success] = "Welcome to simplifica"

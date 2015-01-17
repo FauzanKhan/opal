@@ -12,8 +12,11 @@
 		<% end %>
 	<% else %>
 		<div class="student_contact_info">
-			<p><span class="fa fa-envelope"></span> <%= current_user.email %></p>
-			<p><span class="fa fa-phone"></span> dummy<br/></p>
+			<span class="divider"></span>
+			<p><span class="fa fa-envelope"></span><%= current_user.email %></p>
+			<span class="divider"></span>
+			<p><span class="fa fa-phone"></span> 9876543210<br/></p>
+			<span class="divider"></span>
 			<div class="student_web_links">
 				<a href="#" class="btn btn-sm"><span class="fa fa-globe"></span></a>
 				<a href="#" class="btn btn-sm"><span class="fa fa-github-square"></span></a>
