@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.0'
 gem 'bcrypt', '3.1.9' #to create password_digest
 gem 'faker', '1.4.2'
+gem 'hirb'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets

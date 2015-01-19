@@ -2,11 +2,13 @@ class Tpo < ActiveRecord::Base
 	
 	#self.primary_key = 'email'
 
-	attr_accessor :remember_token
+	attr_accessor :remember_token, :activation_token, :reset_token
 
 	before_save { self.email = email.downcase }
 	
-	before_save :update_all_users_table
+	before_create :update_all_users_table
+
+	before_create :create_activation_digest
 	
 	validates :email, 
 			   presence: true,
@@ -45,12 +47,42 @@ class Tpo < ActiveRecord::Base
 	end
 
 	# Returns true if the given token matches the digest.
-	def authenticated?(remember_token)
-		return false if remember_digest.nil?
-    	BCrypt::Password.new(remember_digest).is_password?(remember_token)
+	def authenticated?(attribute, token)
+		digest = self.send("#{attribute}_digest")
+		return false if digest.nil?
+    	BCrypt::Password.new(digest).is_password?(token)
   	end
 
+  	def activate
+  		update_attribute(:activated, true)
+  		update_attribute(:activated_at, Time.zone.now)
+  	end
+
+  	def send_activation_email
+  		UserMailer.account_activation(self).deliver_now
+  	end
+
+  	def create_reset_digest
+  		self.reset_token = Tpo.new_token
+  		update_attribute(:reset_digest,  Tpo.digest(reset_token))
+    	update_attribute(:reset_sent_at, Time.zone.now)
+  	end
+
+  	def send_password_reset_email
+  		UserMailer.password_reset(self).deliver_now
+  	end
+
+  # Returns true if a password reset has expired.
+	def password_reset_expired?
+		reset_sent_at < 2.hours.ago
+	end
+
     private
+
+    	def create_activation_digest
+    		self.activation_token = Tpo.new_token
+    		self.activation_digest = Tpo.digest(activation_token)
+    	end
 
         def update_all_users_table
             new_user = AllUser.new
@@ -61,4 +93,5 @@ class Tpo < ActiveRecord::Base
             errors.add(:email, "is already taken") if !new_user.save
             new_user.save
         end
+
 end

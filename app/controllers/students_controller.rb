@@ -13,10 +13,10 @@ class StudentsController < ApplicationController
 		@student.name = params[:student][:name].titleize
 		@student.user_type = 'student'
 		if @student.save
-			log_in @student
-			flash[:success] = "Welcome to simplifica"
-			redirect_to @student
-		else
+			#log_in @student
+			UserMailer.account_activation(@student).deliver_now
+			flash[:info] = "Please check your email to activate your account"
+			redirect_to root_url 
 			render 'new'
 		end
 	end

@@ -2,7 +2,12 @@
 <% provide(:title, "Home") %>
 <div class="intro_wrapper window_span">
     <div class="intro_wrapper_overlay window_span"></div>
-    <div class="container">
+    <div class="container" style="text-align:center">
+        <div class="index_alert">
+            <% flash.each do |message_type, message| %>
+                <div class="alert alert-<%= message_type %> activation_alert"><%= message %></div>
+            <% end %>
+        </div>
     		<div class="introduction curr_active">
             	<p class="animated zoomIn">We are making the process of placements easier</p><br />
                 <%= link_to "/students/new", :class => "student_signup_link btn btn-lg btn-default student_sign_up animated fadeInDown" do %>

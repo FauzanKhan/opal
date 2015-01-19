@@ -1,9 +1,9 @@
 class TposController < ApplicationController
 
 	#before_action :admin_user, only: [:index]
-	before_action :logged_in_user, only: [:edit, :update, :show, :index]
+	before_action :logged_in_user, only: [:edit, :update, :show, ]
 	before_action :correct_user, only: [:edit, :update]
-	before_action :admin_user,     only: :destroy
+	before_action :admin_user,     only: [:destroy, :index]
 
 	def new
 		@tpo = Tpo.new
@@ -33,7 +33,7 @@ class TposController < ApplicationController
 		#old_email = @tpo.email
 		#new_email = params[:tpo][:email]
 		#update_all_user(old_email, new_email)
-		if @tpo.update_columns(update_tpo_params)
+		if @tpo.update_attributes(update_tpo_params)
 			flash[:success] = "Profile updated"
       		redirect_to @tpo
 		else
@@ -46,9 +46,10 @@ class TposController < ApplicationController
 		@tpo.name = params[:tpo][:name].titleize
 		@tpo.user_type = "tpo"
 		if @tpo.save
-			log_in @tpo
-			flash[:success] = "Welcome to simplifica"
-			redirect_to @tpo
+			#log_in @tpo
+			@tpo.send_activation_email
+			flash[:info] = "Please check your email to activate your account"
+			redirect_to root_url #@tpo
 		else
 			render 'new'
 		end

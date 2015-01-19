@@ -7,13 +7,23 @@ class SessionsController < ApplicationController
 		student = Student.find_by(email: params[:session][:email].downcase)
 		tpo = Tpo.find_by(email: params[:session][:email].downcase)
 		if student && student.authenticate(params[:session][:password])
-			log_in student
-			params[:session][:remember_me] == '1' ? remember(student) : forget(student)
-			redirect_back_or student
+			if student.avtivated?
+				log_in student
+				params[:session][:remember_me] == '1' ? remember(student) : forget(student)
+				redirect_back_or student
+			else
+				flash[:danger] = "Account not activated. Check your email for activation link"
+				redirect_to root_url
+			end
 		elsif tpo && tpo.authenticate(params[:session][:password])
-			log_in tpo
-			params[:session][:remember_me] == '1' ? remember(tpo) : forget(tpo)
-			redirect_back_or tpo
+			if tpo.activated?
+				log_in tpo
+				params[:session][:remember_me] == '1' ? remember(tpo) : forget(tpo)
+				redirect_back_or tpo
+			else
+				flash[:danger] = "Account not activated. Check your email for activation link"
+				redirect_to root_url
+			end
 		else
 			flash.now[:danger] = "Invalid email/password combination"
 			render 'new'

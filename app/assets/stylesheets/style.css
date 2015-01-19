@@ -126,6 +126,7 @@ a:hover{
 	left:0;
 	right:0;
 	top:32%;
+	z-index:99;
 	}
 .introduction p{
 	font-size:22px;
@@ -403,6 +404,32 @@ footer .container{
 	background:rgba(0,127,0,0.2);
 	border-radius:0px;
 	border:1px solid #007F00;
+}
+.index_alert{
+	margin:0 auto;
+	margin-top:100px;
+	width:600px;
+}
+.alert-info.activation_alert.alert{
+	color:#EEE;
+	background:rgba(63,183,121,0.6);
+	border-radius:0px;
+	border:1px solid rgb(63,183,121);
+	margin:0 auto;
+	width:600px;
+}
+.forgot_password_form_container .alert{
+	width: 600px;
+	margin:0 auto;
+	margin-bottom:20px;
+}
+.index_alert{
+	z-index:1;
+	position:absolute;
+	text-align:center;
+	left:50%;
+	margin-left:-300px;
+	width:600px;
 }
 .cbox input{
 	transform : translateY(2px);

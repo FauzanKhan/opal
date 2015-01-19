@@ -1,10 +1,10 @@
 class Student < ActiveRecord::Base
 	
-	attr_accessor :remember_token
+	attr_accessor :remember_token, :reset_token, :activation_token
 	
 	before_save { self.email = email.downcase }
 	
-	before_save :update_all_users_table
+	before_create :update_all_users_table
 	
 	validates :email, 
 			   presence: true,
@@ -42,9 +42,10 @@ class Student < ActiveRecord::Base
     	update_column(:remember_digest, Student.digest(remember_token))
   	end
 
-  	def authenticated?(remember_token)
-  		return false if remember_digest.nil?
-    	BCrypt::Password.new(remember_digest).is_password?(remember_token)
+  	def authenticated?(attribute, token)
+  		digest = self.send("#{attribute}_digest")
+  		return false if digest.nil?
+    	BCrypt::Password.new(digest).is_password?(token)
   	end
 
   	  # Forgets a user.

@@ -20,7 +20,6 @@ module SessionsHelper
   	end
 
 	def current_user
-
 		if (user_id = session[:user_id])
         user_email = session[:user_email]
   			@current_user ||= Tpo.find_by(id: user_id, email: user_email) || Student.find_by(id: user_id, email: user_email)
@@ -28,7 +27,7 @@ module SessionsHelper
   		elsif (user_id = cookies.signed[:user_id])
         user_email = cookies[:user_email]
   			user = Tpo.find_by(id: user_id, email: user_email) || Student.find_by(id: user_id, email: user_email)
-  			if user && user.authenticated?(cookies[:remember_token])
+  			if user && user.authenticated?(:remember, cookies[:remember_token])
   				log_in user
   				@current_user = user
   			end
