@@ -14,9 +14,9 @@ class Student < ActiveRecord::Base
 			   format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
 			   uniqueness: {case_sensitive: false}
 
-	validates :name,
-			   presence: true,
-			   length: {minimum: 3}
+	 validates :first_name, 
+         presence: true,
+         length: {minimum: 3, maximum: 15}
 
 	validates :college, presence: true
 
@@ -38,7 +38,7 @@ class Student < ActiveRecord::Base
 	SecureRandom.urlsafe_base64  		
 	end
 
-  	# Remembers a user in the database for use in persistent sessions.
+  # Remembers a user in the database for use in persistent sessions.
 	def remember
   	self.remember_token = Student.new_token
   	update_column(:remember_digest, Student.digest(remember_token))
@@ -89,7 +89,8 @@ class Student < ActiveRecord::Base
         def update_all_users_table
             new_user = AllUser.new
             new_user.email = self.email
-            new_user.name = self.name
+            new_user.first_name = self.first_name
+            new_user.last_name = self.last_name
             new_user.college = self.college
             new_user.user_type = "student"
             errors.add(:email, "is already taken") if !new_user.save

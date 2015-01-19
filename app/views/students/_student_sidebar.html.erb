@@ -3,7 +3,7 @@
 			<img src="#" class="user_pic" />
 	</div>
 	<% if @student == current_user %>
-		<a href="#" class="user_name"><%= current_user.name %></a>
+		<a href="#" class="user_name"><%= current_user.first_name %> <%= current_user.last_name %></a>
 		<%= link_to edit_student_path, :class => "btn btn-block btn-info blue" do %>
 			<span class="fa fa-edit"></span> Edit Profile
 		<% end %>

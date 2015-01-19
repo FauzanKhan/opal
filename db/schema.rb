@@ -11,15 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150119142517) do
+ActiveRecord::Schema.define(version: 20150119192330) do
 
   create_table "all_users", force: :cascade do |t|
     t.string   "email"
-    t.string   "name"
+    t.string   "first_name"
     t.string   "college"
     t.string   "user_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "last_name"
   end
 
   create_table "colleges", force: :cascade do |t|
@@ -46,7 +47,7 @@ ActiveRecord::Schema.define(version: 20150119142517) do
     t.string   "email"
     t.string   "password"
     t.string   "password_digest"
-    t.string   "name"
+    t.string   "first_name"
     t.string   "college"
     t.string   "course"
     t.string   "branch"
@@ -55,25 +56,24 @@ ActiveRecord::Schema.define(version: 20150119142517) do
     t.string   "experience"
     t.string   "applications"
     t.string   "remember_digest"
-    t.string   "remember_token"
     t.string   "user_type"
     t.string   "activation_digest"
     t.boolean  "activated",         default: false
     t.datetime "activated_at"
     t.string   "reset_digest"
     t.datetime "reset_sent_at"
+    t.string   "last_name"
   end
 
   create_table "tpos", force: :cascade do |t|
     t.string   "email"
     t.string   "password"
-    t.string   "name"
+    t.string   "first_name"
     t.string   "college"
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
     t.string   "password_digest"
     t.string   "remember_digest"
-    t.string   "remember_token"
     t.string   "user_type"
     t.string   "job_title"
     t.boolean  "admin",             default: false
@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(version: 20150119142517) do
     t.datetime "activated_at"
     t.string   "reset_digest"
     t.datetime "reset_sent_at"
+    t.string   "last_name"
   end
 
 end

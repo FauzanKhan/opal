@@ -1,4 +1,4 @@
-<% provide(:title, @tpo.name.to_s+" | Edit Profile") %>
+<% provide(:title, @tpo.first_name.to_s+" "+@tpo.last_name.to_s+" | Edit Profile") %>
 <div class="row">
 	<%= render 'tpo_sidebar' %>
 	<div class="col-lg-10 col-md-10 col-sm-10">
@@ -11,10 +11,20 @@
 				        <%= f.label :email, :class => "control-label" %>
 				        <%= f.email_field :email, :class => "form-control", :placeholder => "Eg.: username@example.com", :disabled => "true" %>
 				    </div>
-				    <div class="form-group">
-				        <%= f.label :name, :class => "control-label" %>
-				        <%= f.text_field :name, :class => "form-control", :placeholder => "YourName" %>
-				    </div>
+				    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-group">
+                                <%= f.label :first_name, :class => "control-label" %>
+                                <%= f.text_field :first_name, :class => "form-control", :placeholder => "Your First Name" %>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-group">
+                                <%= f.label :last_name, :class => "control-label" %>
+                                <%= f.text_field :last_name, :class => "form-control", :placeholder => "Your Last Name" %>
+                            </div>
+                        </div>
+                    </div>
 				    <div class="form-group">
 				        <%= f.label :college, :class => "control-label" %>
 				        <%= f.collection_select(:college, College.all, :college_name, :college_name, {}, {:class=>'form-control'}) %>

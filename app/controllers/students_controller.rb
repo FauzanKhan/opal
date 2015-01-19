@@ -9,7 +9,8 @@ class StudentsController < ApplicationController
 
 	def create
 		@student = Student.new(student_params)
-		@student.name = params[:student][:name].titleize
+		@student.first_name = params[:student][:first_name].titleize
+		@student.last_name = params[:student][:last_name].titleize
 		@student.user_type = 'student'
 		if @student.save
 			#log_in @student
@@ -28,7 +29,7 @@ class StudentsController < ApplicationController
 
 	private
 		def student_params
-			params.require(:student).permit(:email, :password, :name, :college, :course, :branch)
+			params.require(:student).permit(:email, :password, :first_name, :last_name, :college, :course, :branch)
 		end
 
 		def logged_in_user

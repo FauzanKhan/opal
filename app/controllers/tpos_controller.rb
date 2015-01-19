@@ -33,7 +33,7 @@ class TposController < ApplicationController
 		#old_email = @tpo.email
 		#new_email = params[:tpo][:email]
 		#update_all_user(old_email, new_email)
-		if @tpo.update_attributes(update_tpo_params)
+		if @tpo.update_columns(update_tpo_params)
 			flash[:success] = "Profile updated"
       		redirect_to @tpo
 		else
@@ -43,7 +43,8 @@ class TposController < ApplicationController
 
 	def create
 		@tpo = Tpo.new(tpo_params)
-		@tpo.name = params[:tpo][:name].titleize
+		@tpo.first_name = params[:tpo][:first_name].titleize
+		@tpo.last_name = params[:tpo][:last_name].titleize
 		@tpo.user_type = "tpo"
 		if @tpo.save
 			#log_in @tpo
@@ -61,11 +62,11 @@ class TposController < ApplicationController
 	
 	private
 		def tpo_params
-			params.require(:tpo).permit(:email, :password, :name, :college, :user_type)
+			params.require(:tpo).permit(:email, :password, :first_name, :last_name, :college, :user_type)
 		end
 
 		def update_tpo_params
-			params.require(:tpo).permit(:password, :name, :college)
+			params.require(:tpo).permit(:password, :first_name, :last_name, :college)
 		end
 
 		def logged_in_user

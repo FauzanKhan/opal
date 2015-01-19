@@ -16,9 +16,9 @@ class Tpo < ActiveRecord::Base
 			   format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
 			   uniqueness: { case_sensitive: false } #Note that we have simply replaced true with case_sensitive: false (Rails infers that uniqueness should be true as well.)
 
-	validates :name, 
+	validates :first_name, 
 			   presence: true,
-			   length: {minimum: 3}
+			   length: {minimum: 3, maximum: 15}
 
 	validates :college, presence: true
 
@@ -54,9 +54,9 @@ class Tpo < ActiveRecord::Base
   	end
 
   	def activate
-  		update_attribute(:activated, true)
-  		update_attribute(:activated_at, Time.zone.now)
-  	end
+	    update_attribute(:activated, true)
+	    update_attribute(:activated_at, Time.zone.now)
+	  end
 
   	def send_activation_email
   		UserMailer.account_activation(self).deliver_now
@@ -64,8 +64,8 @@ class Tpo < ActiveRecord::Base
 
   	def create_reset_digest
   		self.reset_token = Tpo.new_token
-  		update_attribute(:reset_digest,  Tpo.digest(reset_token))
-    	update_attribute(:reset_sent_at, Time.zone.now)
+	    update_column(:reset_digest,  Tpo.digest(reset_token))
+	    update_column(:reset_sent_at, Time.zone.now)
   	end
 
   	def send_password_reset_email
@@ -87,7 +87,8 @@ class Tpo < ActiveRecord::Base
         def update_all_users_table
             new_user = AllUser.new
             new_user.email = self.email
-            new_user.name = self.name
+            new_user.first_name = self.first_name
+            new_user.last_name = self.last_name
             new_user.college = self.college
             new_user.user_type = "tpo"
             errors.add(:email, "is already taken") if !new_user.save
