@@ -13,6 +13,11 @@
 	<div class="container content_wrapper">
 		<div class="row content_row">
 			<div class="col-lg-10 col-md-10 col-sm-12 dynamic_content_wrapper">
+				<% flash.each do |message_type, message| %>
+					<div class="flash_wrapper">
+                		<div class="alert alert-<%= message_type %> activation_alert"><%= message %></div>
+                	</div>
+            	<% end %>
 				<%= yield %>
 			</div>
 			<div class="col-lg-2 col-md-2 col-sm-12 adv_wrapper">

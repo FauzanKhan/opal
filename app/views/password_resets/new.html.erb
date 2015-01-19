@@ -7,6 +7,7 @@
                 	<p>Forgot Password?</p>
                 	<% if flash[:danger] %>
                         <div class="alert alert-danger"><%= flash[:danger] %></div>
+                        <% flash.clear %>
                     <% end %>
                     <span class="forgot_password_note">Just Enter your Email below and we'll send you instructions on how to reset your password</span><br/><br/>
                     <%= form_for(:password_reset, url: password_resets_path) do |f| %>

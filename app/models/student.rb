@@ -16,7 +16,7 @@ class Student < ActiveRecord::Base
 
 	validates :name,
 			   presence: true,
-			   length: {minimum: 5}
+			   length: {minimum: 3}
 
 	validates :college, presence: true
 

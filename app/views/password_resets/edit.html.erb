@@ -7,6 +7,7 @@
                 	<p>Reset Your Password</p>
                 	<% if flash[:danger] %>
                         <div class="alert alert-danger"><%= flash[:danger] %></div>
+                        <% flash.clear %>
                     <% end %>
                     <%= form_for(@user, url: password_reset_path(params[:id])) do |f| %>
                     	<%= hidden_field_tag :email, @user.email %>
