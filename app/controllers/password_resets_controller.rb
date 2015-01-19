@@ -24,16 +24,30 @@ class PasswordResetsController < ApplicationController
   end
 
   def update
-    if password_blank?
-      flash.now[:danger] = "Password can't be blank"
-      render 'edit'
-    elsif @user.update_attributes(user_params)
-      log_in @user
-      flash[:success] = "Password has been reset."
-      redirect_to @user
-    else
-      render 'edit'
+    if @user.user_type == 'tpo'
+      if password_blank?
+        flash.now[:danger] = "Password can't be blank"
+        render 'edit'
+      elsif @user.update_attributes(tpo_params)
+        log_in @user
+        flash[:success] = "Password has been reset."
+        redirect_to @user
+      else
+        render 'edit'
+      end
+    elsif @user.user_type == 'student'
+      if password_blank_stu?
+        flash.now[:danger] = "Password can't be blank"
+        render 'edit'
+      elsif @user.update_attributes(stu_params)
+        log_in @user
+        flash[:success] = "Password has been reset."
+        redirect_to @user
+      else
+        render 'edit'
+      end
     end
+
   end
 
   private
@@ -47,13 +61,21 @@ class PasswordResetsController < ApplicationController
       end
     end
 
-    def user_params
+    def tpo_params
       params.require(:tpo).permit(:password)
+    end
+
+    def stu_params
+      params.require(:student).permit(:password)
     end
 
     # Returns true if password is blank.
     def password_blank?
       params[:tpo][:password].blank?
+    end
+
+    def password_blank_stu?
+      params[:student][:password].blank?
     end
 
     # Checks expiration of reset token.

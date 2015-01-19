@@ -5,7 +5,6 @@ class StudentsController < ApplicationController
 	
 	def new
 		@student = Student.new
-
 	end
 
 	def create
@@ -14,9 +13,10 @@ class StudentsController < ApplicationController
 		@student.user_type = 'student'
 		if @student.save
 			#log_in @student
-			UserMailer.account_activation(@student).deliver_now
+			@student.send_activation_email
 			flash[:info] = "Please check your email to activate your account"
 			redirect_to root_url 
+		else
 			render 'new'
 		end
 	end

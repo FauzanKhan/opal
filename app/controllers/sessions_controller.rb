@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
 		student = Student.find_by(email: params[:session][:email].downcase)
 		tpo = Tpo.find_by(email: params[:session][:email].downcase)
 		if student && student.authenticate(params[:session][:password])
-			if student.avtivated?
+			if student.activated?
 				log_in student
 				params[:session][:remember_me] == '1' ? remember(student) : forget(student)
 				redirect_back_or student
