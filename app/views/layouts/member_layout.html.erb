@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title><%= yield(:title) %> | Simplifica</title>
+	<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+	<%= stylesheet_link_tag 'logged_in', media: 'all', 'data-turbolinks-track' => true %>
+	<%= stylesheet_link_tag 'http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css', 'rel' => "stylesheet" %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	<%= csrf_meta_tags %>
+</head>
+<body>
+	<%= render '/layouts/logged_in_navbar' %>	
+	<div class="container content_wrapper">
+		<div class="row content_row">
+			<div class="col-lg-10 col-md-10 col-sm-12 dynamic_content_wrapper">
+				<% flash.each do |message_type, message| %>
+					<div class="flash_wrapper">
+                		<div class="alert alert-<%= message_type %> activation_alert"><%= message %></div>
+                	</div>
+            	<% end %>
+				<%= yield %>
+			</div>
+			<div class="col-lg-2 col-md-2 col-sm-12 adv_wrapper">
+				<div class="advertisement">
+					<p>Advertisement</p>
+				</div>
+				<div class="advertisement">
+					<p>Advertisement</p>
+				</div>
+				<div class="advertisement">
+					<p>Advertisement</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+    <%= debug(params) if Rails.env.development? %>
+	<script type="text/javascript" src="assets/js/bootstrap.js"></script>
+
+</body>
+</html>

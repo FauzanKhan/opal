@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150107224609) do
+ActiveRecord::Schema.define(version: 20150119192330) do
+
+  create_table "all_users", force: :cascade do |t|
+    t.string   "email"
+    t.string   "first_name"
+    t.string   "college"
+    t.string   "user_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "last_name"
+  end
 
   create_table "colleges", force: :cascade do |t|
     t.string   "college_name"
@@ -33,24 +43,46 @@ ActiveRecord::Schema.define(version: 20150107224609) do
     t.datetime "updated_at",    null: false
   end
 
-  create_table "students", primary_key: "email", force: :cascade do |t|
+  create_table "students", force: :cascade do |t|
+    t.string   "email"
     t.string   "password"
-    t.string   "name"
-    t.integer  "college_id"
+    t.string   "password_digest"
+    t.string   "first_name"
+    t.string   "college"
     t.string   "course"
     t.string   "branch"
     t.integer  "year"
+    t.string   "education"
+    t.string   "experience"
     t.string   "applications"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.string   "remember_digest"
+    t.string   "user_type"
+    t.string   "activation_digest"
+    t.boolean  "activated",         default: false
+    t.datetime "activated_at"
+    t.string   "reset_digest"
+    t.datetime "reset_sent_at"
+    t.string   "last_name"
   end
 
-  create_table "tpos", primary_key: "email", force: :cascade do |t|
+  create_table "tpos", force: :cascade do |t|
+    t.string   "email"
     t.string   "password"
-    t.string   "name"
-    t.integer  "college_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "first_name"
+    t.string   "college"
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.string   "password_digest"
+    t.string   "remember_digest"
+    t.string   "user_type"
+    t.string   "job_title"
+    t.boolean  "admin",             default: false
+    t.string   "activation_digest"
+    t.boolean  "activated",         default: false
+    t.datetime "activated_at"
+    t.string   "reset_digest"
+    t.datetime "reset_sent_at"
+    t.string   "last_name"
   end
 
 end

@@ -1,3 +1,52 @@
 // Place all the styles related to the Students controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.student_sidebar.user_content_wrapper{
+	padding:0px;
+	.user_pic_container{
+		text-align:center;
+		width:99.8%;
+		margin:1px;
+		img{
+			width:80% !important;
+		}
+	}
+	.student_contact_info{
+		text-align:center;
+		p{
+			padding:2px 3px 2px 6px;
+			margin-bottom:5px;
+			margin-top:5px;
+			font-size:15px;
+			color:#555;
+			font-weight:bold;
+			text-align:left;
+			span.fa{
+				font-size:15px;
+				margin-right:3px;
+				display:inline;
+				color:#AAA;
+			}
+		}
+		span.divider{
+			display:block;
+			width:80%;
+			margin:0 auto;
+			border-bottom:1px solid #EEE;
+		}
+		.student_web_links{
+		text-align:center;
+			a.btn.btn-sm{
+				font-size:18px;
+				margin-left:0;
+				margin-right:0;
+				padding:0px;
+				span.fa{
+					font-size:20px;
+					color:#AAA;
+				}
+			}
+		}
+	}
+}

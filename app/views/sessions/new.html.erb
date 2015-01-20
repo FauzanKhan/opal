@@ -1,44 +1,37 @@
-
+<% provide(:title, "LogIn") %>
 <div class="intro_wrapper window_span">
     <div class="intro_wrapper_overlay window_span"></div>
     <div class="container">
             <div class="login_form_container form_container curr_active">
                 <div class="login_form form_content animated flipInX">
                 	<p>LogIn to your account</p>
-                    <form>
+                    <%= form_for(:session, url: sessions_path) do |f| %>
+                    <% if flash[:danger] %>
+                        <div class="alert alert-danger"><%= flash[:danger] %></div>
+                        <% flash.clear %>
+                    <% end %>
                         <div class="form-group">
-                            <label class="control-label">Username/Email</label>
-                            <input type="email" class="form-control" placeholder="Eg.: username@example.com" />
+                            <%= f.label :email, :class => "control-label" %>
+                            <%= f.email_field :email, :class => "form-control", :placeholder => "Eg.: username@example.com" %>
                         </div>
                         <div class="form-group">
-                            <label class="control-label">Password</label>
-                            <input type="password" class="form-control" placeholder="Your Password"/>
+                            <%= f.label :password, :class => "control-label" %>
+                            <%= f.password_field :password, :class => "form-control", :placeholder => "Your Profie Password" %>
                         </div>
                         <div class="redirect_links">
-                        	<a href="#" class="forgot_password_link">Forgot Password?</a> <br/> 
+                            <%= f.label :remember_me, :class => "cbox" do%>
+                                <%= f.check_box :remember_me %>
+                                <span>Remember me</span>
+                            <% end %> | 
+                        	<%= link_to "Forgot Password?", new_password_reset_path, :class=>"forgot_password_link" %><br/> 
                             <%= link_to "SignUp as Student", new_student_path %> | 
                             <%= link_to "SignUp as College", new_tpo_path %>
                         </div>
-                        <a class="btn btn-lg btn-default" type="submit"><span class="hover_span"></span><b>LogIn</b></a>
-                    </form>
-               </div>
-            </div>
-            <div class="forgot_password_form_container form_container">
-                <div class="login_form form_content animated flipInX">
-                	<p>Forgot Password?</p>
-                    <span class="forgot_password_note">Just Enter your Email below and we'll send you instructions on how to reset your password</span><br/><br/>
-                    <form>
-                        <div class="form-group">
-                            <label class="control-label">Username/Email</label>
-                            <input type="email" class="form-control" placeholder="Eg.: username@example.com" />
+                        <div class="submit_btn_wrapper btn btn-lg"><span style="visibility:hidden">Sign Up</span>
+                            <%= f.submit "Log In", :class => "btn btn-default btn-lg sign_up_btn" %>
+                            <span class="hover_span"></span>
                         </div>
-                        <div class="redirect_links">
-                        	<a href="#" class="login_link">Log In</a> <br/> 
-                            <a href="#" class="college_signup_link">Sign Up as College</a> |  
-                            <a href="#" class="student_signup_link">Sign Up as Student</a>
-                        </div>
-                        <a class="btn btn-md btn-default" type="submit"><span class="hover_span"></span><b>Reset Password</b></a>
-                    </form>
+                    <% end %>
                </div>
             </div>
    </div>

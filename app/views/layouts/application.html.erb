@@ -2,7 +2,6 @@
 <html>
 <head>
 	<title>Simplifica | <%= yield(:title) %></title>
-	<%= stylesheet_link_tag "bootstrap.css" %>
 	<%= stylesheet_link_tag "style.css" %>
 	<%= stylesheet_link_tag "animate.css" %>
 	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -10,53 +9,57 @@
 	<%= csrf_meta_tags %>
 </head>
 <body>
-	<header>
-	    <nav class="navbar navbar-default navbar-fixed-top">
-	    	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#primary_nav">
-	        	<span class="icon-bar"></span>
-	            <span class="icon-bar"></span>
-	            <span class="icon-bar"></span>
-	        </button>
-	        <div class="container">
-	            <h1 class="navbar-brand"><%= link_to "Simplifica", root_path %></h1>
-	            <ul class="nav navbar-nav collapse navbar-collapse navbar-responsive-collapse navbar-right" id="primary_nav">
-	            	<!--<li>
-	                	<a href="#">About Simplifica</a>
-	                    <span></span>
-	                </li>
-	                <li>
-	                	<a href="#">How it Works?</a>
-	                    <span></span>
-	                </li>
-	                <li>
-	                	<a href="#">The Team</a>
-	                    <span></span>
-	                </li>
-	                <li>
-	                	<a href="#">Contact Us</a>
-	                    <span></span>
-	                </li>-->
-	                <li>
-	                	<%= link_to "LogIn", new_session_path, class: "login_link" %>
-	                	<span></span>
-	                </li>
-	            </ul>
-			</div>
-	    </nav>
-	</header>
+	<div class="body_wrapper">
+		<header>
+		    <nav class="navbar navbar-default navbar-fixed-top">
+		    	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#primary_nav">
+		        	<span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+		        </button>
+		        <div class="container">
+		            <h1 class="navbar-brand"><%= link_to "Simplifica", root_path %></h1>
+		            <ul class="nav navbar-nav collapse navbar-collapse navbar-responsive-collapse navbar-right" id="primary_nav">
+		            	<!--<li>
+		                	<a href="#">About Simplifica</a>
+		                    <span></span>
+		                </li>
+		                <li>
+		                	<a href="#">How it Works?</a>
+		                    <span></span>
+		                </li>
+		                <li>
+		                	<a href="#">The Team</a>
+		                    <span></span>
+		                </li>
+		                <li>
+		                	<a href="#">Contact Us</a>
+		                    <span></span>
+		                </li>-->
+		                <li>
+		                	<%= link_to "LogIn", new_session_path, class: "login_link" %>
+		                	<span></span>
+		                </li>
+		            </ul>
+				</div>
+		    </nav>
+		</header>
 
-	<%= yield %>
-	<footer>
-		<div class="container">
-	        <div class="copyright">copyright &copy; simplifica.com</div>
-	        <div class="social_links">
-	            <p>Follow Us On</p>
-	            <div class="fb"><a href="#">b<span class="fb_hover_span"></span></a></div>
-	            <div class="tw"><a href="#">a<span class="tw_hover_span"></span></a></div>
-	            <div class="li"><a href="#">j<span class="li_hover_span"></span></a></div>
-	        </div>
-	    </div>
-	</footer>
+		<%= yield %>
+		
+		<footer>
+			<div class="container">
+		        <div class="copyright">copyright &copy; simplifica.com</div>
+		        <div class="social_links">
+		            <p>Follow Us On</p>
+		            <div class="fb"><a href="#">b<span class="fb_hover_span"></span></a></div>
+		            <div class="tw"><a href="#">a<span class="tw_hover_span"></span></a></div>
+		            <div class="li"><a href="#">j<span class="li_hover_span"></span></a></div>
+		        </div>
+		    </div>
+		</footer>
+	</div>
+    <%= debug(params) if Rails.env.development? %>
 	<script type="text/javascript" src="assets/js/bootstrap.js"></script>
 	<script type="text/javascript" src="assets/js/script.js"></script>
 </body>

@@ -15,6 +15,7 @@ Rails.application.config.assets.precompile += %w( style.css )
 Rails.application.config.assets.precompile += %w( jQuery.js.js )
 Rails.application.config.assets.precompile += %w( script.js )
 Rails.application.config.assets.precompile += %w( homepage_script.js )
+Rails.application.config.assets.precompile += %w( logged_in.css )
 
 
 

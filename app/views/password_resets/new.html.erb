@@ -1,0 +1,31 @@
+<% provide(:title, "Password Reset" ) %> 
+<div class="intro_wrapper window_span">
+    <div class="intro_wrapper_overlay window_span"></div>
+    <div class="container">
+            <div class="forgot_password_form_container form_container curr_active">
+                <div class="form_content animated flipInX">
+                	<p>Forgot Password?</p>
+                	<% if flash[:danger] %>
+                        <div class="alert alert-danger"><%= flash[:danger] %></div>
+                        <% flash.clear %>
+                    <% end %>
+                    <span class="forgot_password_note">Just Enter your Email below and we'll send you instructions on how to reset your password</span><br/><br/>
+                    <%= form_for(:password_reset, url: password_resets_path) do |f| %>
+                        <div class="form-group">
+                            <%= f.label :email, :class=>"control-label" %>
+                            <%= f.email_field :email, :class=>"form-control", :placeholder=>"Eg.: username@example.com" %>
+                        </div>
+                        <div class="redirect_links">
+                        	<%= link_to "LogIn", new_session_path %> <br/>
+                            <%= link_to "Sign Up as College", new_tpo_path %> |  
+                            <%= link_to "Sign Up as Student", new_student_path %>
+                        </div>
+                        <div class="submit_btn_wrapper btn btn-md"><span style="visibility:hidden">Reset Password</span>
+                            <%= f.submit "Reset Password", :class => "btn btn-default btn-md sign_up_btn" %>
+                            <span class="hover_span"></span>
+                    <% end %>
+               </div>
+            </div>
+   </div>
+</div>
+
