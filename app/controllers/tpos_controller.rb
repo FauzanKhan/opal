@@ -45,6 +45,7 @@ class TposController < ApplicationController
 		@tpo = Tpo.new(tpo_params)
 		@tpo.first_name = params[:tpo][:first_name].titleize
 		@tpo.last_name = params[:tpo][:last_name].titleize
+		@tpo.college = params[:tpo][:college].titleize
 		@tpo.user_type = "tpo"
 		if @tpo.save
 			#log_in @tpo

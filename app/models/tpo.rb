@@ -77,6 +77,13 @@ class Tpo < ActiveRecord::Base
 		reset_sent_at < 2.hours.ago
 	end
 
+	def update_college_table
+	    new_college = College.new
+	    new_college.college_name = self.college
+	    errors.add(:college, "is already registered with us. You cannot have multiple accounts") if !new_college.save
+        new_college.save
+    end
+
     private
 
     	def create_activation_digest

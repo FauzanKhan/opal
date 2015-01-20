@@ -20,7 +20,7 @@
     </div>
     <div class="form-group">
         <%= f.label :college, :class => "control-label" %>
-        <%= f.collection_select(:college, College.all, :college_name, :college_name, {}, {:class=>'form-control'}) %>
+        <%= f.text_field :college, :class => "form-control", :placeholder => "Full Name of College, Location" %>
     </div>
     <div class="form-group">
         <%= f.label :password, :class => "control-label" %>

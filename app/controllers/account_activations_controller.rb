@@ -6,6 +6,9 @@ class AccountActivationsController < ApplicationController
       log_in user
       flash[:success] = "Account activated!"
       redirect_to user
+      if(user.user_type == 'tpo')
+        user.update_college_table
+      end
     else
       flash[:danger] = "Invalid activation link"
       redirect_to root_url
