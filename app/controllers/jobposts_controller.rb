@@ -18,7 +18,7 @@ class JobpostsController < ApplicationController
 	end
 
 	def show
-
+		@jobpost = Jobpost.find(params[:id])
 	end
 
 	def edit

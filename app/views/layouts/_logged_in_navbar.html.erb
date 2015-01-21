@@ -33,7 +33,7 @@
 								</li>
 						<% elsif current_user.user_type == 'student' %>
 								<li>
-									<%= link_to edit_tpo_path(current_user) do %>
+									<%= link_to edit_student_path(current_user) do %>
 										<span class="fa fa-cogs"></span> Account Settings
 								<% end %>
 							</li>

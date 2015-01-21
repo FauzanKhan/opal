@@ -16,6 +16,9 @@
 				<% flash.each do |message_type, message| %>
 					<div class="flash_wrapper">
                 		<div class="alert alert-<%= message_type %> activation_alert"><%= message %></div>
+                		<span class="pull-right" data-dismiss="alert">
+                			<i class="fa fa-close"></i>
+                		</span>
                 	</div>
             	<% end %>
 				<%= yield %>

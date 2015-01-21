@@ -21,7 +21,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-4 col-md-4 col-sm-2 col-xs-12">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                         <div class="form-group">
                             <%= f.label :req_percentage, :class => "control-label" do %>
                             	Required percentage
@@ -29,29 +29,38 @@
                             <%= f.text_field :req_percentage, :class => "form-control", :placeholder => "Minimum Percentage Required" %>
                         </div>
                     </div>
-                    <div class="col-lg-8 col-md-8 col-sm-10 col-xs-12">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     	<div class="form-group">
-		            		<label class="control-label">Eligible Courses</label>
-		                    <div class="checkbox">
-							    <label class="checkbox-inline">
-							      <input type="checkbox"> B.Tech
-							    </label>
-							    <label class="checkbox-inline">
-							      <input type="checkbox"> M.Tech
-							    </label>
-							    <label class="checkbox-inline">
-							      <input type="checkbox"> B.Pharma
-							    </label>
-							    <label class="checkbox-inline">
-							      <input type="checkbox"> M.Pharma
-							    </label>
-							    <label class="checkbox-inline">
-							      <input type="checkbox"> M.C.A
-							    </label>
-							</div>
-						</div>
+                            <label class="control-label" >Opportunity Type</label>
+                            <select class="form-control">
+                                <option>On Campus</option>
+                                <option>Pool Campus</option>
+                                <option>Walkin</option>
+                                <option>Internship</option>
+                            <select>
+                        </div>
                     </div>
                 </div>
+                <div class="form-group">
+                            <label class="control-label">Eligible Courses</label>
+                            <div class="checkbox">
+                                <label class="checkbox-inline">
+                                  <input type="checkbox"> B.Tech
+                                </label>
+                                <label class="checkbox-inline">
+                                  <input type="checkbox"> M.Tech
+                                </label>
+                                <label class="checkbox-inline">
+                                  <input type="checkbox"> B.Pharma
+                                </label>
+                                <label class="checkbox-inline">
+                                  <input type="checkbox"> M.Pharma
+                                </label>
+                                <label class="checkbox-inline">
+                                  <input type="checkbox"> M.C.A
+                                </label>
+                            </div>
+                        </div>
                 <div class="form-group">
             		<label class="control-label">Eligible branches</label>
                     <div class="checkbox">

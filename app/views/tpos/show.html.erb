@@ -1,7 +1,7 @@
 <% provide(:title, @tpo.first_name.to_s+" "+@tpo.last_name.to_s) %>
 <div class="row">
 	<%= render 'tpo_sidebar' %>
-	<div class="col-lg-10 col-md-10 col-sm-10">
+	<div class="col-lg-10 col-md-10 col-sm-10 main_content">
 		<% if @tpo.jobposts.any? %>
 		  <h3>Jobposts (<%= @tpo.jobposts.count %>)</h3>
 		  <ul class="list-unstyled jobposts_list">

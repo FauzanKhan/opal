@@ -51,7 +51,9 @@ $primary_green : rgb(111, 201, 154);
 }
 .tpo_edit_form_container{
 	text-align:center;
-
+	background:#FFF;
+	border:1px solid #EAEAEA;
+	padding-bottom:60px;
 	.tpo_edit_form{
 		width:500px;
 		margin:0px auto;
@@ -78,8 +80,8 @@ $primary_green : rgb(111, 201, 154);
 	width:98%;
 	margin:0 auto;
 	.jobpost_container{
-		background:#FEFEFE;
-		border:1px solid #EEE;
+		background:#FFF;
+		border:1px solid #EAEAEA;
 		padding:5px 20px;
 		padding-top:5px;
 		margin-bottom:10px;
@@ -143,6 +145,7 @@ $primary_green : rgb(111, 201, 154);
 		.author{
 			text-align:center;
 			color:#CCC;
+			padding-top:5px;
 			font-size:12px;
 		}
 	}

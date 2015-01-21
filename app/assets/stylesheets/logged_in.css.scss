@@ -38,6 +38,9 @@ body{
 .btn.green{
 	@include green_hover;
 }
+body{
+	background:#FBFBFB;
+}
 .content_wrapper{
 	margin-bottom:80px;
 }
