@@ -2,11 +2,11 @@
 <div class="row">
 	<%= render 'tpo_sidebar' %>
 	<div class="col-lg-10 col-md-10 col-sm-10">
-		<p class="lead"><%= @tpo.email %></p>
-		<br/>
-		<p class="lead"><%= @tpo.first_name %> <%= @tpo.last_name %></p>
-		<br/>
-		<p class="lead"><%= @tpo.college %></p>
-		<%= link_to "Log out", session_path, method: "delete" %>
+		<% if @tpo.jobposts.any? %>
+		  <h3>Jobposts (<%= @tpo.jobposts.count %>)</h3>
+		  <ul class="list-unstyled jobposts_list">
+		    <%= render @jobposts %>
+		  </ull>
+		<% end %>
 	</div>
 </div>

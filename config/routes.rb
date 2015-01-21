@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   resources :welcome
   resources :sessions
   resources :all_users
+  resources :jobposts
   resources :account_activations, only: [:edit]
   resources :password_resets, only: [:edit, :new, :create, :update]
 

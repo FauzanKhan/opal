@@ -2,6 +2,8 @@ class Tpo < ActiveRecord::Base
 	
 	#self.primary_key = 'email'
 
+	has_many :jobposts, dependent: :destroy #destroy associated job posts when tpo is destroyed 
+
 	attr_accessor :remember_token, :activation_token, :reset_token
 
 	before_save { self.email = email.downcase }

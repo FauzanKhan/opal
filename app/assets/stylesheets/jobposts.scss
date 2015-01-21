@@ -1,0 +1,32 @@
+// Place all the styles related to the Jobposts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.jobpost_form_container{
+	width:90%;
+	padding-bottom:40px;
+	margin:0 auto;
+	h3{
+		text-align:center;
+		color:#666;
+		font-weight:bold;
+		margin-bottom:40px;
+	}
+	.form-group{
+		margin-bottom:30px;
+		.form-control{
+			border-radius:0px;
+			border:1px solid #DDD;
+			box-shadow:0px 0px 0px 0px;
+		}
+		.control-label{
+			color:#666;
+		}
+
+		textarea{
+			height:150px;
+		}
+	}
+	.btn{
+		border-radius:0px;
+	}
+}

@@ -5,6 +5,14 @@ class ApplicationController < ActionController::Base
   
   include SessionsHelper
 
+  def logged_in_user
+      unless logged_in?
+        store_location
+        flash[:danger] = "Please LogIn to access this page."
+        redirect_to login_url
+      end
+  end
+
   layout :layout_selection
   private
   def layout_selection

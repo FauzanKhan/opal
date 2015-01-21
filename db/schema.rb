@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150119192330) do
+ActiveRecord::Schema.define(version: 20150121143312) do
 
   create_table "all_users", force: :cascade do |t|
     t.string   "email"
@@ -29,6 +29,22 @@ ActiveRecord::Schema.define(version: 20150119192330) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
+
+  create_table "jobposts", force: :cascade do |t|
+    t.integer  "tpo_id"
+    t.string   "company"
+    t.string   "position"
+    t.string   "req_percentage"
+    t.string   "required_branch"
+    t.text     "other_requirements"
+    t.text     "job_profile"
+    t.string   "venue"
+    t.string   "location"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "jobposts", ["tpo_id", "created_at"], name: "index_jobposts_on_tpo_id_and_created_at"
 
   create_table "posts", force: :cascade do |t|
     t.string   "title"

@@ -32,14 +32,6 @@ class StudentsController < ApplicationController
 			params.require(:student).permit(:email, :password, :first_name, :last_name, :college, :course, :branch)
 		end
 
-		def logged_in_user
-			unless logged_in?
-				store_url
-				flash[:danger] = "Please LogIn to access this page"
-				redirect_to new_session_path
-			end
-		end
-
 		def correct_user
 			@user = Student.find(params[:id])
 			redirect_to root_path unless @user == current_user

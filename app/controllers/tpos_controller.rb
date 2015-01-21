@@ -1,7 +1,7 @@
 class TposController < ApplicationController
 
 	#before_action :admin_user, only: [:index]
-	before_action :logged_in_user, only: [:edit, :update, :show, ]
+	before_action :logged_in_user, only: [:edit, :update, :show]
 	before_action :correct_user, only: [:edit, :update]
 	before_action :admin_user,     only: [:destroy, :index]
 
@@ -25,6 +25,7 @@ class TposController < ApplicationController
 
 	def show
 		@tpo = Tpo.find(params[:id])
+		@jobposts = @tpo.jobposts
 		#@colleges = College.all
 	end
 
@@ -33,7 +34,7 @@ class TposController < ApplicationController
 		#old_email = @tpo.email
 		#new_email = params[:tpo][:email]
 		#update_all_user(old_email, new_email)
-		if @tpo.update_columns(update_tpo_params)
+		if @tpo.update_attributes(update_tpo_params)
 			flash[:success] = "Profile updated"
       		redirect_to @tpo
 		else
@@ -68,14 +69,6 @@ class TposController < ApplicationController
 
 		def update_tpo_params
 			params.require(:tpo).permit(:password, :first_name, :last_name, :college)
-		end
-
-		def logged_in_user
-			unless logged_in?
-				store_url
-				flash[:danger] = "Please LogIn to access this page"
-				redirect_to new_session_path
-			end
 		end
 
 		def correct_user

@@ -38,6 +38,9 @@ body{
 .btn.green{
 	@include green_hover;
 }
+.content_wrapper{
+	margin-bottom:80px;
+}
 nav.navbar{
 	background: $primary_blue;
 	color:#FFF;
@@ -188,7 +191,6 @@ nav.navbar{
 		margin-top:30px;
 		.user_content_wrapper{
 			margin-top:10px;
-			border-right:1px solid #EEE;
 			font-size:18px;
 			color:#333;
 			word-wrap:break-word;
@@ -214,6 +216,10 @@ nav.navbar{
 		.dynamic_content_wrapper{
 			margin-top:20px;
 			border-right:1px solid #EEE;
+
+			.main_content{
+				border-left:1px solid #EEE;
+			}
 		}
 		.adv_wrapper{
 			margin-top:20px;

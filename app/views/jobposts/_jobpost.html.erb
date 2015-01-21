@@ -1,0 +1,52 @@
+<li id="jobpost-<%= jobpost.id %>" class="jobpost_container">
+	<div class="jobpost">
+		<div class="job_title">
+			<div class="position left_aligned"><%= jobpost.position %></div>
+			<div class="company right_aligned"><%= jobpost.company %></div>
+		</div>
+		<div class="location"> Location - <%= jobpost.location %> </div>
+		<div class="job_info row">
+			<div class="col-lg-3 col-md-3 col-sm-6">
+				<div class="heading">
+					<span class="fa fa-plus"></span> Percentage
+				</div>
+				<%= jobpost.req_percentage %> 70%
+			</div>
+			<div class="col-lg-3 col-md-3 col-sm-6">
+				<div class="heading">
+					<span class="fa fa-graduation-cap"></span> Courses  
+				</div>
+				B.Tech, M.Tech, M.C.A
+			</div>
+			<div class="col-lg-3 col-md-3 col-sm-6">
+				<div class="heading">
+					<span class="fa fa-share-alt"></span> Branches  
+				</div>
+				CSE, IT, ECE, EEE, EI, ME, Civil
+			</div>
+			<div class="col-lg-3 col-md-3 col-sm-6">
+				<div class="heading">
+					<span class="fa fa-ticket"></span> Type  
+				</div>
+				On campus
+			</div>
+		</div>
+		<div class="actions">
+			<%= link_to jobposts_path, :class => "btn btn-default btn-sm pull-left" do %>
+				<span class="fa fa-th-list"></span> View Applications
+			<% end %>
+			<%= link_to jobposts_path, :class => "btn btn-danger btn-sm" do %>
+				<span class="fa fa-close"></span> Delete
+			<% end %>
+			<%= link_to jobposts_path, :class => "btn btn-primary btn-sm" do %>
+				<span class="fa fa-edit"></span> Edit
+			<% end %> 
+			<%= link_to jobposts_path, :class => "btn btn-info btn-sm" do %>
+				<span class="fa fa-eye"></span> View
+			<% end %>  
+		</div>
+		<div class="author">
+			posted <%= time_ago_in_words(jobpost.created_at) %> ago
+		</div>
+	</div>
+</li>
