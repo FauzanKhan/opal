@@ -1,6 +1,8 @@
 // Place all the styles related to the Jobposts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$primary_blue : rgb(45, 174, 191);
+$primary_green : rgb(111, 201, 154);
 .jobpost_form_container{
 	padding:40px;
 	padding-bottom:100px;
@@ -32,5 +34,54 @@
 	.btn{
 		border-radius:0px;
 		margin-bottom:40px;
+	}
+}
+.show_job_content{
+	width:95%;
+	background:#FFF;
+	border:1px solid #EEE;
+	clear:both;
+	overflow:auto;
+	margin:0 auto;
+	padding:10px 20px;
+	position:relative;
+	.job_title{
+		text-align:center;
+		border-bottom:1px solid $primary_blue;
+		font-weight:bold;
+		color:#666;
+		margin-bottom:40px;
+	}
+	.desc{
+		margin-bottom:20px;
+		margin-top:40px;
+		overflow:auto;
+		.desc_title{
+			display:block;
+			border-bottom:1px solid #EEE;
+			margin-bottom:20px;
+			h4{
+				font-weight:bold;
+				display:inline;
+				border-bottom:3px solid $primary_blue;/*#5bc0de*/
+				padding-left:10px;
+				padding-right:15px;
+				color:#555;
+			} 
+		}
+		.about_eligibility{
+			margin-bottom:40px !important;
+			text-align:center;
+			overflow:auto;
+			.col-lg-4{
+				margin-bottom:40px;
+			}
+		}
+		.actions{
+			margin-top:100px;
+			border-top:1px solid #EEE;
+			display:block;
+			text-align:right;
+		}
 	}
 }

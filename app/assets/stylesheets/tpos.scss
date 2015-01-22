@@ -86,7 +86,6 @@ $primary_green : rgb(111, 201, 154);
 		padding-top:5px;
 		margin-bottom:10px;
 		position:relative;
-		font-weight: bold;
 		.job_title{
 			clear:both;
 			font-weight:bold;
@@ -126,6 +125,9 @@ $primary_green : rgb(111, 201, 154);
 			text-align:right;
 			display:block;
 			margin-top:0px;
+			margin-bottom:15px;
+			font-weight:bold;
+			color:#777;
 			margin-right:15px;
 			}
 		.actions{
@@ -147,6 +149,7 @@ $primary_green : rgb(111, 201, 154);
 			color:#CCC;
 			padding-top:5px;
 			font-size:12px;
+			font-weight:lighter;
 		}
 	}
 }

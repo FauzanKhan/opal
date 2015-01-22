@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150121143312) do
+ActiveRecord::Schema.define(version: 20150122184615) do
 
   create_table "all_users", force: :cascade do |t|
     t.string   "email"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20150121143312) do
 
   create_table "colleges", force: :cascade do |t|
     t.string   "college_name"
-    t.string   "location"
+    t.integer  "location_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
@@ -39,12 +39,20 @@ ActiveRecord::Schema.define(version: 20150121143312) do
     t.text     "other_requirements"
     t.text     "job_profile"
     t.string   "venue"
-    t.string   "location"
+    t.integer  "location_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+    t.integer  "job_type"
   end
 
   add_index "jobposts", ["tpo_id", "created_at"], name: "index_jobposts_on_tpo_id_and_created_at"
+
+  create_table "locations", force: :cascade do |t|
+    t.string   "location"
+    t.integer  "zone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "posts", force: :cascade do |t|
     t.string   "title"
@@ -79,6 +87,7 @@ ActiveRecord::Schema.define(version: 20150121143312) do
     t.string   "reset_digest"
     t.datetime "reset_sent_at"
     t.string   "last_name"
+    t.integer  "location_id"
   end
 
   create_table "tpos", force: :cascade do |t|
@@ -99,6 +108,7 @@ ActiveRecord::Schema.define(version: 20150121143312) do
     t.string   "reset_digest"
     t.datetime "reset_sent_at"
     t.string   "last_name"
+    t.integer  "location_id"
   end
 
 end

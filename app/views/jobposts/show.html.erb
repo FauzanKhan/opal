@@ -1,0 +1,82 @@
+<% provide(:title, @jobpost.position.to_s+" | "+@jobpost.company.to_s) %>
+<div class="row">
+	<% if current_user.user_type == "student" %>
+		<%= render '/students/student_sidebar' %>
+	<% else %>
+		<%= render '/tpos/tpo_sidebar' %>
+	<% end %>
+	<div class="col-lg-10 col-md-10 col-sm-10 main_content">
+		<div class="show_job_content">
+			<div class="job_title">
+				<h3><%= @jobpost.company %> hiring <%= @jobpost.position.pluralize %>
+					<small>( 
+						<% case @jobpost.job_type 
+						   when 1 %> On Campus
+						<% when 2 %> Pool Campus 
+						<% when 3 %> Walk_in
+						<% when 4 %> Internship
+					<% end %> )
+					</small>
+				</h3>
+			</div>
+			<div class="job_info">
+				<div class="desc">
+					<div class="desc_title"><h4>About <%= @jobpost.company %></h4></div>
+					<div class-"about_company">
+						Some bla bla text to fill this place up.
+					</div>
+				</div>
+				<div class="desc">
+					<div class="desc_title"><h4>About Position <small>(<%= @jobpost.position %>)</small></h4></div>
+					<div class-"about_pos">
+						Some bla bla text to fill this place up.
+					</div>
+				</div>
+				<div class="desc">
+					<div class="desc_title"><h4>Eligibility</h4></div>
+					<div class-"about_eligibility row">
+						<div class="col-lg-4 col-md-4">
+							<div><b><span class="fa fa-plus"></span> Percentage</b></div>
+						</div>
+						<div class="col-lg-4 col-md-4">
+							<div><b><span class="fa fa-graduation-cap"></span> Courses </b></div>
+						</div>
+						<div class="col-lg-4 col-md-4">
+							<div><b><span class="fa fa-share-alt"></span> Branches</b></div>
+						</div>
+					</div>
+				</div>
+				<div class="desc">
+					<div class="desc_title"><h4>Other Requirements</h4></div>
+					<div class-"about_req">
+						Some bla bla text to fill this place up.
+					</div>
+				</div>
+				<div class="desc">
+					<div class="desc_title"><h4>Instructions From Tpo</h4></div>
+					<div class-"about_instructions">
+						Some bla bla text to fill this place up.
+					</div>
+				</div>
+				<div class="actions">
+					<% if current_user.id == @jobpost.tpo_id %>
+						<%= link_to jobposts_path, :class => "btn btn-default btn-md pull-left" do %>
+							<span class="fa fa-th-list"></span> View Applications
+						<% end %>
+						<%= link_to jobpost_path(@jobpost), method: "delete", :class => "btn btn-danger btn-md" do %>
+							<span class="fa fa-close"></span> Delete
+						<% end %>
+						<%= link_to edit_jobpost_path(@jobpost), :class => "btn btn-primary btn-md" do %>
+							<span class="fa fa-edit"></span> Edit
+						<% end %> 
+					<% end %>
+						<% if current_user.user_type == "student" %>
+							<%= link_to edit_jobpost_path(@jobpost), :class => "btn btn-info btn-sm" do %>
+								<span class="fa fa-edit"></span> Apply
+							<% end %>
+						<% end %>
+				</div>
+			</div>
+	</div>
+	</div>
+</div>

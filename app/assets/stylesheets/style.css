@@ -148,7 +148,7 @@ a:hover{
 	-moz-transition:background 300ms ease;
 	transition:background 300ms ease;
 	}*/
-.introduction .btn:hover{
+.introduction .btn:hover, .introduction .btn:focus{
 	background:rgba(0,0,0,0.2);
 	color:#FFF;
 }
@@ -320,6 +320,10 @@ footer .container{
 	background:rgba(0,0,0,0.2);
 	border:1px solid #6A6A6A;/*rgb(204, 204, 204);*/
 	}
+.social_links a:hover{
+	color:#FFF;
+	text-decoration:none;
+}
 .social_links div a span{
 	width:100%;
 	height:0px;
@@ -387,8 +391,9 @@ footer .container{
 .form_content #error_explaination div.alert.alert-danger, .alert.alert-danger{
 	border-radius:0px;
 	border:1px solid #C41E3A;
-	color:#C41E3A;
-	background:rgba(196,30,58,.2);
+	color:#EEE;
+	background:rgba(196,30,58,.6);
+	text-align:center;
 }
 .form_content #error_explaination ul.error_list li, ul.error_list li{
 	color:#C41E3A;
@@ -396,19 +401,22 @@ footer .container{
 .alert-danger{
 	border-radius:0px;
 	border:1px solid #C41E3A;
-	color:#C41E3A;
-	background:rgba(196,30,58,.2);
+	color:#EEE;
+	background:rgba(196,30,58,.6);
+	text-align:center;
 }
 .alert-success{
-	color:#007F00;
-	background:rgba(0,127,0,0.2);
+	color:#EEE;
+	background:rgba(0,127,0,0.6);
 	border-radius:0px;
 	border:1px solid #007F00;
+	text-align:center;
 }
 .index_alert{
 	margin:0 auto;
 	margin-top:100px;
 	width:600px;
+	text-align:center;
 }
 .alert-info.activation_alert.alert{
 	color:#EEE;
@@ -417,11 +425,13 @@ footer .container{
 	border:1px solid rgb(63,183,121);
 	margin:0 auto;
 	width:600px;
+	text-align:center;
 }
 .forgot_password_form_container .alert{
 	width: 600px;
 	margin:0 auto;
 	margin-bottom:20px;
+	text-align:center;
 }
 .index_alert{
 	z-index:1;

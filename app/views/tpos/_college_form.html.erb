@@ -18,9 +18,19 @@
             </div>
         </div>
     </div>
-    <div class="form-group">
-        <%= f.label :college, :class => "control-label" %>
-        <%= f.text_field :college, :class => "form-control", :placeholder => "Full Name of College, Location" %>
+    <div class="row">
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+            <div class="form-group">
+                <%= f.label :college, :class => "control-label" %>
+                <%= f.text_field :college, :class => "form-control", :placeholder => "Full Name of College, Location" %>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            <div class="form-group">
+                <%= f.label :location_id, :class => "control-label" %>
+                <%= f.collection_select(:location_id, Location.all, :id, :location, {}, {:class=>'form-control'}) %>
+            </div>
+        </div>
     </div>
     <div class="form-group">
         <%= f.label :password, :class => "control-label" %>

@@ -4,13 +4,20 @@
 			<div class="position left_aligned"><%= jobpost.position %></div>
 			<div class="company right_aligned"><%= jobpost.company %></div>
 		</div>
-		<div class="location"> Location - <%= jobpost.location %> </div>
+		<div class="location"><%= Location.find(jobpost.location_id).location %></div>
 		<div class="job_info row">
 			<div class="col-lg-3 col-md-3 col-sm-6">
 				<div class="heading">
 					<span class="fa fa-ticket"></span> Type  
 				</div>
-				On campus
+				<div class="job_info_item">
+					<% case jobpost.job_type 
+						   when 1 %> On Campus
+						<% when 2 %> Pool Campus
+						<% when 3 %> Walk_in
+						<% when 4 %> Internship
+					<% end %>
+				</div>
 			</div>
 			<div class="col-lg-3 col-md-3 col-sm-6">
 				<div class="heading">
@@ -28,19 +35,21 @@
 				<div class="heading">
 					<span class="fa fa-plus"></span> Percentage
 				</div>
-				<%= jobpost.req_percentage %> 70%
+				<%= jobpost.req_percentage %>
 			</div>
 		</div>
 		<div class="actions">
-			<%= link_to jobposts_path, :class => "btn btn-default btn-sm pull-left" do %>
-				<span class="fa fa-th-list"></span> View Applications
+			<% if current_user.id == jobpost.tpo_id %>
+				<%= link_to jobposts_path, :class => "btn btn-default btn-sm pull-left" do %>
+					<span class="fa fa-th-list"></span> View Applications
+				<% end %>
+				<%= link_to jobpost_path(jobpost), method: "delete", :class => "btn btn-danger btn-sm" do %>
+					<span class="fa fa-close"></span> Delete
+				<% end %>
+				<%= link_to edit_jobpost_path(jobpost), :class => "btn btn-primary btn-sm" do %>
+					<span class="fa fa-edit"></span> Edit
+				<% end %> 
 			<% end %>
-			<%= link_to jobpost_path(jobpost), method: "delete", :class => "btn btn-danger btn-sm" do %>
-				<span class="fa fa-close"></span> Delete
-			<% end %>
-			<%= link_to edit_jobpost_path(jobpost), :class => "btn btn-primary btn-sm" do %>
-				<span class="fa fa-edit"></span> Edit
-			<% end %> 
 			<%= link_to jobpost, :class => "btn btn-info btn-sm" do %>
 				<span class="fa fa-eye"></span> View
 			<% end %>  

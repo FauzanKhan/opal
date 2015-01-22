@@ -18,11 +18,13 @@ class JobpostsController < ApplicationController
 	end
 
 	def show
+		current_user.user_type == "student" ? @student = current_user : @tpo = current_user
 		@jobpost = Jobpost.find(params[:id])
 	end
 
 	def edit
-
+		@tpo = current_user
+		@jobpost = Jobpost.find(params[:id])
 	end
 
 	def update
@@ -35,7 +37,7 @@ class JobpostsController < ApplicationController
 
 	private
 		def jobpost_params
-			params.require(:jobpost).permit(:company, :position, :req_percentage, :required_brach, :other_requirements, :job_profile, :location, :venue )
+			params.require(:jobpost).permit(:company, :position, :req_percentage, :required_brach, :other_requirements, :job_profile, :location, :venue, :location_id, :job_type)
 		end
 
 end

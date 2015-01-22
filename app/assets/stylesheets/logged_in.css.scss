@@ -32,6 +32,9 @@ body{
 	border-right: 5px solid transparent;
 	border-bottom: 5px solid #FFF;
 }
+.btn{
+	border-radius:0px;
+}
 .btn.blue{
 	@include blue_hover;
 }
@@ -244,4 +247,9 @@ nav.navbar{
 }
 .alert{
 	border-radius:0px;
+	span.terminate{
+		position: absolute;
+		top: 13px;
+		right: 30px;
+	}
 }

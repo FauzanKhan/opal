@@ -1,9 +1,9 @@
-<% provide(:title, "Post a Job | "+current_user.first_name.to_s+" "+current_user.last_name.to_s) %>
+<% provide(:title, "Edit Jobpost | "+current_user.first_name.to_s+" "+current_user.last_name.to_s) %>
 <div class="row">
 	<%= render '/tpos/tpo_sidebar' %>
 	<div class="col-lg-10 col-md-10 col-sm-10 main_content">
 		<div class="jobpost_form_container">
-			<h3>Post an opportunity</h3>
+			<h3>Edit Job Post</h3>
 				<%= render 'jobpost_form' %>
 		</div> 
 	</div>
