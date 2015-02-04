@@ -1,0 +1,4 @@
+$('#student_branch').empty()//.append("<%= escape_javascript(render(:partial => @branches)) %>");
+<% @branches.each do |branch| %>
+	$('#student_branch').append('<option value="<%= branch.id %>"><%= branch.name %></option>')
+<% end %>

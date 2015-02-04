@@ -5,6 +5,8 @@ class StudentsController < ApplicationController
 	
 	def new
 		@student = Student.new
+		@courses = Course.all
+		@branches = Branch.where(course_id: Course.first.id)
 	end
 
 	def create
@@ -25,6 +27,13 @@ class StudentsController < ApplicationController
 	def show
 		@student = Student.find(params[:id])
 		@current_students_tpo = Tpo.find_by(college: current_user.college)
+	end
+
+	def populate_branches
+		@branches = Branch.where(course_id: params[:course])
+		respond_to do |format|
+			format.js
+		end 
 	end
 
 	private

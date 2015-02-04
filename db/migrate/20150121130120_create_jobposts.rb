@@ -1,7 +1,7 @@
 class CreateJobposts < ActiveRecord::Migration
   def change
     create_table :jobposts do |t|
-      t.references :tpo
+      t.references :tpo, index: true
       t.string :company_name
       t.string :position_offered
       t.string :required_percentage
@@ -10,7 +10,6 @@ class CreateJobposts < ActiveRecord::Migration
       t.text :job_profile
       t.string :venue
       t.string :state
-
 
       t.timestamps null: false
     end

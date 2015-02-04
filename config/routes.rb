@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get 'welcome/login'
   get 'tpos/signup'
   get 'students/signup'
+  get 'students/populate_branches' 
 
   resources :tpos
   resources :students

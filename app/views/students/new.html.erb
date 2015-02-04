@@ -33,20 +33,14 @@
                         <div class="row">
                         	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             	<div class="form-group">
-                                    <%= f.label :cource, :class => "control-label" %>
-                                    <select name="student[course]" id="student_course" class="form-control">
-                                        <option>B.Tech/B.E.</option>
-                                        <option>M.Tech/M.E.</option>
-                                    </select>
+                                    <%= f.label :course, :class => "control-label" %>
+                                    <%= f.collection_select :course, @courses, :id, :name, {}, {:class=>"form-control branches_dropdown", :onchange=>"pop_branches()"} %>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             	<div class="form-group">
                                     <%= f.label :branch, :class => "control-label" %>
-                                    <select name="student[branch]" id="student_branch" class="form-control">
-                                        <option>CS/IT</option>
-                                        <option>ECE</option>
-                                    </select>
+                                    <%= f.collection_select :branch, @branches, :id, :name, {}, {:class=>"form-control"} %>
                                 </div>
                             </div>
                         </div>
@@ -67,3 +61,18 @@
             </div>
    </div>
 </div>
+<script>
+    function pop_branches(){
+        $.ajax({
+            url: 'populate_branches',
+            data: {course: $('#student_course').val()},
+            success: function(data, text){
+
+            },
+            error: function(xhr, textStatus, errorThrown){
+                alert(+textStatus+"-"+errorThrown)
+            }
+
+        })
+    }
+</script>
