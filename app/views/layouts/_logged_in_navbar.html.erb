@@ -25,13 +25,13 @@
 				<li class="dropdown_container"><a href="#"><span class="fa fa-cog"></span> Account <span class="caret"></a>
 					<ul class="dropdown_list list-unstyled">
 						<li class="arrow_up"></li>
-						<% if current_user.user_type == 'tpo' %>
+						<% if current_user.user_type == 1 %>
 								<li>
 									<%= link_to edit_tpo_path(current_user) do %>
 									<span class="fa fa-edit"></span> Edit Profile
 									<% end %>
 								</li>
-						<% elsif current_user.user_type == 'student' %>
+						<% elsif current_user.user_type == 2 %>
 								<li>
 									<%= link_to edit_student_path(current_user) do %>
 										<span class="fa fa-cogs"></span> Account Settings

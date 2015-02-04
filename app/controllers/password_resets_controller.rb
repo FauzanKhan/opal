@@ -24,7 +24,7 @@ class PasswordResetsController < ApplicationController
   end
 
   def update
-    if @user.user_type == 'tpo'
+    if @user.user_type == 1
       if password_blank?
         flash.now[:danger] = "Password can't be blank"
         render 'edit'
@@ -35,7 +35,7 @@ class PasswordResetsController < ApplicationController
       else
         render 'edit'
       end
-    elsif @user.user_type == 'student'
+    elsif @user.user_type == 2
       if password_blank_stu?
         flash.now[:danger] = "Password can't be blank"
         render 'edit'

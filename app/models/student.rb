@@ -18,9 +18,9 @@ class Student < ActiveRecord::Base
          presence: true,
          length: {minimum: 3, maximum: 15}
 
-	validates :college, presence: true
+	validates :college_id, presence: true
 
-	validates :branch, presence: true
+	validates :branch_id, presence: true
 
 	has_secure_password
 
@@ -91,8 +91,8 @@ class Student < ActiveRecord::Base
             new_user.email = self.email
             new_user.first_name = self.first_name
             new_user.last_name = self.last_name
-            new_user.college = self.college
-            new_user.user_type = "student"
+            new_user.college = self.college_id
+            new_user.user_type = 2
             errors.add(:email, "is already taken") if !new_user.save
             new_user.save
         end

@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150203182125) do
+ActiveRecord::Schema.define(version: 20150204135250) do
 
   create_table "all_users", force: :cascade do |t|
     t.string   "email"
     t.string   "first_name"
     t.string   "college"
-    t.string   "user_type"
+    t.integer  "user_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "last_name"
@@ -87,22 +87,22 @@ ActiveRecord::Schema.define(version: 20150203182125) do
     t.string   "password"
     t.string   "password_digest"
     t.string   "first_name"
-    t.string   "college"
-    t.string   "course"
-    t.string   "branch"
+    t.integer  "college_id"
+    t.integer  "course_id"
+    t.integer  "branch_id"
     t.integer  "year"
     t.string   "education"
     t.string   "experience"
     t.string   "applications"
     t.string   "remember_digest"
-    t.string   "user_type"
+    t.integer  "user_type",         default: 2
     t.string   "activation_digest"
     t.boolean  "activated",         default: false
     t.datetime "activated_at"
     t.string   "reset_digest"
     t.datetime "reset_sent_at"
     t.string   "last_name"
-    t.integer  "location_id"
+    t.string   "location_id"
   end
 
   create_table "tpos", force: :cascade do |t|
@@ -114,7 +114,7 @@ ActiveRecord::Schema.define(version: 20150203182125) do
     t.datetime "updated_at",                        null: false
     t.string   "password_digest"
     t.string   "remember_digest"
-    t.string   "user_type"
+    t.integer  "user_type",         default: 1
     t.string   "job_title"
     t.boolean  "admin",             default: false
     t.string   "activation_digest"
@@ -124,6 +124,7 @@ ActiveRecord::Schema.define(version: 20150203182125) do
     t.datetime "reset_sent_at"
     t.string   "last_name"
     t.integer  "location_id"
+    t.integer  "college_id"
   end
 
 end

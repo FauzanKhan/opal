@@ -18,10 +18,10 @@ class JobpostsController < ApplicationController
 	end
 
 	def show
-		current_user.user_type == "student" ? @student = current_user : @tpo = current_user
+		current_user.user_type == 2 ? @student = current_user : @tpo = current_user
 		@jobpost = Jobpost.find(params[:id])
-		if current_user.user_type == "student"
-			@current_students_tpo = Tpo.find_by(college: current_user.college)
+		if current_user.user_type == 2
+			@current_students_tpo = Tpo.find_by(college_id: current_user.college_id)
 		end
 	end
 

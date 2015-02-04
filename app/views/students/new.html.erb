@@ -27,20 +27,20 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <%= f.label :college, :class => "control-label" %>
-                            <%= f.collection_select(:college, College.all, :college_name, :college_name, {}, {:class=>'form-control'}) %>
+                            <%= f.label :college_id, :class => "control-label" %>
+                            <%= f.collection_select(:college_id, College.all, :id, :college_name, {}, {:class=>'form-control'}) %>
                         </div>
                         <div class="row">
                         	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             	<div class="form-group">
-                                    <%= f.label :course, :class => "control-label" %>
-                                    <%= f.collection_select :course, @courses, :id, :name, {}, {:class=>"form-control branches_dropdown", :onchange=>"pop_branches()"} %>
+                                    <%= f.label :course_id, :class => "control-label" %>
+                                    <%= f.collection_select :course_id, @courses, :id, :name, {}, {:class=>"form-control branches_dropdown", :onchange=>"pop_branches()"} %>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             	<div class="form-group">
-                                    <%= f.label :branch, :class => "control-label" %>
-                                    <%= f.collection_select :branch, @branches, :id, :name, {}, {:class=>"form-control"} %>
+                                    <%= f.label :branch_id, :class => "control-label" %>
+                                    <%= f.collection_select :branch_id, @branches, :id, :name, {}, {:class=>"form-control"} %>
                                 </div>
                             </div>
                         </div>
@@ -65,7 +65,7 @@
     function pop_branches(){
         $.ajax({
             url: 'populate_branches',
-            data: {course: $('#student_course').val()},
+            data: {course_id: $('#student_course_id').val()},
             success: function(data, text){
 
             },

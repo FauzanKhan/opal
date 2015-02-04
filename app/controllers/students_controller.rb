@@ -13,7 +13,6 @@ class StudentsController < ApplicationController
 		@student = Student.new(student_params)
 		@student.first_name = params[:student][:first_name].titleize
 		@student.last_name = params[:student][:last_name].titleize
-		@student.user_type = 'student'
 		if @student.save
 			#log_in @student
 			@student.send_activation_email
@@ -26,11 +25,14 @@ class StudentsController < ApplicationController
 
 	def show
 		@student = Student.find(params[:id])
-		@current_students_tpo = Tpo.find_by(college: current_user.college)
+		@college = College.find(@student.college_id)
+		@course = Course.find(@student.course_id)
+		@branch = Branch.find(@student.branch_id)
+		@current_students_tpo = Tpo.find_by(college_id: current_user.college_id)
 	end
 
 	def populate_branches
-		@branches = Branch.where(course_id: params[:course])
+		@branches = Branch.where(course_id: params[:course_id])
 		respond_to do |format|
 			format.js
 		end 
@@ -38,7 +40,7 @@ class StudentsController < ApplicationController
 
 	private
 		def student_params
-			params.require(:student).permit(:email, :password, :first_name, :last_name, :college, :course, :branch)
+			params.require(:student).permit(:email, :password, :first_name, :last_name, :college_id, :course_id, :branch_id)
 		end
 
 		def correct_user

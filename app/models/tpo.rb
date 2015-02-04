@@ -22,7 +22,7 @@ class Tpo < ActiveRecord::Base
 			   presence: true,
 			   length: {minimum: 3, maximum: 15}
 
-	validates :college, presence: true
+	validates :college, presence: true, uniqueness: {case_sensitive: false}
 
 	has_secure_password
 
@@ -82,6 +82,7 @@ class Tpo < ActiveRecord::Base
 	def update_college_table
 	    new_college = College.new
 	    new_college.college_name = self.college
+	    new_college.location_id = self.location_id
 	    errors.add(:college, "is already registered with us. You cannot have multiple accounts") if !new_college.save
         new_college.save
     end
@@ -98,8 +99,8 @@ class Tpo < ActiveRecord::Base
             new_user.email = self.email
             new_user.first_name = self.first_name
             new_user.last_name = self.last_name
-            new_user.college = self.college
-            new_user.user_type = "tpo"
+            new_user.college = self.college_id
+            new_user.user_type = 1
             errors.add(:email, "is already taken") if !new_user.save
             new_user.save
         end

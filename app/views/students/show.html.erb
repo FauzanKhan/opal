@@ -4,9 +4,9 @@
 	<div class="col-lg-10 col-md-10 col-sm-10">
 		<p class="lead"><%= @student.email %></p>
 		<p class="lead"><%= @student.first_name %> <%= @student.last_name %></p>
-		<p class="lead"><%= @student.college %></p>
-		<p class="lead"><%= @student.course %></p>
-		<p class="lead"><%= @student.branch %></p>
+		<p class="lead"><%= @college.college_name %></p>
+		<p class="lead"><%= @course.name %></p>
+		<p class="lead"><%= @branch.name %></p>
 		<%= link_to "Log out", session_path, method: "delete" %>
 	</div>
 </div>

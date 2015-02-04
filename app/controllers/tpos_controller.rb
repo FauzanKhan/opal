@@ -47,7 +47,6 @@ class TposController < ApplicationController
 		@tpo.first_name = params[:tpo][:first_name].titleize
 		@tpo.last_name = params[:tpo][:last_name].titleize
 		@tpo.college = params[:tpo][:college].titleize
-		@tpo.user_type = "tpo"
 		if @tpo.save
 			#log_in @tpo
 			@tpo.send_activation_email
@@ -64,7 +63,7 @@ class TposController < ApplicationController
 	
 	private
 		def tpo_params
-			params.require(:tpo).permit(:email, :password, :first_name, :last_name, :college, :user_type)
+			params.require(:tpo).permit(:email, :password, :first_name, :last_name, :college)
 		end
 
 		def update_tpo_params
