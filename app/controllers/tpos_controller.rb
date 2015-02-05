@@ -67,7 +67,7 @@ class TposController < ApplicationController
 		end
 
 		def update_tpo_params
-			params.require(:tpo).permit(:password, :first_name, :last_name, :college)
+			params.require(:tpo).permit(:password, :first_name, :last_name, :job_title)
 		end
 
 		def correct_user

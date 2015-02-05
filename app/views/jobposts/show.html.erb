@@ -23,13 +23,13 @@
 				<div class="desc">
 					<div class="desc_title"><h4>About <%= @jobpost.company %></h4></div>
 					<div class-"about_company">
-						Some bla bla text to fill this place up.
+						<%= @jobpost.about_company %>
 					</div>
 				</div>
 				<div class="desc">
 					<div class="desc_title"><h4>About Position <small>(<%= @jobpost.position %>)</small></h4></div>
 					<div class-"about_pos">
-						Some bla bla text to fill this place up.
+						<%= simple_format(@jobpost.job_profile) %>
 					</div>
 				</div>
 				<div class="desc">
@@ -49,13 +49,13 @@
 				<div class="desc">
 					<div class="desc_title"><h4>Other Requirements</h4></div>
 					<div class-"about_req">
-						Some bla bla text to fill this place up.
+						<%= simple_format(@jobpost.other_requirements) %>
 					</div>
 				</div>
 				<div class="desc">
 					<div class="desc_title"><h4>Instructions From Tpo</h4></div>
 					<div class-"about_instructions">
-						Some bla bla text to fill this place up.
+						<%= @jobpost.instructions %>
 					</div>
 				</div>
 				<div class="actions">

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150204135250) do
+ActiveRecord::Schema.define(version: 20150205154903) do
 
   create_table "all_users", force: :cascade do |t|
     t.string   "email"
@@ -24,10 +24,8 @@ ActiveRecord::Schema.define(version: 20150204135250) do
   end
 
   create_table "branches", force: :cascade do |t|
-    t.integer  "course_id"
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer "course_id"
+    t.string  "name"
   end
 
   add_index "branches", ["course_id"], name: "index_branches_on_course_id"
@@ -40,46 +38,44 @@ ActiveRecord::Schema.define(version: 20150204135250) do
   end
 
   create_table "courses", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "name"
+  end
+
+  create_table "eligible_branches", force: :cascade do |t|
+    t.integer "jobpost_id"
+    t.integer "branch_id"
+  end
+
+  create_table "eligible_courses", force: :cascade do |t|
+    t.integer "jobpost_id"
+    t.integer "course_id"
   end
 
   create_table "jobposts", force: :cascade do |t|
     t.integer  "tpo_id"
     t.string   "company"
     t.string   "position"
-    t.string   "req_percentage"
+    t.integer  "percentage_required"
     t.string   "required_branch"
     t.text     "other_requirements"
     t.text     "job_profile"
     t.string   "venue"
     t.integer  "location_id"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.integer  "job_type"
+    t.text     "about_company"
+    t.text     "instructions"
+    t.integer  "year_required"
+    t.date     "last_date"
+    t.date     "drive_date"
   end
 
   add_index "jobposts", ["tpo_id", "created_at"], name: "index_jobposts_on_tpo_id_and_created_at"
 
   create_table "locations", force: :cascade do |t|
-    t.string   "location"
-    t.integer  "zone"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "posts", force: :cascade do |t|
-    t.string   "title"
-    t.string   "company"
-    t.string   "position"
-    t.string   "venue"
-    t.datetime "date_of_event"
-    t.text     "description"
-    t.text     "eligiblity"
-    t.string   "student_list"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.string  "location"
+    t.integer "zone"
   end
 
   create_table "students", force: :cascade do |t|

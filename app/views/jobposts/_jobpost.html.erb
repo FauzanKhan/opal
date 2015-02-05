@@ -14,7 +14,7 @@
 					<% case jobpost.job_type 
 						   when 1 %> On Campus
 						<% when 2 %> Pool Campus
-						<% when 3 %> Walk_in
+						<% when 3 %> Walk In
 						<% when 4 %> Internship
 					<% end %>
 				</div>
@@ -23,19 +23,23 @@
 				<div class="heading">
 					<span class="fa fa-graduation-cap"></span> Courses  
 				</div>
-				B.Tech, M.Tech, M.C.A
+				<% jobpost.course_ids.each do |c| %>
+					<%= Course.all.find(c).name  %>, 
+				<% end %>
 			</div>
 			<div class="col-lg-3 col-md-3 col-sm-6">
 				<div class="heading">
 					<span class="fa fa-share-alt"></span> Branches  
 				</div>
-				CSE, IT, ECE, EEE, EI, ME, Civil
+				<% jobpost.branch_ids.each do |b| %>
+					<%= Branch.all.find(b).name %>,  
+				<% end %>
 			</div>
 			<div class="col-lg-3 col-md-3 col-sm-6">
 				<div class="heading">
 					<span class="fa fa-plus"></span> Percentage
 				</div>
-				<%= jobpost.req_percentage %>
+				<%= jobpost.percentage_required %>
 			</div>
 		</div>
 		<div class="actions">

@@ -17,10 +17,10 @@
     <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <div class="form-group">
-                <%= f.label :req_percentage, :class => "control-label" do %>
+                <%= f.label :percentage_required, :class => "control-label" do %>
                 	Required percentage
                 <% end %>
-                <%= f.text_field :req_percentage, :class => "form-control", :placeholder => "Minimum Percentage Required" %>
+                <%= f.text_field :percentage_required, :class => "form-control", :placeholder => "Minimum Percentage Required" %>
             </div>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -32,8 +32,8 @@
     </div>
     <div class="form-group">
                 <label class="control-label">Eligible Courses</label>
-                <div class="checkbox">
-                    <label class="checkbox-inline">
+                <div class="checkbox courses_selection">
+                    <!--<label class="checkbox-inline">
                       <input type="checkbox"> B.Tech
                     </label>
                     <label class="checkbox-inline">
@@ -47,42 +47,50 @@
                     </label>
                     <label class="checkbox-inline">
                       <input type="checkbox"> M.C.A
-                    </label>
+                    </label>-->
+                    <%= hidden_field_tag 'jobpost[course_ids][]', nil %>
+                    <% @courses.each do |course| %>
+                        <label class="checkbox-inline">
+                            <%= check_box_tag 'jobpost[course_ids][]', course.id, @jobpost.course_ids.include?(course.id), {:id => dom_id(course), :class => course.id} %>
+                            <%= label_tag dom_id(course), course.name %>
+                        </label>
+                    <% end %>
                 </div>
             </div>
     <div class="form-group">
     	<label class="control-label">Eligible branches</label>
-        <div class="checkbox">
-    	    <label class="checkbox-inline">
-    	      <input type="checkbox"> CSE
-    	    </label>
-    	    <label class="checkbox-inline">
-    	      <input type="checkbox"> IT
-    	    </label>
-    	    <label class="checkbox-inline">
-    	      <input type="checkbox"> ECE
-    	    </label>
-    	    <label class="checkbox-inline">
-    	      <input type="checkbox"> EEE
-    	    </label>
-    	    <label class="checkbox-inline">
-    	      <input type="checkbox"> EI
-    	    </label>
-    	    <label class="checkbox-inline">
-    	      <input type="checkbox"> ME
-    	    </label>
-    	    <label class="checkbox-inline">
-    	      <input type="checkbox"> Civil
-    	    </label>
+        <div class="checkbox branches_selection">
+            <%= hidden_field_tag 'jobpost[branch_ids][]', nil %>
+            <% if f.object.new_record? %>
+                <p class="message">Please select a course from the above list</p>
+            <% else %>
+                <p class="message hidden">Please select a course from the above list</p>
+                <% @branches.each do |branch| %>
+                        <label class="checkbox-inline">
+                            <%= check_box_tag 'jobpost[branch_ids][]', branch.id, @jobpost.branch_ids.include?(branch.id), {:id => dom_id(branch), :class => branch.id, "data-course"=>branch.course_id} %>
+                            <%= label_tag dom_id(branch), branch.name %>
+                        </label>
+                    <% end %>
+            <% end %>
     	 </div>
     </div>
     <div class="form-group">
         <%= f.label :other_requirements, :class => "control-label" %>
-        <%= f.text_area :other_requirements, :class => "form-control", :placeholder => "Any Other Requirements" %>
+        <%= f.text_area :other_requirements, :class => "form-control", :placeholder => "Skils, Other Requirements" %>
+    </div>
+    <div class="form-group">
+        <%= f.label :about_company, :class => "control-label" %>
+        <%= f.text_area :about_company, :class => "form-control", :placeholder => "About the Company" %>
     </div>
     <div class="form-group">
         <%= f.label :job_profile, :class => "control-label" %>
         <%= f.text_area :job_profile, :class => "form-control", :placeholder => "Job Description" %>
+    </div>
+    <div class="form-group">
+        <%= f.label :instructions, :class => "control-label" do %>
+            Instructions to Applicants
+        <% end %>
+        <%= f.cktext_area :instructions, :class => "form-control", :placeholder => "Instructions to Applicants" %>
     </div>
     <div class="row">
         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
@@ -98,5 +106,72 @@
             </div>
         </div>
     </div>
+    <div class="row dates">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="form-group">
+                <%= f.label :last_date, :class => "control-label" do %>
+                    Last Date to Apply
+                <% end %>
+                <%= f.text_field :last_date, :class => "form-control", :placeholder => "Click to open Calander" %>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="form-group">
+                <%= f.label :drive_date, :class => "control-label" do %>
+                    Date of Event
+                <% end %>
+                <%= f.text_field :drive_date, :class => "form-control", :placeholder => "Click to open Calander" %>
+            </div>
+        </div>
+    </div>
     <%= f.submit ( f.object.new_record? ? "Post" : "Update"), :class=>"btn btn-lg btn-info pull-right" %>
 <% end %>
+<script>
+    $(document).ready(function(){
+        $('.dates input').datepicker({
+            format: "D, dd M yyyy",
+            startDate: "today",
+            orientation: "top right",
+            calendarWeeks: true,
+            todayHighlight: true
+        });
+        $('.courses_selection').on('change', 'input[type="checkbox"]', function(){
+            if($(this).is(':checked')){
+                $.ajax({
+                    url: 'populate_branches',
+                    data: {course_id: $(this).val()},
+                    success: function(data, text){
+
+                    },
+                    error: function(xhr, textStatus, errorThrown){
+                        alert(+textStatus+"-"+errorThrown)
+                    }
+
+                })
+                /*$.ajax({
+                    url: 'populate_branches',
+                    data: {course_id: $(this).val()},
+                    success: function(data, text){
+
+                    },
+                    error: function(xhr, textStatus, errorThrown){
+                        alert(+textStatus+"-"+errorThrown)
+                    }
+                })*/
+            }
+            else{
+                var course_id = $(this).val();
+                $('.branches_selection input[type="checkbox"]').each(function(){
+                    if($(this).attr('data-course') == course_id){
+                        $(this).parent().remove();
+                        if($('.branches_selection label.checkbox-inline').length == 0){
+                            $('.branches_selection .message').show();
+                        }
+                    }
+                })
+            }
+            
+        });
+    });
+</script>
+<% javascript_include_tag 'ckeditor/config' %>

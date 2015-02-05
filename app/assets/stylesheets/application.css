@@ -14,7 +14,9 @@
  *= require_self
  *= require_bootstrap
  *= require bootstrap.css
+ *= require bootstrap-datepicker3
  *= require tpos
  *= require students
  *= require jobposts
+
  */
