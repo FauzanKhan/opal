@@ -64,13 +64,17 @@
             <% if f.object.new_record? %>
                 <p class="message">Please select a course from the above list</p>
             <% else %>
-                <p class="message hidden">Please select a course from the above list</p>
-                <% @branches.each do |branch| %>
-                        <label class="checkbox-inline">
-                            <%= check_box_tag 'jobpost[branch_ids][]', branch.id, @jobpost.branch_ids.include?(branch.id), {:id => dom_id(branch), :class => branch.id, "data-course"=>branch.course_id} %>
-                            <%= label_tag dom_id(branch), branch.name %>
-                        </label>
+                <% if @branches.empty? %>
+                    <p class="message" >Please select a course from the above list</p>
+                <% else %>
+                    <p class="message" style="display:none" >Please select a course from the above list</p>
+                    <% @branches.each do |branch| %>
+                            <label class="checkbox-inline">
+                                <%= check_box_tag 'jobpost[branch_ids][]', branch.id, @jobpost.branch_ids.include?(branch.id), {:id => dom_id(branch), :class => branch.id, "data-course"=>branch.course_id} %>
+                                <%= label_tag dom_id(branch), branch.name %>
+                            </label>
                     <% end %>
+                <% end %>
             <% end %>
     	 </div>
     </div>
@@ -127,7 +131,6 @@
     <%= f.submit ( f.object.new_record? ? "Post" : "Update"), :class=>"btn btn-lg btn-info pull-right" %>
 <% end %>
 <script>
-    $(document).ready(function(){
         $('.dates input').datepicker({
             format: "D, dd M yyyy",
             startDate: "today",
@@ -172,6 +175,4 @@
             }
             
         });
-    });
 </script>
-<% javascript_include_tag 'ckeditor/config' %>

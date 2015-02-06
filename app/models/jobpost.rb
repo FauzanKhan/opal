@@ -18,7 +18,14 @@ class Jobpost < ActiveRecord::Base
 
 	validates :position, presence: true
 
-	before_save {self.last_date = last_date.to_date}
+	#validates :eligible_courses, presence: true
 
-	before_save {self.drive_date = drive_date.to_date} 
+	validates :venue, presence: true
+
+	validates :last_date, presence: true
+
+	validates :drive_date, presence: true
+
+	validates_presence_of :courses
+
 end

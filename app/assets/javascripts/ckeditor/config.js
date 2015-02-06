@@ -2,6 +2,9 @@
 Copyright (c) 2003-2011, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.html or http://ckeditor.com/license
 */
+
+var ready;
+ready = function(){
 CKEDITOR.replace( 'jobpost_about_company', {
   allowedContent: {
     'b i u em strike li p ul ol sup sup span small': true,
@@ -158,3 +161,7 @@ CKEDITOR.editorConfig = function( config )
     { name: 'paragraph', groups: [ 'list', 'align' ], items: [ 'NumberedList', 'BulletedList', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock' ] },
   ];
 };
+
+}
+$(document).ready(ready);
+$(document).on('page:load', ready);

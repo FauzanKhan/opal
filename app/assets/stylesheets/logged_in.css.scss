@@ -245,11 +245,16 @@ nav.navbar{
 	}
 
 }
-.alert{
-	border-radius:0px;
-	span.terminate{
-		position: absolute;
-		top: 13px;
-		right: 30px;
+
+.terminate{
+			position: absolute;
+			top: 13px;
+			right: 30px;
+			color: #3c763d;
+			font-weight:light;
+		}
+.flash_wrapper{
+	.alert{
+		border-radius:0px;
 	}
 }

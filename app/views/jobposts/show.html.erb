@@ -23,7 +23,7 @@
 				<div class="desc">
 					<div class="desc_title"><h4>About <%= @jobpost.company %></h4></div>
 					<div class-"about_company">
-						<%= @jobpost.about_company %>
+						<%= simple_format(@jobpost.about_company) %>
 					</div>
 				</div>
 				<div class="desc">
@@ -48,14 +48,23 @@
 				</div>
 				<div class="desc">
 					<div class="desc_title"><h4>Other Requirements</h4></div>
-					<div class-"about_req">
+					<div class="about_req">
 						<%= simple_format(@jobpost.other_requirements) %>
 					</div>
 				</div>
 				<div class="desc">
 					<div class="desc_title"><h4>Instructions From Tpo</h4></div>
-					<div class-"about_instructions">
-						<%= @jobpost.instructions %>
+					<div class="about_instructions">
+						<%= simple_format(@jobpost.instructions) %>
+					</div>
+				</div>
+				<div class="desc">
+					<div class="desc_title"><h4>Event Information</h4></div>
+					<div class="relevant_dates">
+						<p> <b>Last Date to Apply</b> : <%= @jobpost.last_date.strftime('%A, %B %d, %Y') %></p>
+						<p> <b>Date of the event</b> : <%= @jobpost.drive_date.strftime('%A, %B %d, %Y') %></p>
+						<p> <b>Venue</b> : <%= @jobpost.venue %></p>
+						<p> <b>Location</b> : <%= Location.find(@jobpost.location_id).location %></p>
 					</div>
 				</div>
 				<div class="actions">

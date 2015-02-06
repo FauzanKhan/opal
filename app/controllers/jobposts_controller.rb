@@ -6,14 +6,16 @@ class JobpostsController < ApplicationController
 		@jobpost = Jobpost.new
 		@courses = Course.all
 		@branches = Branch.all
-		@jobpost.eligible_courses.each do |c|
-	      c.eligible_branch.build
-	  end
+		#@jobpost.eligible_courses.each do |c|
+	    #  c.eligible_branch.build
+	    #end
 	end
 
 	def create
 		@tpo = current_user
 		@jobpost = current_user.jobposts.build(jobpost_params)
+		@courses = Course.all
+		@branches = Branch.all
 		if @jobpost.save
 			flash[:success] = "Job Posted Successfully"
 			redirect_to current_user
@@ -33,13 +35,30 @@ class JobpostsController < ApplicationController
 
 	def edit
 		@tpo = current_user
-		@courses = Course.all
-		@branches = Branch.all
 		@jobpost = Jobpost.find(params[:id])
+		@jobpost.last_date = @jobpost.last_date.strftime('%a, %d %b %Y')
+		@jobpost.drive_date = @jobpost.drive_date.strftime('%a, %d %b %Y')
+		@courses = Course.all
+		@branches = Array.new
+		@jobpost.course_ids.each do |c|
+			eligible_branches = Branch.where(course_id: c)
+				eligible_branches.each do |b|
+					@branches.push(b)
+				end
+		end
 	end
 
 	def update
+		@tpo = current_user
 		@jobpost = Jobpost.find(params[:id])
+		@courses = Course.all
+		@branches = Array.new
+		@jobpost.course_ids.each do |c|
+			eligible_branches = Branch.where(course_id: c)
+			eligible_branches.each do |b|
+				@branches.push(b)
+			end
+		end
 		#old_email = @tpo.email
 		#new_email = params[:tpo][:email]
 		#update_all_user(old_email, new_email)
