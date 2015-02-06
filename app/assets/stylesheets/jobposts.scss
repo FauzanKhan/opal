@@ -34,9 +34,6 @@ $primary_green : rgb(111, 201, 154);
 			color:#111;
 		}
 	}
-	.cke_editable *{
-		font-family: idealist, cursive !important;
-	}
 	.btn{
 		border-radius:0px;
 		margin-bottom:40px;
@@ -64,7 +61,7 @@ $primary_green : rgb(111, 201, 154);
 		text-align:center;
 		border-bottom:1px solid $primary_blue;
 		font-weight:bold;
-		color:#666;
+		color:#555;
 		margin-bottom:40px;
 	}
 	.desc{
@@ -83,9 +80,6 @@ $primary_green : rgb(111, 201, 154);
 				padding-right:15px;
 				color:#555;
 			}
-			.about_pos{
-				font-family: idealist, cursive !important;
-			} 
 		}
 		.about_eligibility{
 			margin-bottom:40px !important;

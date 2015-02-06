@@ -55,7 +55,7 @@
 				<% end %> 
 			<% end %>
 			<%= link_to jobpost, :class => "btn btn-info btn-sm" do %>
-				<span class="fa fa-eye"></span> View
+				<span class="fa fa-eye"></span> <%= current_user.user_type == 1 ? "View" : "View & Apply" %>
 			<% end %>  
 		</div>
 		<div class="author">

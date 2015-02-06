@@ -2,15 +2,15 @@
 Copyright (c) 2003-2014, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.md or http://ckeditor.com/license
 */
-@font-face{
+/*@font-face{
 	font-family:idealist;
 	src:font-url('idealist.ttf');
-	}
+	}*/
 
 body
 {
 	/* Font */
-	font-family: idealist, tahoma, Arial, Verdana, "Trebuchet MS";
+	font-family: 'Lato', tahoma, Arial, Verdana, "Trebuchet MS";
 	font-size: 12px;
 	backgroud:red;
 	/* Text color */

@@ -2,6 +2,7 @@ class StudentsController < ApplicationController
 	
 	before_action :logged_in_user, only: [:edit, :update, :show]
     before_action :correct_user, only: [:edit, :update]
+    before_action :redirect_if_logged_in, only: [:new]
 	
 	def new
 		@student = Student.new

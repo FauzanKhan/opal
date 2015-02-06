@@ -1,4 +1,6 @@
-$(document).ready(function(){
+var ready;
+
+ready = function(){
 	
 		var window_height = $(window).height();
 		var window_width = $(window).width();
@@ -18,12 +20,8 @@ $(document).ready(function(){
 				$('.intro_wrapper .container').css('height', 1000+'px');
 			}
 		}
-		
+		debugger;
 		doc_width_adjust();
-
-		$(document).on('page:load', function() {
-    		doc_width_adjust();
-		});
 		
 		$(window).resize(function(){
 			window_height = $(window).height();
@@ -31,4 +29,6 @@ $(document).ready(function(){
 			doc_width_adjust()
 		});
 		
-	});
+};
+$(document).ready(ready)
+$(document).on('page:load', ready);

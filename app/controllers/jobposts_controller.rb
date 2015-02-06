@@ -1,5 +1,6 @@
 class JobpostsController < ApplicationController
-	#before_action :logged_in_user, [only: :new, :create, :destroy, :edit]
+	before_action :logged_in_user, only: [:new, :create, :destroy, :edit]
+	before_action :correct_user, only: [:destroy, :edit]
 	
 	def new
 		@tpo = current_user
@@ -71,7 +72,18 @@ class JobpostsController < ApplicationController
 	end
 
 	def destroy
+		Jobpost.find(params[:id]).destroy
+		flash[:success] = "Jobpost Deleted."
+		redirect_to root_path
+	end
 
+	def correct_user
+		jobpost = Jobpost.find(params[:id])
+		@user = current_user
+		if !(@user == Tpo.find(jobpost.tpo_id))
+			flash[:danger] = "Action not allowed as you're not the author of the Jobpost."
+			redirect_to root_path 
+		end
 	end
 
 	def populate_branches

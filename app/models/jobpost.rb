@@ -4,10 +4,10 @@ class Jobpost < ActiveRecord::Base
 
 	belongs_to :tpo
 
-	has_many :eligible_courses
+	has_many :eligible_courses, dependent: :destroy
 	has_many :courses, through: :eligible_courses
 
-	has_many :eligible_branches
+	has_many :eligible_branches, dependent: :destroy
 	has_many :branches, through: :eligible_branches
 
 	validates :tpo_id, presence: true
