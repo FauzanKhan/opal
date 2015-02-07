@@ -79,6 +79,9 @@ $primary_green : rgb(111, 201, 154);
 .jobposts_list{
 	width:98%;
 	margin:0 auto;
+	.jobposts_count{
+		margin-left:10px;
+	}
 	.jobpost_container{
 		background:#FFF;
 		border:1px solid #EAEAEA;
@@ -153,6 +156,14 @@ $primary_green : rgb(111, 201, 154);
 			font-weight:lighter;
 		}
 	}
+}
+.no_posts_note{
+	text-align:center;
+	width:98%;
+	background:#FFF;
+	border:1px solid #EAEAEA;
+	padding-top:25px;
+	padding-bottom:25px;
 }
 .fileUpload {
 	position: relative;

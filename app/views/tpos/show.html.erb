@@ -3,10 +3,21 @@
 	<%= render 'tpo_sidebar' %>
 	<div class="col-lg-10 col-md-10 col-sm-10 main_content">
 		<% if @tpo.jobposts.any? %>
-		  <h3>Jobposts (<%= @tpo.jobposts.count %>)</h3>
 		  <ul class="list-unstyled jobposts_list">
+		  	<li class="lead jobposts_count"><%= current_user == @tpo ? "My" : @tpo.first_name+"'s" %> Jobposts [<%= @tpo.jobposts.count %>]</li>
 		    <%= render @jobposts %>
 		  </ul>
+		  <% else %>
+		  	<div class="no_posts_note">
+			  	<% if current_user == @tpo %>
+			  		<p class="lead">You havn't posted any jobs yet click the button below to create a jobpost.</p>
+			  		<%= link_to new_jobpost_path, :class => "btn btn-info btn-lg" do %>
+			  			<span class="fa fa-plus"></span> Post a new Job
+			  		<% end %> 
+			  	<% else %>
+			  		<p class="lead"><%= @tpo.first_name %> haven't posted any jobs yet.</p> 
+			  	<% end %>
+			</div>
 		<% end %>
 	</div>
 </div>
