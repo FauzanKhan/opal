@@ -16,6 +16,8 @@ Rails.application.config.assets.precompile += %w( jQuery.js.js )
 Rails.application.config.assets.precompile += %w( script.js )
 Rails.application.config.assets.precompile += %w( homepage_script.js )
 Rails.application.config.assets.precompile += %w( logged_in.css )
+Rails.application.config.assets.precompile += %w( student_users.js )
+Rails.application.config.assets.precompile += %w( jobs.js )
 Rails.application.config.assets.precompile += %w( populate_branches.js )
 Rails.application.config.assets.precompile += %w( ckeditor/config.js )
 

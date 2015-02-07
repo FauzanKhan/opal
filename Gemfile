@@ -8,6 +8,8 @@ gem 'faker', '1.4.2'
 gem 'hirb'
 gem 'bootstrap-datepicker-rails'
 gem 'ckeditor'
+gem 'carrierwave'
+#gem 'rmagick'
 # Use sqlite3 as the database for Active Record
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'

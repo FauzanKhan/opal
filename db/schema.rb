@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150205154903) do
+ActiveRecord::Schema.define(version: 20150206195807) do
 
   create_table "all_users", force: :cascade do |t|
     t.string   "email"
@@ -121,6 +121,7 @@ ActiveRecord::Schema.define(version: 20150205154903) do
     t.string   "last_name"
     t.integer  "location_id"
     t.integer  "college_id"
+    t.string   "image"
   end
 
 end

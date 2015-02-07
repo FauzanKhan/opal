@@ -1,6 +1,6 @@
 <div class="col-lg-2 col-md-2 col-sm-2 user_content_wrapper tpo_sidebar">
 	<div class="user_pic_container">
-			<%= image_tag 'default_user.jpg', {:class => "user_pic"} %>
+			<%= image_tag @tpo.image_url.nil? ? 'default_user.jpg' :@tpo.image_url.to_s, {:class => "user_pic"} %>
 	</div>
 		<a href="#" class="tpo_name"><%= @tpo.first_name %> <%= @tpo.last_name %></a>
 		<% if @tpo.email == current_user.email %>

@@ -4,7 +4,9 @@ class Tpo < ActiveRecord::Base
 
 	has_many :jobposts, dependent: :destroy #destroy associated job posts when tpo is destroyed 
 
-	attr_accessor :remember_token, :activation_token, :reset_token
+	attr_accessor :remember_token, :activation_token, :reset_token, :image
+
+	mount_uploader :image, ImageUploader
 
 	before_save { self.email = email.downcase }
 	
