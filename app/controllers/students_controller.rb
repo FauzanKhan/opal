@@ -1,7 +1,7 @@
 class StudentsController < ApplicationController
 	
 	before_action :logged_in_user, only: [:edit, :update, :show]
-    before_action :correct_user, only: [:edit, :update]
+    before_action :correct_user, only: [:edit, :update, :account_settings]
     before_action :redirect_if_logged_in, only: [:new]
 	
 	def new
@@ -32,6 +32,28 @@ class StudentsController < ApplicationController
 		@current_students_tpo = Tpo.find_by(college_id: current_user.college_id)
 	end
 
+	def edit
+		@student = current_user
+	end
+
+	def update
+
+	end
+
+	def account_settings
+		@student = current_user
+	end
+
+	def update_account
+		@student = Student.find(params[:id])
+		if @student.update_attributes(account_params)
+			flash[:success] = "Account updated Successfully"
+			redirect_to current_user
+		else
+			render 'account_settings'
+		end 
+	end
+
 	def populate_branches
 		@branches = Branch.where(course_id: params[:course_id])
 		respond_to do |format|
@@ -42,6 +64,10 @@ class StudentsController < ApplicationController
 	private
 		def student_params
 			params.require(:student).permit(:email, :password, :first_name, :last_name, :college_id, :course_id, :branch_id)
+		end
+
+		def account_params
+			params.require(:student).permit(:password)
 		end
 
 		def correct_user

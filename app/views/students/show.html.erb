@@ -1,12 +1,82 @@
 <% provide(:title, @student.first_name.to_s+" "+@student.last_name.to_s) %>
 <div class="row">
 	<%= render 'student_sidebar' %>
-	<div class="col-lg-10 col-md-10 col-sm-10">
-		<p class="lead"><%= @student.email %></p>
-		<p class="lead"><%= @student.first_name %> <%= @student.last_name %></p>
-		<p class="lead"><%= @college.college_name %></p>
-		<p class="lead"><%= @course.name %></p>
-		<p class="lead"><%= @branch.name %></p>
-		<%= link_to "Log out", session_path, method: "delete" %>
+	<div class="col-lg-10 col-md-10 col-sm-10 user_content">
+		<div class="row student_profile">
+			<div class="col-lg-8">
+				<h1><%= @student.first_name %> <%= @student.last_name %></h1>
+			</div>
+			<div class="col-lg-4 contact_info">
+				<p><span class="fa fa-envelope"></span> <%= @student.email %></p>
+				<p><span class="fa fa-phone"></span> 9876543210 | <span class="fa fa-map-marker"></span> 
+					<%= Location.find(College.find(@student.college_id).location_id).location %></p>
+			</div>
+			<div class="divider"></div>
+			<div class="current_education">
+				<div class="col-lg-6 col-md-6">
+					<span class="fa fa-institution"></span> <span class="hor_divider"></span> 
+					<%= @college.college_name %>
+				</div>
+				<div class="col-lg-3 col-md-3 col-sm-6">
+					<span class="fa fa-graduation-cap"></span> <span class="hor_divider"></span> 
+					<%= @course.name %>
+				</div>
+				<div class="col-lg-2 col-md-2 col-sm-6">
+					<span class="fa fa-share-alt"></span> <span class="hor_divider"></span> 
+					<%= @branch.name %>
+				</div>
+				<div class="divider"></div>
+				<div class="col-lg-12 abot_stu">
+					<div class="heading_container">
+						<h3>Experience</h3>
+					</div>
+				</div>
+				<div class="col-lg-12 abot_stu">
+					<div class="heading_container">
+						<h3>Education</h3>
+					</div>
+					<table class="table table-responsive table-striped table-bordered">
+						<thead>
+							<tr>
+								<td>University/Board</td>
+								<td>Course/Degree</td>
+								<td>Percentage</td>
+								<td>Year of Passing</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>University/Board</td>
+								<td>Course/Degree</td>
+								<td>Percentage</td>
+								<td>Year of Passing</td>
+							</tr>
+							<tr>
+								<td>University/Board</td>
+								<td>Course/Degree</td>
+								<td>Percentage</td>
+								<td>Year of Passing</td>
+							</tr>
+							<tr>
+								<td>University/Board</td>
+								<td>Course/Degree</td>
+								<td>Percentage</td>
+								<td>Year of Passing</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="col-lg-12 abot_stu">
+					<div class="heading_container">
+						<h3>Skills</h3>
+					</div>
+				</div>
+				<div class="col-lg-12 abot_stu">
+					<div class="heading_container">
+						<h3>Achievements</h3>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>

@@ -1,7 +1,29 @@
 // Place all the styles related to the Students controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$primary_blue : rgb(45, 174, 191);
+$primary_green : rgb(111, 201, 154);
+@mixin green_hover{
+  	background:$primary_green;
+  	color:#FFF;
+  	border:1px solid darken($primary_green, 5%);
+  	&:hover{
+  		color:#FFF;
+  		background:lighten($primary_green,10%);
+  	};
+}
+@mixin blue_hover{
+  	background:$primary_blue;
+  	color:#FFF;
+  	border:1px solid darken($primary_blue, 5%);
+  	&:hover{
+  		color:#FFF;
+  		background:lighten($primary_blue,10%);
+  	};
+}
 
+$primary_blue : rgb(45, 174, 191);
+$primary_green : rgb(111, 201, 154);
 .student_sidebar.user_content_wrapper{
 	padding:0px;
 	.user_pic_container{
@@ -47,6 +69,96 @@
 					color:#AAA;
 				}
 			}
+		}
+	}
+}
+.student_account_form_container{
+	text-align:center;
+	background:#FFF;
+	border:1px solid #EAEAEA;
+	padding-bottom:60px;
+	.student_account_form{
+		width:500px;
+		margin:0px auto;
+		text-align:left;
+		display: inline-block;
+
+		h3{
+			text-align:center;
+			colr:#444;
+		}
+
+		form{
+			.form-control{
+				border-radius:0px;
+			}
+			.btn{
+				border-radius:0px;
+				@include blue_hover;
+			}
+		}
+	}
+}
+.student_profile{
+	width:98%;
+	background:#FFF;
+	border:1px solid #EAEAEA;
+	text-align:left;
+	padding:2px 10px;
+	margin:0 auto;
+	padding-bottom:80px;
+	.contact_info{
+		color:#777;
+		padding-top:10px;
+		text-align:right;
+		span.fa{
+			color:#AAA;
+		}
+	}
+	.divider{
+		width:98%;
+		height:1px;
+		margin:0 auto;
+		border-bottom:1px solid #EAEAEA;
+		clear:both;
+	}
+	.hor_divider{
+		height:4px;
+		margin-top:1px;
+		width:1px;
+		border-left:1px solid #CCC;
+		padding:0px 5px;
+	}
+	.current_education{
+		padding:2px 0px;
+		.col-lg-6, .col-lg-3, .col-lg-2{
+			background:#FCFCFC;
+			/*outline:2px solid #FFF;*/
+			margin-left:5px;
+			margin-bottom:2px;
+			border:1px solid #CCC;
+			border-left:1px solid #CCC !important;
+			padding:1px 15px;
+			color:#555;
+			span.fa{
+				color:#888;
+			}
+		}
+	}
+	.abot_stu{
+		margin-top:30px;
+		.heading_container{
+			margin-bottom:10px;
+			border-bottom:1px solid #EAEAEA;
+			h3{
+				border-bottom:3px solid $primary_blue;
+				display:inline;
+				padding-left:5px;
+				padding-right:15px;
+			}
+		}
+		thead{
+			font-weight:bold;
 		}
 	}
 }

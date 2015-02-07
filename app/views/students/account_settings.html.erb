@@ -1,0 +1,24 @@
+<% provide(:title, "Edit Account | "+@student.first_name.to_s+" "+@student.last_name.to_s) %>
+<div class="row">
+	<%= render 'student_sidebar' %>
+	<div class="col-lg-10 col-md-10 col-sm-10 main_content">
+		<div class="student_account_form_container">
+			<div class="student_account_form">
+				<h3>Update Your Account</h3>
+				<%= form_for @student, :url => {:action => 'update_account'} do |f| %>
+				    <%= render 'shared/error_messages', object: f.object %>
+				    <div class="form-group">
+				        <%= f.label :email, :class => "control-label" %>
+				        <%= f.email_field :email, :class => "form-control", :placeholder => "Eg.: username@example.com", :disabled => "true" %>
+				    </div>
+				    <div class="form-group">
+				        <%= f.label :password, :class => "control-label" %>
+				        <%= f.password_field :password, :class => "form-control", :placeholder => "(Unchanged)" %>
+				    </div>
+				    <%= f.submit "Update", :class => "btn btn-default btn-lg sign_up_btn pull-right" %>
+				    
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>

@@ -33,12 +33,16 @@
 								</li>
 						<% elsif current_user.user_type == 2 %>
 								<li>
-									<%= link_to edit_student_path(current_user) do %>
+									<%= link_to account_settings_student_url(id: current_user.id) do %>
 										<span class="fa fa-cogs"></span> Account Settings
 								<% end %>
 							</li>
 							<li class="divider visible-md visible-lg"></li>
-							<li><a href="#"><span class="fa fa-edit"></span> Edit Profile</a></li>
+							<li>
+								<%= link_to edit_student_path(@student) do %>
+									<span class="fa fa-edit"></span> Edit Profile
+								<% end %>
+							</li>
 						<% end %>
 						<li class="divider"></li>
 						<li>
