@@ -14,15 +14,19 @@ body{
 @mixin green_hover{
   	background:$primary_green;
   	border:1px solid darken($primary_green, 5%);
+  	color:#FFF;
   	&:hover{
   		background:lighten($primary_green,10%);
+  		color:#FFF;
   	};
 }
 @mixin blue_hover{
   	background:$primary_blue;
+  	color:#FFF;
   	border:1px solid darken($primary_blue, 5%);
   	&:hover{
   		background:lighten($primary_blue,10%);
+  		color:#FFF;
   	};
 }
 @mixin arrow_up{

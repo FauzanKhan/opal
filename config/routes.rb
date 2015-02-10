@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get 'jobposts/:id/populate_branches' => 'jobposts#populate_branches' 
   get '/populate_branches'  => 'jobposts#populate_branches'
   get 'students/:id/account_settings' => 'students#account_settings', as: :account_settings_student
-  patch 'students/:id' => 'students#update_account' 
+  patch 'students/:id/account_settings' => 'students#update_account' 
 
   resources :tpos
   resources :students

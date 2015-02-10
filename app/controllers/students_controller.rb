@@ -34,10 +34,21 @@ class StudentsController < ApplicationController
 
 	def edit
 		@student = current_user
+		@education = current_user.educations.build
+		@existing_eduaction = Education.where(student_id: @student.id)
+		#@education = Education.new
+		@project = Project.new
+		@experience = Experience.new
 	end
 
 	def update
-
+		@student = current_user
+		if @student.update_attributes(update_params)
+			redirect_to current_user
+			flash[:success] = "Profile successfully updated"
+		else
+			render 'edit'
+		end
 	end
 
 	def account_settings
@@ -68,6 +79,18 @@ class StudentsController < ApplicationController
 
 		def account_params
 			params.require(:student).permit(:password)
+		end
+
+		def update_params
+			params.require(:student).permit(:first_name, :last_name, :location_id, :college_id, :course_id, :image, :phone_no, 
+											:skills, :achievements, :percentage, :year_of_study, :year_of_passing, 
+											:educations_attributes => [:id, :institute, :degree, :percentage, :year_of_passing, :_destroy], 
+											:experiences_attributes => [:id, :company_name, :position, :contributions, :start_date, :end_date],
+											:projects_attributes => [:id, :name, :description])
+		end
+
+		def education_params 
+			params.require(:education).permit(:institute, :degree, :percentage, :year_of_passing)
 		end
 
 		def correct_user

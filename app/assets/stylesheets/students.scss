@@ -21,7 +21,6 @@ $primary_green : rgb(111, 201, 154);
   		background:lighten($primary_blue,10%);
   	};
 }
-
 $primary_blue : rgb(45, 174, 191);
 $primary_green : rgb(111, 201, 154);
 .student_sidebar.user_content_wrapper{
@@ -161,4 +160,113 @@ $primary_green : rgb(111, 201, 154);
 			font-weight:bold;
 		}
 	}
+}
+.student_profile_edit_container{
+	background:#FFF;
+	border:1px solid #EAEAEA;
+	text-align:center;
+	position: relative;
+	form{
+		text-align:left;
+		.form-control{
+			border-radius:0px;
+		}
+		.student_image_upload{
+			.pic_upload_container{
+				height:130px;
+				width:98%;
+				margin:0 auto;
+				margin-left:15px;
+				text-align:center;
+				position: relative;
+				border:1px solid #EAEAEA;
+				overflow: hidden;
+				background:#FAFAFA;
+				input{
+					position: absolute;
+					top:50%;
+					transform:translateY(-70px);
+					-webkit-transform:translateY(-10px);
+					left: 10px;
+				}
+			}
+		}
+		.student_details{
+			.student_info_element{
+				margin-top:50px;
+				margin-bottom:10px;
+				.heading_container{
+					display:block;
+					margin-bottom:20px;
+					border-bottom:1px solid #EAEAEA;
+					h4{
+						padding-left:10px;
+						padding-right:20px;
+						border-bottom:3px solid $primary_blue;
+						display:inline;
+					}
+				}
+				.input-group-addon{
+					border-radius:0px;
+				}
+			}
+			table.current_education{
+				margin-bottom:0px;
+				.current_education_details{
+					tr{
+						border-bottom:0px solid #EAEAEA;
+					}
+				}
+			}
+			table.prev_education{
+				margin-top:0px;
+				margin-bottom:10px;
+				tr{
+					border-bottom:1px solid #EAEAEA;
+					border-top:0px;
+				}
+			}
+			#degree_limit_reached{
+				display:none;
+				color:red;
+			}
+			.experience_wrapper, project_wrapper{
+				#experience_limit_reached, #projects_limit_reached{
+					color:red;
+					display:none;
+				}
+				.experience, .project{
+					background:#FCFCFC;
+					border:1px solid #EAEAEA;
+					overflow:auto;
+					padding-top:30px;
+					padding-bottom:20px;
+					margin-bottom:20px;
+					.col-lg-6{
+						margin-bottom:5px;
+					}
+					label{
+						margin-top:10px;
+					}
+				}
+			}
+		}
+	}
+}
+select.course, select.branch{
+	display:inline;
+	height: 34px;
+	padding: 6px 12px;
+	font-size: 14px;
+	line-height: 1.42857143;
+	color: #555;
+	background-color: #fff;
+	background-image: none;
+	border: 1px solid #ccc;
+	border-radius: 0px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+	box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+	-webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+	-o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+	transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }

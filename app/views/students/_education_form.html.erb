@@ -1,0 +1,55 @@
+<div class="col-lg-12">
+	<div class="heading_container">
+		<h4>Education</h4>
+	</div>
+	<table class="table current_education">
+		<thead>
+			<tr>
+				<th width="40%">College/Board</th>
+				<th width="40%">Degree</th>
+				<th width="5%">Percentage</th>
+				<th width="12%">Year of Passing</th>
+				<th width="2%" style="visibility:hidden">close</th>
+			</tr>
+		</thead>
+		<tbody class="current_education_details">
+			<td>
+				<%= f.collection_select(:college_id, College.all, :id, :college_name, {}, {:class => "form-control"}) %>
+			</td>
+			<td>
+				<%= f.collection_select(:course_id, Course.all, :id, :name, {}, {:class => "course", :style => "width:50%"}) %>
+				<%= f.collection_select(:branch_id, Branch.all, :id, :name, {}, {:class => "branch", :style => "width:48%"}) %>
+			</td>
+			<td>
+				<%= f.text_field :percentage, :class => "form-control", :placeholder => "%" %>
+			</td>
+			<td>
+				<%= f.text_field :year_of_passing, :class => "form-control", :placeholder => "20XX" %>
+			</td>
+		</tbody>
+	</table>
+	<table class="table prev_education">
+		<tbody>
+			<%= f.fields_for :educations, {:class=>"prev_education_details"} do |e| %>
+				<%= f.hidden_field :education_ids, :multiple => true %>
+				<% if !@existing_eduaction.nil? && !@existing_eduaction.empty? %>
+					<tr>
+						<td width="38%"><%= e.text_field :institute, :placeholder => "College/Board", :class => "form-control institute" %></td>
+						<td width="36%"><%= e.text_field :degree, :placeholder => "UG/Secondary/High School", :class => "form-control degree" %></td>
+						<td width="12%"><%= e.text_field :percentage, :placeholder => "%", :class => "form-control percentage" %></td>
+						<td width="12%"><%= e.text_field :year_of_passing, :placeholder => "20XX", :class => "form-control year_of_passing" %></td>
+						<td width="20%">
+							<%= e.hidden_field :_destroy %>
+							<a class="remove_edu_row btn btn-sm btn-danger">x</a>
+						</td>
+					</tr>
+				<% end %>
+			<% end %>
+		</tbody>
+	</table>
+	<p class="pull-left" id="degree_limit_reached">You cannot add more than 4 degrees.</p>
+	<a class="btn bt-md btn-info pull-right" id="add_schools">
+		<span class="fa fa-plus"></span> Add Schools/Colleges
+	</a>
+	<!--link_to "Add Courses/Colleges", f, :educations --> 
+</div>

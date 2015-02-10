@@ -1,7 +1,15 @@
 class Student < ActiveRecord::Base
 	
-	attr_accessor :remember_token, :reset_token, :activation_token
+	attr_accessor :remember_token, :reset_token, :activation_token, :image
 	
+  has_many :experiences, dependent: :destroy
+  has_many :educations, dependent: :destroy
+  has_many :projects, dependent: :destroy
+
+  accepts_nested_attributes_for :educations, reject_if: :all_blank, allow_destroy: true
+
+  mount_uploader :image, ImageUploader
+
 	before_save { self.email = email.downcase }
 	
 	before_create :update_all_users_table
@@ -24,7 +32,7 @@ class Student < ActiveRecord::Base
 
 	has_secure_password
 
-	validates :password, length: {minimum: 6}
+	validates :password, length: {minimum: 6}, allow_blank: true
 
 	# Returns the hash digest of the given string.
 	def Student.digest(string)

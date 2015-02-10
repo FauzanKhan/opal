@@ -12,7 +12,7 @@
 				<li class="divider visible-md visible-lg"></li>
 				<li class="pull-left">
 					<%= link_to current_user do %>
-						<%= image_tag 'default_user.jpg', {:height => "20", :width =>"20"} %>
+						<%= image_tag current_user.image_url.nil? ? 'default_user.jpg' :current_user.image_url.to_s %>
 						<%= current_user.first_name %>
 					<% end %>
 				</li>
@@ -39,7 +39,7 @@
 							</li>
 							<li class="divider visible-md visible-lg"></li>
 							<li>
-								<%= link_to edit_student_path(@student) do %>
+								<%= link_to edit_student_path(current_user) do %>
 									<span class="fa fa-edit"></span> Edit Profile
 								<% end %>
 							</li>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150206195807) do
+ActiveRecord::Schema.define(version: 20150208150824) do
 
   create_table "all_users", force: :cascade do |t|
     t.string   "email"
@@ -41,6 +41,16 @@ ActiveRecord::Schema.define(version: 20150206195807) do
     t.string "name"
   end
 
+  create_table "educations", force: :cascade do |t|
+    t.integer "student_id"
+    t.string  "degree"
+    t.string  "institute"
+    t.integer "percentage"
+    t.integer "year_of_passing"
+  end
+
+  add_index "educations", ["student_id"], name: "index_educations_on_student_id"
+
   create_table "eligible_branches", force: :cascade do |t|
     t.integer "jobpost_id"
     t.integer "branch_id"
@@ -50,6 +60,17 @@ ActiveRecord::Schema.define(version: 20150206195807) do
     t.integer "jobpost_id"
     t.integer "course_id"
   end
+
+  create_table "experiences", force: :cascade do |t|
+    t.integer "student_id"
+    t.string  "company_name"
+    t.string  "position"
+    t.text    "contributions"
+    t.date    "start_date"
+    t.date    "end_date"
+  end
+
+  add_index "experiences", ["student_id"], name: "index_experiences_on_student_id"
 
   create_table "jobposts", force: :cascade do |t|
     t.integer  "tpo_id"
@@ -78,6 +99,14 @@ ActiveRecord::Schema.define(version: 20150206195807) do
     t.integer "zone"
   end
 
+  create_table "projects", force: :cascade do |t|
+    t.integer "student_id"
+    t.string  "name"
+    t.text    "description"
+  end
+
+  add_index "projects", ["student_id"], name: "index_projects_on_student_id"
+
   create_table "students", force: :cascade do |t|
     t.string   "email"
     t.string   "password"
@@ -99,6 +128,13 @@ ActiveRecord::Schema.define(version: 20150206195807) do
     t.datetime "reset_sent_at"
     t.string   "last_name"
     t.string   "location_id"
+    t.string   "image"
+    t.text     "skills"
+    t.text     "achievements"
+    t.integer  "year_of_passing"
+    t.integer  "year_of_study"
+    t.integer  "phone_no"
+    t.integer  "percentage"
   end
 
   create_table "tpos", force: :cascade do |t|
