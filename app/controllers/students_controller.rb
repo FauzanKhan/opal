@@ -34,11 +34,12 @@ class StudentsController < ApplicationController
 
 	def edit
 		@student = current_user
+		@branches = Branch.where(course_id: @student.course_id)
 		@education = current_user.educations.build
 		@existing_eduaction = Education.where(student_id: @student.id)
 		#@education = Education.new
+		@experience = current_user.experiences.build
 		@project = Project.new
-		@experience = Experience.new
 	end
 
 	def update
@@ -85,8 +86,8 @@ class StudentsController < ApplicationController
 			params.require(:student).permit(:first_name, :last_name, :location_id, :college_id, :course_id, :image, :phone_no, 
 											:skills, :achievements, :percentage, :year_of_study, :year_of_passing, 
 											:educations_attributes => [:id, :institute, :degree, :percentage, :year_of_passing, :_destroy], 
-											:experiences_attributes => [:id, :company_name, :position, :contributions, :start_date, :end_date],
-											:projects_attributes => [:id, :name, :description])
+											:experiences_attributes => [:id, :company_name, :position, :contributions, :start_date, :end_date, :_destroy],
+											:projects_attributes => [:id, :name, :description, :_destroy])
 		end
 
 		def education_params 

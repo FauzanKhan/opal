@@ -230,8 +230,8 @@ $primary_green : rgb(111, 201, 154);
 				display:none;
 				color:red;
 			}
-			.experience_wrapper, project_wrapper{
-				#experience_limit_reached, #projects_limit_reached{
+			.experience_wrapper, .project_wrapper{
+				#experience_limit_reached, #project_limit_reached{
 					color:red;
 					display:none;
 				}

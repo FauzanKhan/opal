@@ -7,6 +7,8 @@ class Student < ActiveRecord::Base
   has_many :projects, dependent: :destroy
 
   accepts_nested_attributes_for :educations, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :experiences, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :projects, reject_if: :all_blank, allow_destroy: true
 
   mount_uploader :image, ImageUploader
 

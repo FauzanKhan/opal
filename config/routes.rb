@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'welcome#index'
   get 'welcome/index'
-  get 'students/populate_branches' 
+  get 'students/populate_branches'
+  get 'students/:id/populate_branches' => 'students#populate_branches' 
   get 'jobposts/populate_branches'
   get 'jobposts/:id/populate_branches' => 'jobposts#populate_branches' 
   get '/populate_branches'  => 'jobposts#populate_branches'
