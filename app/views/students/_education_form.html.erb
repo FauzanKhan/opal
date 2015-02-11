@@ -17,8 +17,8 @@
 				<%= f.collection_select(:college_id, College.all, :id, :college_name, {}, {:class => "form-control"}) %>
 			</td>
 			<td>
-				<%= f.collection_select(:course_id, Course.all, :id, :name, {}, {:class => "course", :style => "width:50%"}) %>
-				<%= f.collection_select(:branch_id, Branch.all, :id, :name, {}, {:class => "branch", :style => "width:48%"}) %>
+				<%= f.collection_select(:course_id, Course.all, :id, :name, {}, {:class => "course", :style => "width:50%", :onchange => "pop_branches()"}) %>
+				<%= f.collection_select(:branch_id, @branches, :id, :name, {}, {:class => "branch", :style => "width:48%"}) %>
 			</td>
 			<td>
 				<%= f.text_field :percentage, :class => "form-control", :placeholder => "%" %>
@@ -34,10 +34,10 @@
 				<%= f.hidden_field :education_ids, :multiple => true %>
 				<% if !@existing_eduaction.nil? && !@existing_eduaction.empty? %>
 					<tr>
-						<td width="38%"><%= e.text_field :institute, :placeholder => "College/Board", :class => "form-control institute" %></td>
-						<td width="36%"><%= e.text_field :degree, :placeholder => "UG/Secondary/High School", :class => "form-control degree" %></td>
+						<td width="37%"><%= e.text_field :institute, :placeholder => "College/Board", :class => "form-control institute" %></td>
+						<td width="37%"><%= e.text_field :degree, :placeholder => "UG/Secondary/High School", :class => "form-control degree" %></td>
 						<td width="12%"><%= e.text_field :percentage, :placeholder => "%", :class => "form-control percentage" %></td>
-						<td width="12%"><%= e.text_field :year_of_passing, :placeholder => "20XX", :class => "form-control year_of_passing" %></td>
+						<td width="13%"><%= e.text_field :year_of_passing, :placeholder => "20XX", :class => "form-control year_of_passing" %></td>
 						<td width="20%">
 							<%= e.hidden_field :_destroy %>
 							<a class="remove_edu_row btn btn-sm btn-danger">x</a>
