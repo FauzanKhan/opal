@@ -39,7 +39,7 @@
 							</li>
 							<li class="divider visible-md visible-lg"></li>
 							<li>
-								<%= link_to edit_student_path(current_user) do %>
+								<%= link_to edit_student_path(current_user), 'data-no-turbolink' => true do %>
 									<span class="fa fa-edit"></span> Edit Profile
 								<% end %>
 							</li>

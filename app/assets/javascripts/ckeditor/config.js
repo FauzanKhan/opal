@@ -38,6 +38,7 @@ CKEDITOR.replace( 'jobpost_other_requirements', {
   }
 });
 
+
 CKEDITOR.editorConfig = function( config )
 {
   // Define changes to default configuration here. For example:

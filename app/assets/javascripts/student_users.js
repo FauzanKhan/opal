@@ -14,20 +14,14 @@ function pop_branches(){
 
 $(document).ready(function(){
 
-	function update_date_picker(){
-		$('input.date').datepicker({
-		    format: "dd M yyyy",
-		    orientation: "top right",
-		    calendarWeeks: true,
-		    todayHighlight: true
-		});
-	}
-
-	if($('.experience_wrapper .experience').length > 1){
+	if($('.experience_wrapper .experience').length > 1 && $('.experience_wrapper .experience textarea:last').val() === ""){
 		$('.experience_wrapper .experience:last').remove();
 	}
 	
 	var experience_count = $('.experience_wrapper .experience').length//Math.ceil(experience_ids.length/2)//education_ids.substr(education_ids.lenth-1, 1);
+	if(typeof experience_count === 'undefined'){
+		experience_count = 0;
+	}
 	function add_experience(){
 		var experience_content = '<div class="col-lg-6 col-md-6">'+
 							'<div class="input-group">'+
@@ -65,7 +59,7 @@ $(document).ready(function(){
 							'<div class="form-group">'+
 								'<label for="student_experiences_attributes_'+
 								experience_count+'_contributions" class="control-label">Contributions</label>'+
-								'<textarea class="form-control" name="student[experiences_attributes]['+
+								'<textarea class="form-control contributions" name="student[experiences_attributes]['+
 								experience_count+'][contributions]" id="student_experiences_attributes_'+
 								experience_count+'_contributions" ></textarea>'+
 							'</div>'+
@@ -78,6 +72,7 @@ $(document).ready(function(){
 						'</a></div>'
 		$('.experience_container').append('<div class="experience"></div>');
 		$('.experience_container .experience:last').append(experience_content);
+		replace_exp_textareas()
 		experience_count++;
 		update_date_picker();
 		$('[data-toggle="tooltip"]').tooltip();
@@ -102,12 +97,9 @@ $(document).ready(function(){
 		remove_experience($(this));
 	});
 
-	update_date_picker();
-
 	/*function update_row_ids(){
 		var row_id = 0;
 		$('table.prev_education tbody tr').each(function(){
-			debugger;
 			$(this).find('input.institute').attr('name', 'student[educations_attributes]['+row_id+'][institute]');
 			$(this).find('input.degree').attr('name', 'student[educations_attributes]['+row_id+'][degree]');
 			$(this).find('input.percentage').attr('name', 'student[educations_attributes]['+row_id+'][percentage]');
@@ -117,7 +109,12 @@ $(document).ready(function(){
 	}*/
 
 	var education_count = $('table.prev_education tbody tr').length//Math.ceil(education_ids.length/2)//education_ids.substr(education_ids.lenth-1, 1);
-	$('table.prev_education tbody tr:last').remove();
+	if(typeof education_count === 'undefined'){
+		education_count = 0;
+	}
+	if($('table.prev_education tbody tr').length >= 1 && $('table.prev_education tbody tr .institute:last').val() === ""){
+		$('table.prev_education tbody tr:last').remove();
+	}
 	function add_schools(){
 		var college = '<td width="38%">'+
 						'<input type="text" name="student[educations_attributes]['+
@@ -172,11 +169,14 @@ $(document).ready(function(){
 		}
 	});
 
-	if($('.project_wrapper .project').length > 1){
+	var project_count = $('.project_wrapper .project').length
+	if(typeof project_count === 'undefined'){
+		project_count = 0;
+	}
+	if($('.project_wrapper .project').length == 0){
+		add_project();
 		//$('.project_wrapper .project:last').remove();
 	}
-	var project_count = $('.project_wrapper .project').length
-	add_project()
 	function add_project(){
 		var project_content = '<div class="col-lg-12">'+
 							'<div class="input-group">'+
@@ -201,8 +201,10 @@ $(document).ready(function(){
 						'<a class="btn btn-md btn-danger pull-right" id="remove_project">'+
 							'<span class="fa fa-remove"></span> Remove'+
 						'</a></div>'
+						debugger;
 		$('.project_container').append('<div class="project"></div>');
 		$('.project_container .project:last').append(project_content);
+		replace_project_textareas();
 		project_count++;
 		$('[data-toggle="tooltip"]').tooltip();
 		if($('.project_container .project:visible').length >= 6 ){
@@ -221,7 +223,6 @@ $(document).ready(function(){
 	}
 
 	$('.project_wrapper').on('click', '#remove_project',function(){
-		debugger;
 		remove_project($(this));
 	});
 
@@ -229,6 +230,88 @@ $(document).ready(function(){
 		add_project();
 	})
 
+	$('.experience_wrapper .experience').on('click', '.date', function(){
+		$(this).val() = "";
+	});
+
+	function update_date_picker(){
+		$('input.date').datepicker({
+			startDate: "1/1/2000",
+			multidate: false,
+		    format: "dd M yyyy",
+		    orientation: "top right",
+		    calendarWeeks: true,
+		    todayHighlight: true
+		});
+	}
+
+
+	function add_ckeditor(textarea_id){
+		CKEDITOR.replace( textarea_id, {
+		  allowedContent: {
+		    'b i u em strike li p ul ol sup sup span small': true,
+		    'b i u em strike li p ul ol sup sup span small': {
+		      styles: 'text-align, color, background-color'
+		    },
+		    a: { attributes: '!href,target' },
+
+		  }
+		});
+	}
+
+	function replace_textareas(){
+		var skills_textarea_id = $('.skills textarea').attr('id');
+		add_ckeditor(skills_textarea_id);
+		var achievements_textarea_id = $('.achievements textarea').attr('id');
+		add_ckeditor(achievements_textarea_id);
+		$('.experience_wrapper .experience').each(function(){
+			var textarea_id = $(this).find('textarea').attr('id');
+			add_ckeditor(textarea_id);
+		});
+
+		$('.project_wrapper .project').each(function(){
+			var textarea_id = $(this).find('textarea').attr('id');
+			add_ckeditor(textarea_id);
+		});
+	}
+
+	function replace_project_textareas(){
+		var description_textarea_id = $('.project textarea:last').attr('id');
+		add_ckeditor(description_textarea_id);
+	}
+
+	function replace_exp_textareas(){
+		var contributions_textarea_id = $('.experience textarea:last').attr('id');
+		add_ckeditor(contributions_textarea_id);
+	}
+
+	/*function replace_skills_achievements_textareas(){
+		var skills_textarea_id = $('.skills textarea').attr('id');
+		add_ckeditor(skills_textarea_id);
+		var achievements_textarea_id = $('.achievements textarea').attr('id');
+		add_ckeditor(achievements_textarea_id);
+	}*/
+
 	$('[data-toggle="tooltip"]').tooltip();
+
+	CKEDITOR.editorConfig = function( config )
+	{	
+		config.uiColor = '#FEFEFE';
+		config.allowedContent = true;
+		config.toolbar = [
+		    { name: 'links', items: [ 'Link', 'Unlink', 'Anchor' ] },
+		    { name: 'colors', items: [ 'TextColor', 'BGColor' ] },
+		    { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ], items: [ 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat' ] },
+		    { name: 'paragraph', groups: [ 'list', 'align' ], items: [ 'NumberedList', 'BulletedList', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock' ] },
+		  ];
+	};
+
+	update_date_picker();
+
+	//replace_skills_achievements_textareas();
+
+	replace_textareas();
+
+	replace_project_textareas();	
 
 });

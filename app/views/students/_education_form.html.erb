@@ -32,7 +32,7 @@
 		<tbody>
 			<%= f.fields_for :educations, {:class=>"prev_education_details"} do |e| %>
 				<%= f.hidden_field :education_ids, :multiple => true %>
-				<% if !@existing_eduaction.nil? && !@existing_eduaction.empty? %>
+				
 					<tr>
 						<td width="37%"><%= e.text_field :institute, :placeholder => "College/Board", :class => "form-control institute" %></td>
 						<td width="37%"><%= e.text_field :degree, :placeholder => "UG/Secondary/High School", :class => "form-control degree" %></td>
@@ -43,7 +43,7 @@
 							<a class="remove_edu_row btn btn-sm btn-danger">x</a>
 						</td>
 					</tr>
-				<% end %>
+				
 			<% end %>
 		</tbody>
 	</table>

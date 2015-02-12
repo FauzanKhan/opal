@@ -6,6 +6,7 @@
 				<%= render 'shared/error_messages', object: f.object %>
 				<div class="col-lg-2 col-md-2 student_image_upload">
 					<div class="pic_upload_container">
+						<label class="control-label">Profile Pic</label>
 						<%= f.file_field :image %>
 					</div>
 				</div>
@@ -59,7 +60,7 @@
 					<div class="col-lg-12 student_info_element project_wrapper">
 							<%= render 'project_form', :f => f %>
 					</div>
-					<div class="student_info_element col-lg-12">
+					<div class="student_info_element col-lg-12 skills">
 						<div class="heading_container">
 							<h4>Skills</h4>
 						</div>
@@ -69,18 +70,20 @@
 							</div>	
 						</div>
 					</div>
-					<div class="student_info_element col-lg-12">
+					<div class="student_info_element col-lg-12 achievements">
 						<div class="heading_container">
 							<h4>Achievements</h4>
 						</div>
 						<div class="col-lg-12">
 							<div class="form-group">
-								<%= f.text_area :first_name, :class => "form-control", :placeholder => "First name" %>
+								<%= f.text_area :achievements, :class => "form-control", :placeholder => "First name" %>
 							</div>	
 						</div>
 					</div>
 				</div>
-				<%= f.submit "Update", :class=>"btn btn-lg btn-info pull-right" %>
+				<div class="col-lg-12">
+					<%= f.submit "Update", :class=>"btn update_student btn-lg btn-info pull-right" %>
+				</div>
 			<% end %>
 		</div>
 </div>

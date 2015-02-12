@@ -6,10 +6,10 @@
     font-family:icons;
     src: url(socicon.ttf);
 	}
-@font-face{
+/*@font-face{
 	font-family:idealist;
 	src:url(Idealist%20Sans.ttf);
-	}
+	}*/
 *{
 	margin:0;
 	padding:0;
@@ -17,11 +17,11 @@
 	}
 body{
 	overflow-x:hidden;
-	font-family:idealist, tahoma;
+	font-family:'Lato', idealist, tahoma;
 	}
 .body_wrapper{
 	color:#FFF;
-	font-family:idealist, tahoma;
+	font-family:'Lato', idealist, tahoma;
 }
 a:hover{
 	text-decoration:none;

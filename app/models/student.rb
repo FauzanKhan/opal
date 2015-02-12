@@ -13,6 +13,10 @@ class Student < ActiveRecord::Base
   mount_uploader :image, ImageUploader
 
 	before_save { self.email = email.downcase }
+
+  before_save { self.first_name = first_name.titleize }
+
+  before_save { self.last_name = last_name.titleize }
 	
 	before_create :update_all_users_table
 
@@ -28,9 +32,13 @@ class Student < ActiveRecord::Base
          presence: true,
          length: {minimum: 3, maximum: 15}
 
-	validates :college_id, presence: true
+	validates :college_id, presence: true, numericality: true
 
-	validates :branch_id, presence: true
+	validates :branch_id, presence: true, numericality: true
+
+  validates :percentage, presence: true, numericality: true, on: :update
+
+  validates :year_of_passing, presence: true, numericality: true, on: :update
 
 	has_secure_password
 

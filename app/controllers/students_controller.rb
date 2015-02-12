@@ -3,6 +3,7 @@ class StudentsController < ApplicationController
 	before_action :logged_in_user, only: [:edit, :update, :show]
     before_action :correct_user, only: [:edit, :update, :account_settings]
     before_action :redirect_if_logged_in, only: [:new]
+    before_filter :set_cache_buster, only: :edit
 	
 	def new
 		@student = Student.new
@@ -11,9 +12,9 @@ class StudentsController < ApplicationController
 	end
 
 	def create
+		@courses = Course.all
+		@branches = Branch.where(course_id: params[:student][:course_id])
 		@student = Student.new(student_params)
-		@student.first_name = params[:student][:first_name].titleize
-		@student.last_name = params[:student][:last_name].titleize
 		if @student.save
 			#log_in @student
 			@student.send_activation_email
@@ -43,6 +44,7 @@ class StudentsController < ApplicationController
 	end
 
 	def update
+		@branches = Branch.where(course_id: params[:student][:course_id])
 		@student = current_user
 		if @student.update_attributes(update_params)
 			redirect_to current_user

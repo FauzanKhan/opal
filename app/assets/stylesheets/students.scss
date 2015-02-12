@@ -187,7 +187,7 @@ $primary_green : rgb(111, 201, 154);
 					top:50%;
 					transform:translateY(-70px);
 					-webkit-transform:translateY(-10px);
-					left: 10px;
+					font-size:10px;
 				}
 			}
 		}
@@ -250,6 +250,9 @@ $primary_green : rgb(111, 201, 154);
 					}
 				}
 			}
+		}
+		.update_student{
+			margin:30px;
 		}
 	}
 }
