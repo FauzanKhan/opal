@@ -31,6 +31,7 @@ class JobpostsController < ApplicationController
 		current_user.user_type == 2 ? @student = current_user : @tpo = current_user
 		@jobpost = Jobpost.find(params[:id])
 		job = Jobpost.find(params[:id])
+		@colege = College.find(Tpo.find(@jobpost.tpo_id).college_id)
 		if current_user.user_type == 2
 			@current_students_tpo = Tpo.find_by(college_id: current_user.college_id)
 		end

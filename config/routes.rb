@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get 'jobposts/:id/view_applications' => 'jobposts#view_applications', as: :view_applications_jobpost
   get '/populate_branches'  => 'jobposts#populate_branches'
   get 'students/:id/account_settings' => 'students#account_settings', as: :account_settings_student
-  patch 'students/:id/account_settings' => 'students#update_account' 
+  patch 'students/:id/account_settings' => 'students#update_account'
 
   resources :tpos
   resources :students
@@ -24,11 +24,13 @@ Rails.application.routes.draw do
   resources :sessions
   resources :all_users
   resources :jobposts
-  resources :job_applications, only: :create
+  #resources :job_applications, only: :create
   resources :account_activations, only: [:edit]
   resources :password_resets, only: [:edit, :new, :create, :update]
 
   delete 'logout' => 'sessions#destroy'
+    post 'job_applications' => 'job_applications#create', as: :submit_application
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

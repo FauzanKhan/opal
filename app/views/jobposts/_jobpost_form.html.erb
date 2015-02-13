@@ -33,21 +33,6 @@
     <div class="form-group">
                 <label class="control-label">Eligible Courses</label>
                 <div class="checkbox courses_selection">
-                    <!--<label class="checkbox-inline">
-                      <input type="checkbox"> B.Tech
-                    </label>
-                    <label class="checkbox-inline">
-                      <input type="checkbox"> M.Tech
-                    </label>
-                    <label class="checkbox-inline">
-                      <input type="checkbox"> B.Pharma
-                    </label>
-                    <label class="checkbox-inline">
-                      <input type="checkbox"> M.Pharma
-                    </label>
-                    <label class="checkbox-inline">
-                      <input type="checkbox"> M.C.A
-                    </label>-->
                     <%= hidden_field_tag 'jobpost[course_ids][]', nil %>
                     <% @courses.each do |course| %>
                         <label class="checkbox-inline">
