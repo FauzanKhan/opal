@@ -30,6 +30,10 @@ class StudentsController < ApplicationController
 		@college = College.find(@student.college_id)
 		@course = Course.find(@student.course_id)
 		@branch = Branch.find(@student.branch_id)
+		@location = Location.find(@student.location_id)
+		@experiences = Experience.where(student_id: @student.id).order(end_date: :desc)
+		@educations = Education.where(student_id: @student.id).order(year_of_passing: :desc)
+		@projects = Project.where(student_id: @student.id)
 		@current_students_tpo = Tpo.find_by(college_id: current_user.college_id)
 	end
 
@@ -37,10 +41,10 @@ class StudentsController < ApplicationController
 		@student = current_user
 		@branches = Branch.where(course_id: @student.course_id)
 		@education = current_user.educations.build
-		@existing_eduaction = Education.where(student_id: @student.id)
+		#@existing_eduaction = Education.where(student_id: @student.id)
 		#@education = Education.new
 		@experience = current_user.experiences.build
-		@project = Project.new
+		@project = current_user.projects.build
 	end
 
 	def update
@@ -56,6 +60,8 @@ class StudentsController < ApplicationController
 
 	def account_settings
 		@student = current_user
+		@current_students_tpo = Tpo.find_by(college_id: current_user.college_id)
+
 	end
 
 	def update_account
