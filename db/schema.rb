@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150208150824) do
+ActiveRecord::Schema.define(version: 20150213152429) do
 
   create_table "all_users", force: :cascade do |t|
     t.string   "email"
@@ -71,6 +71,11 @@ ActiveRecord::Schema.define(version: 20150208150824) do
   end
 
   add_index "experiences", ["student_id"], name: "index_experiences_on_student_id"
+
+  create_table "job_applications", force: :cascade do |t|
+    t.integer "jobpost_id"
+    t.integer "student_id"
+  end
 
   create_table "jobposts", force: :cascade do |t|
     t.integer  "tpo_id"
@@ -133,7 +138,7 @@ ActiveRecord::Schema.define(version: 20150208150824) do
     t.text     "achievements"
     t.integer  "year_of_passing"
     t.integer  "year_of_study"
-    t.integer  "phone_no"
+    t.string   "phone_no"
     t.integer  "percentage"
   end
 

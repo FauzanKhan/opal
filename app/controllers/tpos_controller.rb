@@ -3,7 +3,7 @@ class TposController < ApplicationController
 	#before_action :admin_user, only: [:index]
 	before_action :logged_in_user, only: [:edit, :update, :show]
 	before_action :correct_user, only: [:edit, :update]
-	before_action :admin_user,     only: [:destroy, :index]
+	before_action :admin_user, only: [:destroy, :index]
 	before_action :redirect_if_logged_in, only: [:new]
 
 	def new
@@ -12,22 +12,11 @@ class TposController < ApplicationController
 
 	def index
 		@users = AllUser.all
-		#users_hash = Hash.new()
-		#n = 1
-		#@users.each do |user|
-		#	users_hash[n.to_s][:name] = user.name
-		#	users_hash[n.to_s][:email] = user.email
-		#	users_hash[n.to_s][:college] = user.college
-		#	users_hash[n.to_s][:type] = user.user_type
-		#	n += 1
-		#end
-		#=end
 	end
 
 	def show
 		@tpo = Tpo.find(params[:id])
 		@jobposts = @tpo.jobposts
-		#@colleges = College.all
 	end
 
 	def update

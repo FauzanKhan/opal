@@ -10,6 +10,9 @@ class Jobpost < ActiveRecord::Base
 	has_many :eligible_branches, dependent: :destroy
 	has_many :branches, through: :eligible_branches
 
+	has_many :job_applications, dependent: :destroy
+	has_many :students, through: :applications 
+
 	validates :tpo_id, presence: true
 
 	validates :location_id, presence: true
@@ -17,6 +20,8 @@ class Jobpost < ActiveRecord::Base
 	validates :company, presence: true
 
 	validates :position, presence: true
+
+	validates :percentage_required, numericality: true
 
 	#validates :eligible_courses, presence: true
 

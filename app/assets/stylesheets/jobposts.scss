@@ -91,3 +91,20 @@ $primary_green : rgb(111, 201, 154);
 			text-align:right;
 		}
 }
+.applications_container{
+	background:#FFF;
+	border:1px solid #EAEAEA;
+	padding:20px;
+	.heading_container{
+		text-align: center;
+		border-bottom:1px solid #EAEAEA;
+		margin-bottom:20px;
+	}
+	.application_table{
+		thead{
+			th{
+				text-align:center;
+			}
+		}
+	}
+}

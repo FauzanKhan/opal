@@ -1,6 +1,8 @@
 class JobpostsController < ApplicationController
 	before_action :logged_in_user, only: [:new, :create, :destroy, :edit]
-	before_action :correct_user, only: [:destroy, :edit]
+	before_action :correct_user, only: [:destroy, :edit, :view_applications]
+
+	include JobpostsHelper
 	
 	def new
 		@tpo = current_user
@@ -77,15 +79,6 @@ class JobpostsController < ApplicationController
 		redirect_to root_path
 	end
 
-	def correct_user
-		jobpost = Jobpost.find(params[:id])
-		@user = current_user
-		if !(@user == Tpo.find(jobpost.tpo_id))
-			flash[:danger] = "Action not allowed as you're not the author of the Jobpost."
-			redirect_to root_path 
-		end
-	end
-
 	def populate_branches
 		@branches = Branch.where(course_id: params[:course_id])
 		respond_to do |format|
@@ -99,5 +92,14 @@ class JobpostsController < ApplicationController
 											:job_profile, :location, :venue, :location_id, :job_type, :instructions, 
 											:about_company, :last_date, :drive_date, :course_ids => [], :branch_ids => [])
 		end
+
+		def correct_user
+			jobpost = Jobpost.find(params[:id])
+			@user = current_user
+			if !(@user == Tpo.find(jobpost.tpo_id))
+				flash[:danger] = "Action not allowed as you're not the author of the Jobpost."
+				redirect_to root_path 
+			end
+	end
 
 end

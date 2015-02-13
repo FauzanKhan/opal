@@ -44,7 +44,7 @@
 		</div>
 		<div class="actions">
 			<% if current_user.user_type == 1 && current_user.id == jobpost.tpo_id %>
-				<%= link_to jobposts_path, :class => "btn btn-default btn-sm pull-left" do %>
+				<%= link_to view_applications_jobpost_path(id: jobpost.id), :class => "btn btn-default btn-sm pull-left" do %>
 					<span class="fa fa-th-list"></span> View Applications
 				<% end %>
 				<%= link_to jobpost_path(jobpost), method: "delete", :class => "btn btn-danger btn-sm" do %>

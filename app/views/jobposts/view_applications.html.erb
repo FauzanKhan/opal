@@ -1,0 +1,36 @@
+<div class="applications_container">
+	<div class="heading_container">
+		<h1 class="lead">
+			Applications for <%= @jobpost.position %> at <%= @jobpost.company %>
+			<small>(Posted on : <%= @jobpost.created_at.strftime('%d %b %Y') %>)</small>
+		</h1>
+	</div>
+	<div class="application_table">
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Course</th>
+					<th>College</th>
+					<th>Email</th>
+					<th>Phone</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @applications.each do |a| %>
+					<% applicant = Student.find(a.student_id) %>
+					<% course = Course.find(applicant.course_id) %>
+					<% branch = Branch.find(applicant.branch_id) %>
+					<% college = College.find(applicant.college_id) %>
+					<tr>
+						<td><%= link_to applicant.first_name+" "+applicant.last_name, applicant %></td>
+						<td><%= course.name %><small><%= "["+branch.name+"]" %></small></td>
+						<td><%= college.college_name %></td>
+						<td><%= applicant.email %></td>
+						<td><%= applicant.phone_no %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+</div>

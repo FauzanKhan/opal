@@ -98,10 +98,6 @@ class StudentsController < ApplicationController
 											:projects_attributes => [:id, :name, :description, :_destroy])
 		end
 
-		def education_params 
-			params.require(:education).permit(:institute, :degree, :percentage, :year_of_passing)
-		end
-
 		def correct_user
 			@user = Student.find(params[:id])
 			redirect_to root_path unless @user == current_user

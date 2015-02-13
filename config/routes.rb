@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'students/:id/populate_branches' => 'students#populate_branches' 
   get 'jobposts/populate_branches'
   get 'jobposts/:id/populate_branches' => 'jobposts#populate_branches' 
+  get 'jobposts/:id/view_applications' => 'jobposts#view_applications', as: :view_applications_jobpost
   get '/populate_branches'  => 'jobposts#populate_branches'
   get 'students/:id/account_settings' => 'students#account_settings', as: :account_settings_student
   patch 'students/:id/account_settings' => 'students#update_account' 
@@ -23,6 +24,7 @@ Rails.application.routes.draw do
   resources :sessions
   resources :all_users
   resources :jobposts
+  resources :job_applications, only: :create
   resources :account_activations, only: [:edit]
   resources :password_resets, only: [:edit, :new, :create, :update]
 
