@@ -62,7 +62,10 @@ class TposController < ApplicationController
 
 		def correct_user
 			@user = Tpo.find(params[:id])
-			redirect_to root_path unless @user == current_user
+			if !(@user == current_user)
+				redirect_to root_path
+				flash[:danger] = "Action not allowed as you're not the owner of requested profile"
+			end
 		end
 
 		def admin_user

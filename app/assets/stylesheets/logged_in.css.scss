@@ -36,6 +36,11 @@ body{
 	border-right: 5px solid transparent;
 	border-bottom: 5px solid #FFF;
 }
+@mixin big_container{
+	padding:20px;
+	background:#FFF;
+	border:1px solid #EAEAEA;
+}
 .btn{
 	border-radius:0px;
 }

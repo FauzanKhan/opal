@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 $primary_blue : rgb(45, 174, 191);
 $primary_green : rgb(111, 201, 154);
+$light_border : #EAEAEA;
 @mixin green_hover{
   	background:$primary_green;
   	color:#FFF;
@@ -20,6 +21,11 @@ $primary_green : rgb(111, 201, 154);
   		color:#FFF;
   		background:lighten($primary_blue,10%);
   	};
+}
+@mixin big_container{
+	padding:20px;
+	background:#FFF;
+	border:1px solid $light_border;
 }
 $primary_blue : rgb(45, 174, 191);
 $primary_green : rgb(111, 201, 154);
@@ -74,7 +80,7 @@ $primary_green : rgb(111, 201, 154);
 .student_account_form_container{
 	text-align:center;
 	background:#FFF;
-	border:1px solid #EAEAEA;
+	border:1px solid $light_border;
 	padding-bottom:60px;
 	.student_account_form{
 		width:500px;
@@ -101,7 +107,7 @@ $primary_green : rgb(111, 201, 154);
 .student_profile{
 	width:98%;
 	background:#FFF;
-	border:1px solid #EAEAEA;
+	border:1px solid $light_border;
 	text-align:left;
 	padding:2px 10px;
 	margin:0 auto;
@@ -119,7 +125,7 @@ $primary_green : rgb(111, 201, 154);
 		height:1px;
 		margin:0 auto;
 		margin-bottom:10px;
-		border-bottom:1px solid #EAEAEA;
+		border-bottom:1px solid $light_border;
 		clear:both;
 	}
 	.hor_divider{
@@ -144,7 +150,7 @@ $primary_green : rgb(111, 201, 154);
 		margin-top:30px;
 		.heading_container{
 			margin-bottom:10px;
-			border-bottom:1px solid #EAEAEA;
+			border-bottom:1px solid $light_border;
 			h3{
 				border-bottom:3px solid $primary_blue;
 				display:inline;
@@ -184,7 +190,7 @@ $primary_green : rgb(111, 201, 154);
 }
 .student_profile_edit_container{
 	background:#FFF;
-	border:1px solid #EAEAEA;
+	border:1px solid $light_border;
 	text-align:center;
 	position: relative;
 	form{
@@ -200,7 +206,7 @@ $primary_green : rgb(111, 201, 154);
 				margin-left:15px;
 				text-align:center;
 				position: relative;
-				border:1px solid #EAEAEA;
+				border:1px solid $light_border;
 				overflow: hidden;
 				background:#FAFAFA;
 				input{
@@ -219,7 +225,7 @@ $primary_green : rgb(111, 201, 154);
 				.heading_container{
 					display:block;
 					margin-bottom:50px;
-					border-bottom:1px solid #EAEAEA;
+					border-bottom:1px solid $light_border;
 					h4{
 						padding-left:10px;
 						padding-right:20px;
@@ -235,7 +241,7 @@ $primary_green : rgb(111, 201, 154);
 				margin-bottom:0px;
 				.current_education_details{
 					tr{
-						border-bottom:0px solid #EAEAEA;
+						border-bottom:0px solid $light_border;
 					}
 				}
 			}
@@ -243,7 +249,7 @@ $primary_green : rgb(111, 201, 154);
 				margin-top:0px;
 				margin-bottom:10px;
 				tr{
-					border-bottom:1px solid #EAEAEA;
+					border-bottom:1px solid $light_border;
 					border-top:0px;
 				}
 			}
@@ -258,7 +264,7 @@ $primary_green : rgb(111, 201, 154);
 				}
 				.experience, .project{
 					background:#FCFCFC;
-					border:1px solid #EAEAEA;
+					border:1px solid $light_border;
 					overflow:auto;
 					padding-top:30px;
 					padding-bottom:20px;
@@ -277,6 +283,15 @@ $primary_green : rgb(111, 201, 154);
 		}
 	}
 }
+.my_applications{
+	@include big_container;
+	.heading_container{
+		text-align:center;
+		margin-bottom:20px;
+		border-bottom:1px solid $light_border;
+	}
+}
+
 select.course, select.branch{
 	display:inline;
 	height: 34px;

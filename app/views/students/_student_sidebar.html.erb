@@ -4,16 +4,17 @@
 	</div>
 	<% if @student == current_user %>
 		<a href="#" class="user_name"><%= current_user.first_name %> <%= current_user.last_name %></a>
-		<%= link_to edit_student_path(current_user), :class => "btn btn-block btn-info blue" do %>
-			<span class="fa fa-edit"></span> Edit Profile
+		<%= link_to my_applications_student_path, :class => "btn btn-block btn-info" do %>
+			<span class="fa fa-list-ul"></span> My Applications
 		<% end %>
 		<%= link_to @current_students_tpo, :class => "btn btn-block btn-success green" do %>
 			<span class="fa fa-eye"></span> Visit TPO
 		<% end %>
 	<% else %>
-		<div class="student_contact_info">
+		<a href="#" class="user_name"><%= current_user.first_name %> <%= current_user.last_name %></a>
+		<!--<div class="student_contact_info">
 			<span class="divider"></span>
-			<p><span class="fa fa-envelope"></span><%= @student.email %></p>
+			<p><span class="fa fa-envelope"></span></p>
 			<span class="divider"></span>
 			<p><span class="fa fa-phone"></span> 9876543210<br/></p>
 			<span class="divider"></span>
@@ -22,6 +23,6 @@
 				<a href="#" class="btn btn-sm"><span class="fa fa-github-square"></span></a>
 				<a href="#" class="btn btn-sm"><span class="fa fa-linkedin-square"></span></a>
 			</div>
-		</div>
+		</div>-->
 	<% end %>
 </div>

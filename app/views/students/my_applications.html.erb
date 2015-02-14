@@ -1,0 +1,33 @@
+<% provide(:title, "My Applications | "+current_user.first_name+" "+current_user.last_name) %>
+<div class="my_applications">
+	<div class="heading_container">
+		<h1 class="lead">My Applications<small> [ Total : <%= @applications.count %> ] </small></h1>
+	</div>
+	<% if @applications.any? %>
+		<table class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<th>Job</th>
+					<th class="text-center">Type</th>
+					<th class="text-center">Status</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @applications.each do |a| %>
+					<% job = Jobpost.find(a.jobpost_id) %>
+					<tr>
+						<td>
+							<%= link_to job do %>
+								<%= job.position+" at "+job.company %>
+							<% end %>
+						</td>
+						<td width="100px" class="text-center"><%= job.job_type %></td>
+						<td width="100px" class="text-center"></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	<% else %>
+		<p class="lead">You haven't applied to any jobs yet.</p>
+	<% end %>
+</div>
