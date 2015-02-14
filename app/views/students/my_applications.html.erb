@@ -21,7 +21,7 @@
 								<%= job.position+" at "+job.company %>
 							<% end %>
 						</td>
-						<td width="100px" class="text-center"><%= job.job_type %></td>
+						<td width="100px" class="text-center"><%= JobType.find(job.job_type).name %></td>
 						<td width="100px" class="text-center"></td>
 					</tr>
 				<% end %>

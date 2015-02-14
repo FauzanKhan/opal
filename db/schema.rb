@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150213152429) do
+ActiveRecord::Schema.define(version: 20150214090215) do
 
   create_table "all_users", force: :cascade do |t|
     t.string   "email"
@@ -75,6 +75,12 @@ ActiveRecord::Schema.define(version: 20150213152429) do
   create_table "job_applications", force: :cascade do |t|
     t.integer "jobpost_id"
     t.integer "student_id"
+    t.integer "shortlisted", default: 0
+    t.boolean "selected",    default: false
+  end
+
+  create_table "job_types", force: :cascade do |t|
+    t.string "name"
   end
 
   create_table "jobposts", force: :cascade do |t|

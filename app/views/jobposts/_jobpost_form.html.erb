@@ -26,7 +26,7 @@
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
         	<div class="form-group">
                 <%= f.label :job_type, :class => "control-label" %>
-                <%= f.select(:job_type, [["Oncampus", 1], ["Pool Campus", 2],["Walk In", 3], ["Internship", 4]], {}, {:class => "form-control"}) %>
+                <%= f.collection_select(:job_type, JobType.all, :id, :name, {}, {:class => "form-control"}) %>
             </div>
         </div>
     </div>

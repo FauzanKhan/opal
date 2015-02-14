@@ -9,13 +9,8 @@
 		<div class="show_job_content">
 			<div class="job_title">
 				<h3><%= @jobpost.company %> hiring <%= @jobpost.position.pluralize %>
-					<small>( 
-						<% case @jobpost.job_type 
-						   when 1 %> On Campus
-						<% when 2 %> Pool Campus 
-						<% when 3 %> Walk In
-						<% when 4 %> Internship
-					<% end %> )
+					<small>
+						[ <%= JobType.find(@jobpost.job_type).name %> ]
 					</small>
 				</h3>
 			</div>
@@ -84,7 +79,7 @@
 				</div>
 				<div class="actions">
 					<% if current_user.user_type == 1 && current_user.id == @jobpost.tpo_id %>
-						<%= link_to view_applications_jobpost_path, :class => "btn btn-default btn-md pull-left" do %>
+						<%= link_to view_applicants_jobpost_path, :class => "btn btn-default btn-md pull-left" do %>
 							<span class="fa fa-th-list"></span> View Applications
 						<% end %>
 						<%= link_to jobpost_path(@jobpost), method: "delete", :class => "btn btn-danger btn-md" do %>
