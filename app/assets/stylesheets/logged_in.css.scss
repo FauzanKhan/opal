@@ -16,7 +16,8 @@ body{
   	border:1px solid darken($primary_green, 5%);
   	color:#FFF;
   	&:hover{
-  		background:lighten($primary_green,10%);
+  		background:darken($primary_green,5%);
+  		border:1px solid darken($primary_green, 10%);
   		color:#FFF;
   	};
 }

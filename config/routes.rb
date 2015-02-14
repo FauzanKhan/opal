@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   get 'jobposts/:id/populate_branches' => 'jobposts#populate_branches' 
   get 'jobposts/:id/view_applicants' => 'jobposts#view_applicants', as: :view_applicants_jobpost
   get '/populate_branches'  => 'jobposts#populate_branches'
+  get 'jobposts/shortlist_applicant' => 'jobposts#shortlist_applicant'
+  get 'jobposts/select_applicant' => 'jobposts#select_applicant'
   get 'students/:id/account_settings' => 'students#account_settings', as: :account_settings_student
   get 'students/:id/my_applications' => 'students#my_applications', as: :my_applications_student
   patch 'students/:id/account_settings' => 'students#update_account'

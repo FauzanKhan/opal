@@ -111,10 +111,43 @@ $primary_green : rgb(111, 201, 154);
 			text-align: right;
 		}
 	}
-	.application_table{
+	.application_table_container{
+		.note{
+			margin-bottom:20px;
+		}
 		thead{
 			th{
 				text-align:center;
+			}
+		}
+		tbody{
+			td.actions{
+				position:relative;
+				a.shortlist{
+					background:$primary_blue;
+					color:#FFF;
+					padding:2px 5px;
+				}
+				a.select{
+					background:$primary_green;
+					color:#FFF;
+					padding:2px 3px;
+				}
+				a.undecided{
+					background:#AAA;
+					cursor: pointer;
+				}
+				.ajax_overlay{
+					position:absolute;
+					left:0;
+					top:0;
+					text-align:center;
+					background:#FAFAFA;
+					padding-top:5px;
+					width:100%;
+					height:100%;
+					display:none;
+				}
 			}
 		}
 	}

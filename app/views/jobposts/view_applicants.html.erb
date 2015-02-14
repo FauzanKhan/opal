@@ -1,8 +1,23 @@
+<% provide(:title, "View Applications") %>
 <div class="applications_container">
 	<div class="heading_container">
 		<h1 class="lead">
-			Applications for <%= @jobpost.position %> at <%= @jobpost.company %>
-			<small>(Posted on : <%= @jobpost.created_at.strftime('%d %b %Y') %>)</small>
+			<% if @show_selected %>
+				Selections for <%= @jobpost.position %> at <%= @jobpost.company %>
+				<small>
+					[ Posted on : <%= @jobpost.created_at.strftime('%d %b %Y') %> | <%= pluralize @applications.count, "Selection" %> ]
+				</small>
+			<% elsif @show_shortlisted %>
+				Shortlisted Applicants <%= @jobpost.position %> at <%= @jobpost.company %>
+				<small>
+					[ Posted on : <%= @jobpost.created_at.strftime('%d %b %Y') %> | <%= pluralize @applications.count, "Shortlist" %> ]
+				</small>
+			<% else %>
+				Applications for <%= @jobpost.position %> at <%= @jobpost.company %>
+				<small>
+					[ Posted on : <%= @jobpost.created_at.strftime('%d %b %Y') %> | <%= pluralize @applications.count, "Application" %> ]
+				</small>
+			<% end %>
 		</h1>
 	</div>
 	<div class="search_applicants row">
@@ -13,36 +28,80 @@
 			</div>
 		</div>
 		<div class="view_by_status col-lg-5 col-md-5">
-			<a class="btn btn-md btn-info"><Span class="fa fa-plus"></span> Shortlisted Students</a>
-			<a class="btn btn-md btn-success green">&#10004; Selected Students</a>
+			<% if @show_selected %>
+				<%= link_to view_applicants_jobpost_path(id: @jobpost.id), :class=>"btn btn-md btn-default" do %>
+					<span class="fa fa-th-list"></span> All Applicants
+				<% end %>
+			<% elsif @show_shortlisted %>
+				<%= link_to view_applicants_jobpost_path(id: @jobpost.id), :class=>"btn btn-md btn-default" do %>
+					<span class="fa fa-th-list"></span> All Applicants
+				<% end %>
+				<%= link_to view_applicants_jobpost_path(id: @jobpost.id, show_selected: true), :class => "btn btn-md btn-success green" do %>
+					<span class="fa fa-check"></span> Selected Applicants
+				<% end %>
+			<% else %>
+				<%= link_to view_applicants_jobpost_path(id: @jobpost.id, show_shortlisted: true), :class=>"btn btn-md btn-info" do %>
+					<span class="fa fa-plus"></span> Shortlisted Applicants
+				<% end %>
+				<%= link_to view_applicants_jobpost_path(id: @jobpost.id, show_selected: true), :class => "btn btn-md btn-success green" do %>
+					<span class="fa fa-check"></span> Selected Applicants
+				<% end %>
+			<% end %>
 		</div>
 	</div>
-	<div class="application_table">
-		<table class="table table-bordered">
-			<thead>
-				<tr>
-					<th>Name</th>
-					<th>Course</th>
-					<th>College</th>
-					<th>Email</th>
-					<th>Phone</th>
-				</tr>
-			</thead>
-			<tbody>
-				<% @applications.each do |a| %>
-					<% applicant = Student.find(a.student_id) %>
-					<% course = Course.find(applicant.course_id) %>
-					<% branch = Branch.find(applicant.branch_id) %>
-					<% college = College.find(applicant.college_id) %>
+	<div class="application_table_container">
+		<% if @applications.any? %>
+			<div class="note text-right text-danger">
+				<% if !@show_selected && !@show_shortlisted %>
+					<small>Please shortlist and select candidates carefully. These actions cannot be undone.<br/>
+					An email will be sent to the shortlisted/selected candidates notifying them about the corresponding actions.</small>
+				<% end %> 
+			</div>
+			<table class="table table-bordered application_table" id="<%= @jobpost.id %>"><!-- Jobpost ID givrn as table ID -->
+				<thead>
 					<tr>
-						<td><%= link_to applicant.first_name+" "+applicant.last_name, applicant %></td>
-						<td><%= course.name %><small><%= "["+branch.name+"]" %></small></td>
-						<td><%= college.college_name %></td>
-						<td><%= applicant.email %></td>
-						<td><%= applicant.phone_no %></td>
+						<th>Name</th>
+						<th>Course</th>
+						<th>College</th>
+						<th>Email</th>
+						<th>Phone</th>
+						<th>Actions</th>
 					</tr>
-				<% end %>
-			</tbody>
-		</table>
+				</thead>
+				<tbody>
+					<% @applications.each do |a| %>
+						<% applicant = Student.find(a.student_id) %>
+						<% course = Course.find(applicant.course_id) %>
+						<% branch = Branch.find(applicant.branch_id) %>
+						<% college = College.find(applicant.college_id) %>
+						<tr class="student_info" id="<%= applicant.id %>"><!--student ID givrn as row ID -->
+							<td><%= link_to applicant.first_name+" "+applicant.last_name, applicant %></td>
+							<td><%= course.name %><small><%= "["+branch.name+"]" %></small></td>
+							<td><%= college.college_name %></td>
+							<td><%= applicant.email %></td>
+							<td><%= applicant.phone_no %></td>
+							<td width="50px" class="actions">
+								<% if a.selected %>
+									<a class="shortlist" data-toggle="tooltip" data-placement="top" title="shortlisted"><span class="fa fa-plus"></span></a>
+									<a class="select" data-toggle="tooltip" data-placement="top" title="selected"><span class="fa fa-check"></span></a>
+								<% elsif a.shortlisted > 0 %>
+									<a class="shortlist" data-toggle="tooltip" data-placement="top" title="shortlised"><span class="fa fa-plus"></span></a>
+									<a class="select undecided" data-toggle="tooltip" data-placement="top" title="select/finalize"><span class="fa fa-check"></span></a>
+								<% else %>
+									<a class="shortlist undecided" data-toggle="tooltip" data-placement="top" title="shortlist for next round"><span class="fa fa-plus"></span></a>
+									<a class="select undecided" data-toggle="tooltip" data-placement="top" title="select/finalize"><span class="fa fa-check"></span></a>
+								<% end %>
+								<div class="ajax_overlay">
+									<%= image_tag 'ajax-loader.gif' %>
+								</div>
+							</td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+		<% else %>
+			<p class="lead text-center">No records found<p>
+		<% end %>
 	</div>
 </div>
+<%= javascript_include_tag 'jobs' %>

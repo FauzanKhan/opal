@@ -8,8 +8,10 @@
         	</button>
 			<h1 class="navbar-brand"><a href="#">Sf</a></h1>
 			<ul class="nav navbar-nav collapse nav-menu navbar-collapse">
-				<li class="pull-left"><a href="#"><span class="fa fa-home"></span> Home</a></li>
-				<li class="divider visible-md visible-lg"></li>
+				<% if current_user.user_type == 2 %>
+					<li class="pull-left"><a href="#"><span class="fa fa-home"></span> Home</a></li>
+					<li class="divider visible-md visible-lg"></li>
+				<% end %>
 				<li class="pull-left">
 					<%= link_to current_user do %>
 						<%= image_tag current_user.image_url.nil? ? 'default_user.jpg' :current_user.image_url.to_s %>

@@ -1,14 +1,22 @@
 module JobpostsHelper
 	def view_applicants
 		@jobpost = Jobpost.find(params[:id])
-		@applications = @jobpost.job_applications
+		@show_selected = params[:show_selected]
+		@show_shortlisted = params[:show_shortlisted]
+		if @show_selected
+			@applications = @jobpost.job_applications.where(selected: true)
+		elsif @show_shortlisted
+			@applications = @jobpost.job_applications.where(shortlisted: 1)
+		else
+			@applications = @jobpost.job_applications
+		end
+		@applications = [] if @applications.nil?
 	end
 
 	def already_applied?
 		jobpost = Jobpost.find(params[:id])
-		job_applications = jobpost.job_applications
 		student = current_user
-		applied = job_applications.find_by(student_id: student.id)
+		applied = JobApplication.find_by(student_id: student.id)
 		!applied.nil?
 	end
 
@@ -26,5 +34,29 @@ module JobpostsHelper
 	def job_expired?
 		jobpost = Jobpost.find(params[:id])
 		Date.today > jobpost.last_date
+	end
+
+	def shortlist_applicant
+		applicant_id = params[:applicant_id]
+		jobpost_id = params[:jobpost_id]
+		job_application = JobApplication.find_by(student_id: applicant_id, jobpost_id: jobpost_id)
+		shortlisted_for_round = job_application.shortlisted
+		shortlisted_for_round += 1
+		respond_to do |format|
+			if job_application.update_attribute(:shortlisted, shortlisted_for_round)
+				format.html { render :nothing => true, :notice => 'Update SUCCESSFUL!' } 
+			end
+		end
+	end
+
+	def select_applicant
+		applicant_id = params[:applicant_id]
+		jobpost_id = params[:jobpost_id]
+		job_application = JobApplication.find_by(student_id: applicant_id, jobpost_id: jobpost_id)
+		respond_to do |format|
+			if job_application.update_attribute(:selected, true)
+				format.html { render :nothing => true, :notice => 'Update SUCCESSFUL!' } 
+			end
+		end
 	end
 end
