@@ -1,5 +1,5 @@
 module JobpostsHelper
-	def view_applications
+	def view_applicants
 		@jobpost = Jobpost.find(params[:id])
 		@applications = @jobpost.job_applications
 	end

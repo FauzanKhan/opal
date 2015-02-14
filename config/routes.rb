@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get 'students/:id/populate_branches' => 'students#populate_branches' 
   get 'jobposts/populate_branches'
   get 'jobposts/:id/populate_branches' => 'jobposts#populate_branches' 
-  get 'jobposts/:id/view_applications' => 'jobposts#view_applications', as: :view_applications_jobpost
+  get 'jobposts/:id/view_applicants' => 'jobposts#view_applicants', as: :view_applicants_jobpost
   get '/populate_branches'  => 'jobposts#populate_branches'
   get 'students/:id/account_settings' => 'students#account_settings', as: :account_settings_student
   patch 'students/:id/account_settings' => 'students#update_account'
@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   resources :password_resets, only: [:edit, :new, :create, :update]
 
   delete 'logout' => 'sessions#destroy'
-    post 'job_applications' => 'job_applications#create', as: :submit_application
+  post 'job_applications' => 'job_applications#create', as: :submit_application
 
 
   # Example of regular route:

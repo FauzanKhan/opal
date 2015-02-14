@@ -100,6 +100,17 @@ $primary_green : rgb(111, 201, 154);
 		border-bottom:1px solid #EAEAEA;
 		margin-bottom:20px;
 	}
+	.search_applicants{
+		margin-bottom:20px;
+		padding-bottom:20px;
+		border-bottom:1px solid #EAEAEA;
+		.form-control, .input-group-addon{
+			border-radius: 0px;
+		}
+		.view_by_status{
+			text-align: right;
+		}
+	}
 	.application_table{
 		thead{
 			th{

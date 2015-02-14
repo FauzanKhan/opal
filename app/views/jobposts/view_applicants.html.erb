@@ -1,0 +1,48 @@
+<div class="applications_container">
+	<div class="heading_container">
+		<h1 class="lead">
+			Applications for <%= @jobpost.position %> at <%= @jobpost.company %>
+			<small>(Posted on : <%= @jobpost.created_at.strftime('%d %b %Y') %>)</small>
+		</h1>
+	</div>
+	<div class="search_applicants row">
+		<div class="col-lg-7 col-md-7">
+			<div class="input-group">
+				<div class="input-group-addon"><span class="fa fa-search"></span></div>
+				<input type="text" placeholder="Search Applicants" class="form-control" />
+			</div>
+		</div>
+		<div class="view_by_status col-lg-5 col-md-5">
+			<a class="btn btn-md btn-info"><Span class="fa fa-plus"></span> Shortlisted Students</a>
+			<a class="btn btn-md btn-success green">&#10004; Selected Students</a>
+		</div>
+	</div>
+	<div class="application_table">
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Course</th>
+					<th>College</th>
+					<th>Email</th>
+					<th>Phone</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @applications.each do |a| %>
+					<% applicant = Student.find(a.student_id) %>
+					<% course = Course.find(applicant.course_id) %>
+					<% branch = Branch.find(applicant.branch_id) %>
+					<% college = College.find(applicant.college_id) %>
+					<tr>
+						<td><%= link_to applicant.first_name+" "+applicant.last_name, applicant %></td>
+						<td><%= course.name %><small><%= "["+branch.name+"]" %></small></td>
+						<td><%= college.college_name %></td>
+						<td><%= applicant.email %></td>
+						<td><%= applicant.phone_no %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+</div>
