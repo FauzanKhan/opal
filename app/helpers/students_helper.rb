@@ -6,6 +6,6 @@ module StudentsHelper
 
 	def my_applications
 		student = Student.find(params[:id])
-		@applications = student.job_applications
+		@applications = student.job_applications.order(id: :desc)
 	end
 end
