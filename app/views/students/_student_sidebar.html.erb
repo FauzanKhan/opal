@@ -5,7 +5,7 @@
 	<div class="text-center">
 		<% if @student == current_user %>
 			<a href="#" class="user_name"><%= current_user.first_name %> <%= current_user.last_name %></a>
-			<%= link_to my_applications_student_path, :class => "btn btn-block btn-info" do %>
+			<%= link_to my_applications_student_path(id: current_user.id), :class => "btn btn-block btn-info" do %>
 				<span class="fa fa-list-ul"></span> My Applications
 			<% end %>
 			<%= link_to @current_students_tpo, :class => "btn btn-block btn-success green" do %>
@@ -20,9 +20,15 @@
 				<p><span class="fa fa-phone"></span> 9876543210<br/></p>
 				<span class="divider"></span>-->
 				<div class="student_web_links">
-					<a href="#" class="btn btn-sm"><span class="fa fa-globe"></span></a>
-					<a href="#" class="btn btn-sm"><span class="fa fa-github-square"></span></a>
-					<a href="#" class="btn btn-sm"><span class="fa fa-linkedin-square"></span></a>
+					<% if !@student.social_profile.website.nil? %>
+						<a href="http://<%= @student.social_profile.website %>" class="btn btn-sm" target="_blank"><span class="fa fa-globe"></span></a>
+					<% end %>
+					<% if !@student.social_profile.github.nil? %>
+						<a href="http://<%= @student.social_profile.github %>" class="btn btn-sm" target="_blank"><span class="fa fa-github-square"></span></a>
+					<% end %>
+					<% if !@student.social_profile.linkedin.nil? %>
+						<a href="http://<%= @student.social_profile.linkedin %>" class="btn btn-sm" target="_blank"><span class="fa fa-linkedin-square"></span></a>
+					<% end %>
 				</div>
 			</div>
 		<% end %>

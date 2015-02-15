@@ -1,0 +1,15 @@
+<% provide(:title, "JobFeed | "+@student.first_name.to_s+" "+@student.last_name.to_s) %>
+<div class="row">
+	<%= render 'student_sidebar' %>
+	<div class="col-lg-10 col-md-10 col-sm-10 main_content">
+		<% if @jobposts.any? %>
+		  <ul class="list-unstyled jobposts_list">
+		    <%= render @jobposts %>
+		  </ul>
+		  <% else %>
+		  	<div class="no_posts_note">
+			  	<p class="lead">We cannot find any suitable jobs for you please come back later.</p>
+			</div>
+		<% end %>
+	</div>
+</div>

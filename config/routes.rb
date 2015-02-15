@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   get 'students/:id/my_applications' => 'students#my_applications', as: :my_applications_student
   patch 'students/:id/account_settings' => 'students#update_account'
 
+
   resources :tpos
   resources :students
   resources :welcome
@@ -33,6 +34,7 @@ Rails.application.routes.draw do
 
   delete 'logout' => 'sessions#destroy'
   post 'job_applications' => 'job_applications#create', as: :submit_application
+  get '/job_feed' => 'students#job_feed', as: :jobfeed_student
 
 
   # Example of regular route:

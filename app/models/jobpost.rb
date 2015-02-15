@@ -33,4 +33,11 @@ class Jobpost < ActiveRecord::Base
 
 	validates_presence_of :courses
 
+	def self.search(search)
+	  where("company LIKE ?", "%#{search}%") |
+	  where("position LIKE ?", "%#{search}%") |
+	  where("venue LIKE ?", "%#{search}%") |
+	  where("location_id LIKE ?", "%#{search}%")
+	end
+
 end

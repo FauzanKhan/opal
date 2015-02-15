@@ -9,7 +9,11 @@
 			<h1 class="navbar-brand"><a href="#">Sf</a></h1>
 			<ul class="nav navbar-nav collapse nav-menu navbar-collapse">
 				<% if current_user.user_type == 2 %>
-					<li class="pull-left"><a href="#"><span class="fa fa-home"></span> Home</a></li>
+					<li class="pull-left">
+						<%= link_to jobfeed_student_path do %>
+							<span class="fa fa-home"></span> JobFeed
+						<% end %>	
+					</li>
 					<li class="divider visible-md visible-lg"></li>
 				<% end %>
 				<li class="pull-left">
@@ -19,10 +23,16 @@
 					<% end %>
 				</li>
 				<li class="search_form col-lg-6 col-md-4 col-sm-2 col-xs-12">
-					<form role="search">
+					<%= form_tag(jobfeed_student_path, :method => "get", id: "search-form") do %>
+						<%= text_field_tag :search, params[:search], :placeholder => "Search Jobs by Position, Location or Company", :class => "form-control" %>
+						<%= button_tag(type: "submit", class: "btn btn-sm") do %>
+							<span class="fa fa-search"></span>
+						<% end %>
+					<% end %>
+					<!--<form role="search">
 						<input type="text" placeholder="Search Jobs by Position, Location or Company" class="form-control">
 						<button class="btn btn-default btn-sm"><span class="fa fa-search"><span></button>
-					</form>
+					</form>-->
 				</li>
 				<li class="dropdown_container"><a href="#"><span class="fa fa-cog"></span> Account <span class="caret"></a>
 					<ul class="dropdown_list list-unstyled">
@@ -58,13 +68,29 @@
 				<li class="dropdown_container"><a href="#"><span class="fa fa-language"></span> Opportunities <span class="caret"></a>
 					<ul class="dropdown_list list-unstyled">
 						<li class="arrow_up"></li>
-						<li><a href="#"><span class="fa fa-institution"></span> On-Campus</a></li>
+						<li>
+							<%= link_to jobfeed_student_path(job_type: 1) do %>
+								<span class="fa fa-institution"></span> On-Campus
+							<% end %>
+						</li>
 						<li class="divider"></li>
-						<li><a href="#"><span class="fa fa-building-o"></span> Off-Campus</a></li>
+						<li>
+							<%= link_to jobfeed_student_path(job_type: 2) do %>
+								<span class="fa fa-building-o"></span> Off-Campus
+							<% end %>
+						</li>
 						<li class="divider"></li>
-						<li><a href="#"><span class="fa fa-building"></span> Walk-ins</a></li>
+						<li>
+							<%= link_to jobfeed_student_path(job_type: 3) do %>
+								<span class="fa fa-building"></span> Walk-ins
+							<% end %>
+						</li>
 						<li class="divider"></li>
-						<li><a href="#"><span class="fa fa-rocket"></span> Internships</a></li>
+						<li>
+							<%= link_to jobfeed_student_path(job_type: 4) do %>
+								<span class="fa fa-rocket"></span> Internships
+							<% end %>
+						</li>
 					</ul>
 				</li>
 			</ul>

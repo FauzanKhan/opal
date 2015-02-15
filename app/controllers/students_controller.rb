@@ -2,6 +2,7 @@ class StudentsController < ApplicationController
 
 	before_action :logged_in_user, only: [:edit, :update, :show]
     before_action :correct_user, only: [:edit, :update, :account_settings, :my_applications]
+    before_action :student_user, only: :job_feed
     before_action :redirect_if_logged_in, only: [:new]
     before_filter :set_cache_buster, only: :edit
 
@@ -102,6 +103,13 @@ class StudentsController < ApplicationController
 				redirect_to root_path
 				flash[:danger] = "Action not allowed as you're not the owner of requested profile"
 			end
+		end
+
+		def student_user
+			if current_user.user_type == 1
+				redirect_to root_path
+				flash[:danger] = "The feature is available fo students only"
+			end 
 		end
 
 end
