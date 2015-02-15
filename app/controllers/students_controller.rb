@@ -66,7 +66,7 @@ class StudentsController < ApplicationController
 		@student = Student.find(params[:id])
 		if @student.update_attributes(account_params)
 			flash[:success] = "Account updated Successfully"
-			redirect_to current_user
+			redirect_to root_path
 		else
 			render 'account_settings'
 		end 
