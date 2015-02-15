@@ -33,7 +33,7 @@
 				<% end %>
 				<div class="desc">
 					<div class="desc_title"><h4>Eligibility</h4></div>
-					<div class="about_eligibility row">
+					<div class="about_eligibility">
 						<div class="col-lg-4 col-md-4">
 							<div><b><span class="fa fa-plus"></span> Percentage</b></div>
 							<%= @jobpost.percentage_required %>
@@ -92,7 +92,7 @@
 						<% if current_user.user_type == 2 %>
 							<% if already_applied? %>
 								<span class="btn btn-md btn-success green">
-									&#10004; Already Applied
+									<span class="fa fa-check"></span> Already Applied
 								</span>
 							<% elsif !can_apply? %>
 								<p class="text-danger">This job is an on-campus opportunity, only the students from <%= @colege.college_name %> can apply.</p>

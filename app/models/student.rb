@@ -7,6 +7,8 @@ class Student < ActiveRecord::Base
   has_many :projects, dependent: :destroy
   has_many :job_applications
   has_many :jobposts, through: :applications
+  has_one :social_profile, dependent: :destroy
+  accepts_nested_attributes_for :social_profile, allow_destroy: true
 
   accepts_nested_attributes_for :educations, reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :experiences, reject_if: :all_blank, allow_destroy: true

@@ -36,7 +36,11 @@
 								<tbody>
 									<tr data-toggle="collapse" data-target="#contributions_<%= e.id %>" data-parent="experience_<%= e.id %>" class="accordion-toggle">
 										<td><b><%= e.position %></b> at <b><%= e.company_name %></b></td>
-										<td class="time_period">[<%= e.start_date.strftime('%d %b %Y') %> to <%= e.end_date.strftime('%d %b %Y') %>]</td>
+										<td class="time_period">
+											<small>
+												[ <%= e.start_date.strftime('%d %b %Y') %> to <%= e.end_date.strftime('%d %b %Y') %> ]
+											</small>
+										</td>
 										<td class="collapse_btn" width="20px;">
 											<button class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="right" data-original-title="asdasd"><span class="fa fa-arrows-v"></span></button>
 										</td>

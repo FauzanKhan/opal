@@ -43,6 +43,7 @@ class StudentsController < ApplicationController
 		@student = current_user
 		@branches = Branch.where(course_id: @student.course_id)
 		@education = current_user.educations.build
+		@social_profile = current_user.social_profile || current_user.build_social_profile
 		#@existing_eduaction = Education.where(student_id: @student.id)
 		#@education = Education.new
 		@experience = current_user.experiences.build
@@ -91,7 +92,8 @@ class StudentsController < ApplicationController
 											:skills, :achievements, :percentage, :year_of_study, :year_of_passing, 
 											:educations_attributes => [:id, :institute, :degree, :percentage, :year_of_passing, :_destroy], 
 											:experiences_attributes => [:id, :company_name, :position, :contributions, :start_date, :end_date, :_destroy],
-											:projects_attributes => [:id, :name, :description, :_destroy])
+											:projects_attributes => [:id, :name, :description, :_destroy],
+											:social_profile_attributes => [:id, :website, :linkedin, :github])
 		end
 
 		def correct_user

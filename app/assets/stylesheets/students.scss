@@ -217,6 +217,16 @@ $primary_green : rgb(111, 201, 154);
 					font-size:10px;
 				}
 			}
+			.social_profiles{
+				margin-top:20px;
+				.input-group{
+					width:130px;
+					margin-bottom:10px;
+					.input-group-addon{
+						border-radius:0px;
+					}
+				}
+			}
 		}
 		.student_details{
 			.student_info_element{
