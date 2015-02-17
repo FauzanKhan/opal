@@ -101,6 +101,12 @@ class Student < ActiveRecord::Base
 		update_column(:remember_digest, nil)
 	end
 
+  def self.search_applicants(search, jobpost_id)
+    where("first_name LIKE?", "%#{search}%") |
+    where("last_name LIKE?", "%#{search}%") |
+    where("email LIKE?", '%#{search}%' ) 
+  end
+
     private
 
       def create_activation_digest

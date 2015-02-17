@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
 			if student.activated?
 				log_in student
 				params[:session][:remember_me] == '1' ? remember(student) : forget(student)
-				redirect_back_or student
+				redirect_back_or root_path
 			else
 				flash[:danger] = "Account not activated. Check your email for activation link"
 				redirect_to root_url
@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
 			if tpo.activated?
 				log_in tpo
 				params[:session][:remember_me] == '1' ? remember(tpo) : forget(tpo)
-				redirect_back_or tpo
+				redirect_back_or root_path
 			else
 				flash[:danger] = "Account not activated. Check your email for activation link"
 				redirect_to root_url

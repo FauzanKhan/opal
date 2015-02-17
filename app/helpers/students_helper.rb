@@ -15,7 +15,7 @@ module StudentsHelper
 		@student = current_user
 		@current_students_tpo = Tpo.find_by(college_id: current_user.college_id)
 		if params[:search]
-	    	@jobposts = Jobpost.search(params[:search])
+	    	@jobposts = Jobpost.search(params[:search].gsub(/\s+/, ' ').strip)
 	  	else
 			job_type = params[:job_type]
 			case job_type

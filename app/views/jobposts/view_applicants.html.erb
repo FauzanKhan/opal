@@ -24,7 +24,9 @@
 		<div class="col-lg-7 col-md-7">
 			<div class="input-group">
 				<div class="input-group-addon"><span class="fa fa-search"></span></div>
-				<input type="text" placeholder="Search Applicants" class="form-control" />
+				<%= form_tag(view_applicants_jobpost_path, :method => "get", :id => "search-form") do %>
+					<%= text_field_tag :search_applicant, params[:search_applicant], :placeholder => "Search Applicants", :class => "form-control" %>
+				<% end %>
 			</div>
 		</div>
 		<div class="view_by_status col-lg-5 col-md-5">

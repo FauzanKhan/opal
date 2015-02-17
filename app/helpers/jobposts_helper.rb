@@ -1,9 +1,23 @@
 module JobpostsHelper
+	
+	def search_applicants(search, jobpost)
+		keywords = search.split
+		students = Array.new
+		keywords.each do |keyword|
+			student_ids = Student.where("first_name = ? OR last_name = ? OR email = ?", keyword, keyword, keyword).ids
+			students.push(student_ids).flatten!
+		end
+		jobpost.job_applications.where(student_id: students)
+	end
+
 	def view_applicants
 		@jobpost = Jobpost.find(params[:id])
 		@show_selected = params[:show_selected]
 		@show_shortlisted = params[:show_shortlisted]
-		if @show_selected
+		if params[:search_applicant]
+			#students = Student.search_applicants(params[:search], params[:id])
+			@applications = search_applicants(params[:search_applicant], @jobpost) 
+		elsif @show_selected
 			@applications = @jobpost.job_applications.where(selected: true)
 		elsif @show_shortlisted
 			@applications = @jobpost.job_applications.where(shortlisted: 1)

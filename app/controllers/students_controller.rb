@@ -18,6 +18,7 @@ class StudentsController < ApplicationController
 		@courses = Course.all
 		@branches = Branch.where(course_id: params[:student][:course_id])
 		@student = Student.new(student_params)
+		@student.location_id = College.find(params[:student][:college_id]).location_id
 		if @student.save
 			#log_in @student
 			@student.send_activation_email
@@ -81,7 +82,7 @@ class StudentsController < ApplicationController
 
 	private
 		def student_params
-			params.require(:student).permit(:email, :password, :first_name, :last_name, :college_id, :course_id, :branch_id)
+			params.require(:student).permit(:email, :password, :first_name, :last_name, :college_id, :course_id, :branch_id, :location_id)
 		end
 
 		def account_params
