@@ -1,0 +1,33 @@
+<% provide(:title, 'All Courses') %>
+<h1 class="text-center">All Courses
+  <small>[<%= pluralize(@courses.count, " Course") %> | <%= pluralize(Branch.all.count, " Branch") %>]</small>
+  <%= link_to "Add New", new_course_path, :class=>"btn btn-md btn-info pull-right" %>
+</h1>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Course Name</th>
+      <th>Branches</th>
+      <td>Actions</td>
+    </tr>
+  </thead>
+  <% @courses.each do |course| %>
+    <tr>
+      <td><%= course.id %></td>
+      <td><%= course.name %></td>
+      <td>
+        <% course.branches.each do |b| %>
+          <%= b.name %>, 
+        <% end %>
+      </td>
+      <% if current_user.admin? %>
+    	 <td>
+        <%= link_to "Delete", course, method: :delete, data: { confirm: "You sure?" } %> | 
+        <%= link_to "Edit", edit_course_path(course.id) %>
+      </td>
+  	  <% end %>
+    </tr>
+  <% end %>
+</table>

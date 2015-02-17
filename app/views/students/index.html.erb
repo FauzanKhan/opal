@@ -1,5 +1,5 @@
 <% provide(:title, 'All Students') %>
-<h1 class="text-center">All Students</h1>
+<h1 class="text-center">All Students<small>[<%= pluralize(@students.count, " Student") %>]</small></h1>
 
 <table class="table table-bordered table-striped">
   <thead>

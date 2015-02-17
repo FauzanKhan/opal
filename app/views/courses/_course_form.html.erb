@@ -1,0 +1,23 @@
+<%= form_for @course do |f| %>
+	<div class="col-lg-6 col-md-6 col-sm-6">
+		<%= f.label :name, :class=>"control-label" do %>
+			Course Name
+		<% end %>
+		<%= f.text_field :name, :class => "form-control", :placeholder => "Course Name" %>
+	</div>
+	<div class="col-lg-6 col-md-6 col-sm-6" id="branch_fields">
+		<label class="control-label">Branches</label><br />
+		<%= f.fields_for :branches do |b| %>
+			<%#= b.hidden_field :branch_ids, :multiple => true %>
+			<%= b.text_field :name, :class=>"form-control", :style=>"width:80%;display:inline-block;" %>
+			<%= b.label :_destroy, :class=>"control-label" do %>
+				<%= b.check_box :_destroy %>
+					Destroy
+			<% end %>
+		<% end %>
+		
+	</div>
+	<br/><br/><a class="btn bt-sm btn-info pull-right" id="add_branch">Add More</a><br/><br/>
+	<br/><br/><%= f.submit "Update", :class=>"btn btn-info btn-lg pull-right" %> 
+<% end %>
+<%= javascript_include_tag 'admin_panel' %>

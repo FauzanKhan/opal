@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   resources :all_users
   resources :jobposts
   resources :locations
+  resources :courses
   #resources :job_applications, only: :create
   resources :account_activations, only: [:edit]
   resources :password_resets, only: [:edit, :new, :create, :update]

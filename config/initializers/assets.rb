@@ -22,6 +22,7 @@ Rails.application.config.assets.precompile += %w( experience_form.js )
 Rails.application.config.assets.precompile += %w( project_form.js )
 Rails.application.config.assets.precompile += %w( jobs.js )
 Rails.application.config.assets.precompile += %w( populate_branches.js )
+Rails.application.config.assets.precompile += %w( admin_panel.js )
 Rails.application.config.assets.precompile += %w( ckeditor/* )
 Rails.application.config.assets.precompile += %w( ckeditor/config.js )
 

@@ -1,4 +1,7 @@
 class LocationsController < ApplicationController
+	
+	before_action :admin_user
+
 	def index
 		@locations = Location.all
 	end
