@@ -6,15 +6,18 @@ class TposController < ApplicationController
 	before_action :admin_user, only: [:destroy, :index]
 	before_action :redirect_if_logged_in, only: [:new]
 
+	include TposHelper
+
 	def new
 		@tpo = Tpo.new
 	end
 
 	def index
-		@users = AllUser.all
+		@tpos = Tpo.all - Tpo.where(admin: true)
 	end
 
 	def show
+		redirect_to admin_panel_path if current_user.admin
 		@tpo = Tpo.find(params[:id])
 		@jobposts = @tpo.jobposts
 	end
@@ -50,6 +53,17 @@ class TposController < ApplicationController
 	def edit
 		@tpo = Tpo.find(params[:id])
 	end
+
+	def destroy
+		tpo = Tpo.find(params[:id])
+		college_id = tpo.college_id
+		college = College.find(college_id)
+		if college.destroy && tpo.destroy
+			update_student_colleges(college_id)
+			flash[:success] = "Tpo & corresponding college deleted"
+			redirect_to :back
+		end
+	end
 	
 	private
 		def tpo_params
@@ -66,11 +80,6 @@ class TposController < ApplicationController
 				redirect_to root_path
 				flash[:danger] = "Action not allowed as you're not the owner of requested profile"
 			end
-		end
-
-		def admin_user
-			@user = Tpo.find(params[:id])
-			redirect_to root_path unless @user.admin
 		end
 
 		#def update_all_user(old_email, new_email)

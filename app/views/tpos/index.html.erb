@@ -1,15 +1,23 @@
-<% provide(:title, 'All users') %>
-<h1>All users</h1>
+<% provide(:title, 'All Tpos') %>
+<h1 class="text-center">All Tpos</h1>
 
-<ul class="users">
-  <% @users.each do |user| %>
-    <li>
-      <%= link_to user.name, Tpo.find_by(email: user.email) || Student.find_by(email: user.email) %>
-      <%= user.college %>
-      <%= user.user_type %>
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email ID</th>
+      <th>College</th>
+      <td>Actions</td>
+    </tr>
+  </thead>
+  <% @tpos.each do |tpo| %>
+    <tr>
+      <td><%= link_to tpo.first_name+" "+tpo.last_name, tpo_path(tpo) %></td>
+      <td><%= tpo.email %></td>
+      <td><%= tpo.college %></td>
       <% if current_user.admin? %>
-    |	 <%= link_to "delete", user, method: :delete, data: { confirm: "You sure?" } %>
+    	 <td><%= link_to "delete", tpo, method: :delete, data: { confirm: "You sure?" } %></td>
   	  <% end %>
-    </li>
+    </tr>
   <% end %>
-</ul>
+</table>

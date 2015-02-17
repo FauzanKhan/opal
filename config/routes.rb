@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   resources :sessions
   resources :all_users
   resources :jobposts
+  resources :locations
   #resources :job_applications, only: :create
   resources :account_activations, only: [:edit]
   resources :password_resets, only: [:edit, :new, :create, :update]
@@ -35,6 +36,7 @@ Rails.application.routes.draw do
   delete 'logout' => 'sessions#destroy'
   post 'job_applications' => 'job_applications#create', as: :submit_application
   get '/job_feed' => 'students#job_feed', as: :jobfeed_student
+  get '/admin_panel' => 'tpos#admin_panel', as: :admin_panel
 
 
   # Example of regular route:

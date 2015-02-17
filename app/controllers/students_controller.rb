@@ -4,11 +4,17 @@ class StudentsController < ApplicationController
     before_action :correct_user, only: [:edit, :update, :account_settings, :my_applications]
     before_action :student_user, only: :job_feed
     before_action :redirect_if_logged_in, only: [:new]
+    before_action :admin_user, only: [:destroy, :index]
     before_filter :set_cache_buster, only: :edit
 
     include StudentsHelper
+
+    def index
+    	@students = Student.all
+    end
 	
 	def new
+		@colleges = College.where.not(id: 3)
 		@student = Student.new
 		@courses = Course.all
 		@branches = Branch.where(course_id: Course.first.id)
@@ -43,6 +49,7 @@ class StudentsController < ApplicationController
 
 	def edit
 		@student = current_user
+		@colleges = College.where.not(id: 3)
 		@branches = Branch.where(course_id: @student.course_id)
 		@education = current_user.educations.build
 		@social_profile = current_user.social_profile || current_user.build_social_profile
@@ -60,6 +67,14 @@ class StudentsController < ApplicationController
 			flash[:success] = "Profile successfully updated"
 		else
 			render 'edit'
+		end
+	end
+
+	def destroy
+		student = Student.find(params[:id])
+		if student.destroy
+			flash[:success] = "Student Deleted Successfully"
+			redirect_to :back
 		end
 	end
 

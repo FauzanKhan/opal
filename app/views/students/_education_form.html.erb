@@ -14,7 +14,7 @@
 		</thead>
 		<tbody class="current_education_details">
 			<td>
-				<%= f.collection_select(:college_id, College.all, :id, :college_name, {}, {:class => "form-control"}) %>
+				<%= f.collection_select(:college_id, @colleges, :id, :college_name, {}, {:class => "form-control"}) %>
 			</td>
 			<td>
 				<%= f.collection_select(:course_id, Course.all, :id, :name, {}, {:class => "course", :style => "width:50%", :onchange => "pop_branches()"}) %>

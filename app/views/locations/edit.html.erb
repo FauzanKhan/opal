@@ -1,0 +1,22 @@
+<h1 class="text-center">Edit Location</h1>
+<%= form_for @location do |f| %>
+	<table id="new_location_table" class="table table-bordered">
+		<thead>
+			<tr>
+				<th>Location Name</th>
+				<th>Zone ID</th>
+			</tr>
+		</thead>
+			<tbody>
+				<tr>
+					<td><%= f.text_field :location, :class=>"form-control", :placeholder=>"Location Name" %></td>
+					<td><%= f.text_field :zone, :class=>"form-control", :placeholder=>"Zone ID" %></td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<%= f.submit "Update", :class=>"btn btn-info btn-md pull-right" %>
+					</td>
+				</tr>
+			</tbody>
+	</table>
+<% end %>

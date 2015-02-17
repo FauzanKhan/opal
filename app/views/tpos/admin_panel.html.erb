@@ -1,0 +1,31 @@
+<% provide(:title, 'Admin Pnanel | Simplifica') %>
+<div class="main_content">
+	<h2 class="text-center">Admin Panel<br/><small>Select an action below to get started</small></h2>
+	<table class="table table-bordered table-striped">
+		<thead class="text-center">
+			<tr>
+				<th>Tpos</th>
+				<th>Students</th>
+				<th>Jobposts</th>
+				<th>Courses</th>
+				<th>Locations</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><%= link_to "View all", tpos_path %></td>
+				<td><%= link_to "View all", students_path %></td>
+				<td><%= link_to "View all", jobposts_path %></td>
+				<td>View all</td>
+				<td><%= link_to "View all", locations_path %></td>
+			<tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td>Add New</td>
+				<td><%= link_to "Add New", new_location_path %></td>
+			</tr>
+		</tbody>
+	</table>
+</div>

@@ -1,0 +1,23 @@
+<% provide(:title, 'All Jobposts') %>
+<h1 class="text-center">All Jobposts</h1>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Company and Position</th>
+      <th>Applications</th>
+      <td>Actions</td>
+    </tr>
+  </thead>
+  <% @jobposts.each do |jobpost| %>
+    <tr>
+      <td><%= jobpost.id %></td>
+      <td><%= link_to jobpost.company+" at "+jobpost.position, jobpost_path(jobpost) %></td>
+      <td><%= jobpost.job_applications.count %></td>
+      <% if current_user.admin? %>
+    	 <td><%= link_to "delete", jobpost, method: :delete, data: { confirm: "You sure?" } %></td>
+  	  <% end %>
+    </tr>
+  <% end %>
+</table>

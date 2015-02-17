@@ -1,0 +1,27 @@
+<% provide(:title, 'All Students') %>
+<h1 class="text-center">All Students</h1>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email ID</th>
+      <th>College</th>
+      <th>Course</th>
+      <td>Actions</td>
+    </tr>
+  </thead>
+  <% @students.each do |student| %>
+    <% college = College.find(student.college_id) %>
+    <% course = Course.find(student.course_id) %>
+    <tr>
+      <td><%= link_to student.first_name+" "+student.last_name, student_path(student) %></td>
+      <td><%= student.email %></td>
+      <td><%= college.college_name %></td>
+      <td><%= course.name %></td>
+      <% if current_user.admin? %>
+    	 <td><%= link_to "delete", student, method: :delete, data: { confirm: "You sure?" } %></td>
+  	  <% end %>
+    </tr>
+  <% end %>
+</table>

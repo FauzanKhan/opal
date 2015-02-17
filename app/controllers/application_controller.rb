@@ -26,6 +26,11 @@ class ApplicationController < ActionController::Base
     response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
   end
 
+  def admin_user
+    #@user = Tpo.find(params[:id])
+    redirect_to root_path unless current_user.admin
+  end
+
   layout :layout_selection
   private
   def layout_selection

@@ -1,8 +1,13 @@
 class JobpostsController < ApplicationController
 	before_action :logged_in_user, only: [:new, :create, :destroy, :edit]
 	before_action :correct_user, only: [:destroy, :edit, :view_applications]
+	before_action :admin_user, only: :index
 
 	include JobpostsHelper
+
+	def index
+		@jobposts = Jobpost.all
+	end
 	
 	def new
 		@tpo = current_user

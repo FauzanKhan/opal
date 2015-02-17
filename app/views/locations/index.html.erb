@@ -1,0 +1,26 @@
+<% provide(:title, 'All locations') %>
+<h1 class="text-center">All Locations <small><%= link_to "Add New", new_location_path, :class=>"btn btn-sm btn-info pull-right" %></small></h1>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Location Name</th>
+      <th>Zone ID</th>
+      <td>Actions</td>
+    </tr>
+  </thead>
+  <% @locations.each do |location| %>
+    <tr>
+      <td><%= location.id %></td>
+      <td><%= location.location %></td>
+      <td><%= location.zone %></td>
+      <% if current_user.admin? %>
+    	 <td>
+        <%= link_to "Delete", location, method: :delete, data: { confirm: "You sure?" } %> | 
+        <%= link_to "Edit", edit_location_path(location.id) %>
+      </td>
+  	  <% end %>
+    </tr>
+  <% end %>
+</table>

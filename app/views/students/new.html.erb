@@ -28,7 +28,7 @@
                         </div>
                         <div class="form-group">
                             <%= f.label :college_id, :class => "control-label" %>
-                            <%= f.collection_select(:college_id, College.all, :id, :college_name, {}, {:class=>'form-control'}) %>
+                            <%= f.collection_select(:college_id, @colleges, :id, :college_name, {}, {:class=>'form-control'}) %>
                         </div>
                         <div class="row">
                         	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
