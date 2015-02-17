@@ -88,4 +88,3 @@ function shortlist_student(student_id, jobpost_id, link){
     })
 
     $('[data-toggle="tooltip"]').tooltip();
-

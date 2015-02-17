@@ -68,29 +68,43 @@
 				<li class="dropdown_container"><a href="#"><span class="fa fa-language"></span> Opportunities <span class="caret"></a>
 					<ul class="dropdown_list list-unstyled">
 						<li class="arrow_up"></li>
-						<li>
-							<%= link_to jobfeed_student_path(job_type: 1) do %>
-								<span class="fa fa-institution"></span> On-Campus
-							<% end %>
-						</li>
-						<li class="divider"></li>
-						<li>
-							<%= link_to jobfeed_student_path(job_type: 2) do %>
-								<span class="fa fa-building-o"></span> Off-Campus
-							<% end %>
-						</li>
-						<li class="divider"></li>
-						<li>
-							<%= link_to jobfeed_student_path(job_type: 3) do %>
-								<span class="fa fa-building"></span> Walk-ins
-							<% end %>
-						</li>
-						<li class="divider"></li>
-						<li>
-							<%= link_to jobfeed_student_path(job_type: 4) do %>
-								<span class="fa fa-rocket"></span> Internships
-							<% end %>
-						</li>
+						<% if current_user.user_type == 2 %>
+							<li>
+								<%= link_to jobfeed_student_path(job_type: 1) do %>
+									<span class="fa fa-institution"></span> On-Campus
+								<% end %>
+							</li>
+							<li class="divider"></li>
+							<li>
+								<%= link_to jobfeed_student_path(job_type: 2) do %>
+									<span class="fa fa-building-o"></span> Off-Campus
+								<% end %>
+							</li>
+							<li class="divider"></li>
+							<li>
+								<%= link_to jobfeed_student_path(job_type: 3) do %>
+									<span class="fa fa-building"></span> Walk-ins
+								<% end %>
+							</li>
+							<li class="divider"></li>
+							<li>
+								<%= link_to jobfeed_student_path(job_type: 4) do %>
+									<span class="fa fa-rocket"></span> Internships
+								<% end %>
+							</li>
+						<% else %>
+							<li>
+								<%= link_to new_jobpost_path do %>
+									<span class="fa fa-plus"></span> Post New
+								<% end %>
+							</li>
+							<li class="divider"></li>
+							<li>
+								<%= link_to tpo_path(current_user) do %>
+									<span class="fa fa-list-ul"></span> My Posts
+								<% end %>
+							</li>
+						<% end %>
 					</ul>
 				</li>
 			</ul>
