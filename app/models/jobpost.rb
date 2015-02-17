@@ -33,6 +33,14 @@ class Jobpost < ActiveRecord::Base
 
 	validates_presence_of :courses
 
+	def send_jobpost_mailer
+		JobpostUpdate.new_job_posted(self).deliver_now
+	end
+
+	def send_application_status_mailer(student_id, status)
+		JobpostUpdate.application_update(self, student_id, status).deliver_now
+	end
+
 	def self.search(search)
 	  where("company LIKE ?", "%#{search}%") |
 	  where("position LIKE ?", "%#{search}%") |

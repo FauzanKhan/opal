@@ -90,7 +90,7 @@ class StudentsController < ApplicationController
 		end
 
 		def update_params
-			params.require(:student).permit(:first_name, :last_name, :location_id, :college_id, :course_id, :image, :phone_no, 
+			params.require(:student).permit(:first_name, :last_name, :location_id, :college_id, :course_id, :branch_id, :image, :phone_no, 
 											:skills, :achievements, :percentage, :year_of_study, :year_of_passing, 
 											:educations_attributes => [:id, :institute, :degree, :percentage, :year_of_passing, :_destroy], 
 											:experiences_attributes => [:id, :company_name, :position, :contributions, :start_date, :end_date, :_destroy],

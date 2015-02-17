@@ -1,0 +1,9 @@
+<p>Hi <%= @applicant.first_name %>,</p>
+
+<p>
+	Congratulations!<br/> 
+	<b>You have been <%= @status %> for the role of <%= @jobpost.position %> at <%= @jobpost.company %></b><br/>
+	You can view your application status <%= link_to "Here", my_applications_student_url(@applicant.id) %><br/>
+	Please contact your Training & Placement Cell to know about the next step.<br/>
+	All the best!
+</p>

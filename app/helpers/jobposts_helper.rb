@@ -30,7 +30,7 @@ module JobpostsHelper
 	def already_applied?
 		jobpost = Jobpost.find(params[:id])
 		student = current_user
-		applied = JobApplication.find_by(student_id: student.id)
+		applied = JobApplication.find_by(student_id: student.id, jobpost_id: jobpost.id)
 		!applied.nil?
 	end
 
@@ -53,11 +53,13 @@ module JobpostsHelper
 	def shortlist_applicant
 		applicant_id = params[:applicant_id]
 		jobpost_id = params[:jobpost_id]
+		@jobpost = Jobpost.find(jobpost_id)
 		job_application = JobApplication.find_by(student_id: applicant_id, jobpost_id: jobpost_id)
 		shortlisted_for_round = job_application.shortlisted
 		shortlisted_for_round += 1
 		respond_to do |format|
 			if job_application.update_attribute(:shortlisted, shortlisted_for_round)
+				@jobpost.send_application_status_mailer(applicant_id, "shortlisted")
 				format.html { render :nothing => true, :notice => 'Update SUCCESSFUL!' } 
 			end
 		end
@@ -66,9 +68,11 @@ module JobpostsHelper
 	def select_applicant
 		applicant_id = params[:applicant_id]
 		jobpost_id = params[:jobpost_id]
+		@jobpost = Jobpost.find(jobpost_id)
 		job_application = JobApplication.find_by(student_id: applicant_id, jobpost_id: jobpost_id)
 		respond_to do |format|
 			if job_application.update_attribute(:selected, true)
+				@jobpost.send_application_status_mailer(applicant_id, "selected")
 				format.html { render :nothing => true, :notice => 'Update SUCCESSFUL!' } 
 			end
 		end

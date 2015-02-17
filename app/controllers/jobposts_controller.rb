@@ -20,7 +20,8 @@ class JobpostsController < ApplicationController
 		@courses = Course.all
 		@branches = Branch.all
 		if @jobpost.save
-			flash[:success] = "Job Posted Successfully"
+			@jobpost.send_jobpost_mailer
+			flash[:success] = "Job Posted Successfully. An email has been sent to eligible students of your college notifying them about the opportunity"
 			redirect_to current_user
 		else
 			render 'new'
