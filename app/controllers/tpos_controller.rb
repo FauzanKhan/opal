@@ -17,7 +17,7 @@ class TposController < ApplicationController
 	end
 
 	def show
-		redirect_to admin_panel_path if current_user.admin
+		redirect_to admin_panel_path if current_user.user_type == 1 && current_user.admin
 		@tpo = Tpo.find(params[:id])
 		@jobposts = @tpo.jobposts
 	end

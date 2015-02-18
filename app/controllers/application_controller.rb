@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
 
   def admin_user
     #@user = Tpo.find(params[:id])
-    redirect_to root_path unless current_user.admin
+    redirect_to root_path unless current_user.user_type == 1 && current_user.admin
   end
 
   layout :layout_selection

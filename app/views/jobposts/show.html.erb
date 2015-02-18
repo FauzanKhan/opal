@@ -15,7 +15,7 @@
 				</h3>
 			</div>
 			<div class="job_info">
-				<% if !@jobpost.about_company.empty? %>
+				<% if @jobpost.about_company && !@jobpost.about_company.empty? %>
 					<div class="desc">
 						<div class="desc_title"><h4>About <%= @jobpost.company %></h4></div>
 						<div class-"about_company">
@@ -23,7 +23,7 @@
 						</div>
 					</div>
 				<% end %>
-				<% if !@jobpost.job_profile.empty? %>
+				<% if @jobpost.job_profile && !@jobpost.job_profile.empty? %>
 					<div class="desc">
 						<div class="desc_title"><h4>About Position <small>(<%= @jobpost.position %>)</small></h4></div>
 						<div class-"about_pos">
@@ -52,7 +52,7 @@
 						</div>
 					</div>
 				</div>
-				<% if !@jobpost.other_requirements.empty? %>
+				<% if @jobpost.other_requirements && !@jobpost.other_requirements.empty? %>
 					<div class="desc">
 						<div class="desc_title"><h4>Other Requirements</h4></div>
 						<div class="about_req">
@@ -60,7 +60,7 @@
 						</div>
 					</div>
 				<% end %>
-				<% if !@jobpost.instructions.empty? %>
+				<% if @jobpost.instructions && !@jobpost.instructions.empty? %>
 					<div class="desc">
 						<div class="desc_title"><h4>Instructions From Tpo</h4></div>
 						<div class="about_instructions">
