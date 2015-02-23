@@ -70,11 +70,17 @@
                 <% else %>
                     <p class="message" style="display:none" >Please select a course from the above list</p>
                     <div class="dynamic_branches_container">
-                        <% @branches.each do |branch| %>
-                            <label class="checkbox-inline">
-                                <%= check_box_tag 'jobpost[branch_ids][]', branch.id, @jobpost.branch_ids.include?(branch.id), {:id => dom_id(branch), :class => branch.id, "data-course"=>branch.course_id} %>
-                                <%= label_tag dom_id(branch), branch.name %>
-                            </label>
+                        <% @previously_saved_course_ids.each do |c| %>
+                            <% course_branches = @branches.select{ |b| b.course_id == c} %>
+                            <div class="branches">
+                                <b class="course_name"><%= Course.find(c).name %></b>
+                                <% course_branches.each do |branch| %>
+                                    <label class="checkbox-inline">
+                                        <%= check_box_tag 'jobpost[branch_ids][]', branch.id, @jobpost.branch_ids.include?(branch.id), {:id => dom_id(branch), :class => branch.id, "data-course"=>branch.course_id} %>
+                                        <%= label_tag dom_id(branch), branch.name %>
+                                    </label>
+                                <% end %>
+                            </div>
                         <% end %>
                     </div>
                 <% end %>

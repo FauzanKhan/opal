@@ -37,9 +37,7 @@ $('#select_all_branches_container').on('change', 'input[type="checkbox"]', funct
 });
 
 $('.courses_selection').on('change', 'input[type="checkbox"]', function(){
-    if ($('.courses_selection input[type="checkbox"]:checked').length == $('.courses_selection input[type="checkbox"]').length) {
-       $('#select_all_courses').prop('checked', true);
-    }
+    select_all_courses();
     if($(this).is(':checked')){
         $.ajax({
             url: 'populate_branches',
@@ -72,11 +70,8 @@ $('.courses_selection').on('change', 'input[type="checkbox"]', function(){
 });
 
 $('.branches_selection .dynamic_branches_container').on('change', 'input[type="checkbox"]', function(){
-    debugger;
     if($(this).is(':checked')){
-        if ($('.dynamic_branches_container input[type="checkbox"]:checked').length == $('.dynamic_branches_container input[type="checkbox"]').length) {
-            $('#select_all_branches').prop('checked', true);
-        }
+        select_all_branches();
     }
     else{
         $('#select_all_branches').attr('checked', false);
@@ -123,6 +118,18 @@ function shortlist_student(student_id, jobpost_id, link){
         })
     }
 
+    function select_all_courses(){
+        if ($('.courses_selection input[type="checkbox"]:checked').length == $('.courses_selection input[type="checkbox"]').length) {
+            $('#select_all_courses').prop('checked', true);
+        }
+    }
+
+    function select_all_branches(){
+        if ($('.dynamic_branches_container input[type="checkbox"]:checked').length == $('.dynamic_branches_container input[type="checkbox"]').length) {
+            $('#select_all_branches').prop('checked', true);
+        }
+    }
+
     $('.application_table_container table tr').on('click','a.shortlist.undecided', function(){
         var link = $(this);
         var student_id = $(this).closest('tr.student_info').attr('id');
@@ -142,3 +149,6 @@ function shortlist_student(student_id, jobpost_id, link){
     if(!($('.dynamic_branches_container').is(':empty'))){
         $('#select_all_branches_container').show();
     }
+
+    select_all_courses();
+    select_all_branches();

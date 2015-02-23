@@ -56,6 +56,8 @@ class JobpostsController < ApplicationController
 					@branches.push(b)
 				end
 		end
+		@previously_saved_course_ids = @jobpost.course_ids
+		#byebug
 	end
 
 	def update
