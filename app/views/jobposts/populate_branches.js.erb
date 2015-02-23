@@ -1,5 +1,6 @@
-$('.branches_selection .message').hide();
+$('.branches_selection .dynamic_branches_container').append('<div class="branches"></div>');
+$('.branches_selection .dynamic_branches_container .branches:last').append('<b class="course_name"><%= @branches.first.course.name %></b>');
 <% @branches.each do |branch| %>
-	$('.branches_selection').append('<label class="checkbox-inline"></label>');
-	$('.branches_selection label:last').append('<%= check_box_tag "jobpost[branch_ids][]", branch.id, false, {:id => dom_id(branch), :class => branch.id, "data-course"=>branch.course_id} %><%= label_tag dom_id(branch), branch.name %>');
+	$('.branches_selection .dynamic_branches_container .branches:last').append('<label class="checkbox-inline"></label>');
+	$('.branches_selection .dynamic_branches_container .branches label:last').append('<%= check_box_tag "jobpost[branch_ids][]", branch.id, false, {:id => dom_id(branch), :class => branch.id, "data-course"=>branch.course_id} %><%= label_tag dom_id(branch), branch.name %>');
 <% end %>

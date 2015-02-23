@@ -31,34 +31,52 @@
         </div>
     </div>
     <div class="form-group">
-                <label class="control-label">Eligible Courses</label>
-                <div class="checkbox courses_selection">
-                    <%= hidden_field_tag 'jobpost[course_ids][]', nil %>
-                    <% @courses.each do |course| %>
-                        <label class="checkbox-inline">
-                            <%= check_box_tag 'jobpost[course_ids][]', course.id, @jobpost.course_ids.include?(course.id), {:id => dom_id(course), :class => course.id} %>
-                            <%= label_tag dom_id(course), course.name %>
-                        </label>
-                    <% end %>
-                </div>
-            </div>
+        <label class="control-label">
+            Eligible Courses
+            <small id="select_all_courses_container">
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="select_all_courses" /> Select All
+                </label>
+            </small>
+        </label>
+        <div class="checkbox courses_selection">
+            <%= hidden_field_tag 'jobpost[course_ids][]', nil %>
+            <% @courses.each do |course| %>
+                <label class="checkbox-inline">
+                    <%= check_box_tag 'jobpost[course_ids][]', course.id, @jobpost.course_ids.include?(course.id), {:id => dom_id(course), :class => course.id} %>
+                    <%= label_tag dom_id(course), course.name %>
+                </label>
+            <% end %>
+        </div>
+    </div>
     <div class="form-group">
-    	<label class="control-label">Eligible branches</label>
+    	<label class="control-label">
+            Eligible branches
+            <small id="select_all_branches_container">
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="select_all_branches" /> Select All
+                </label>
+            </small>
+        </label>
         <div class="checkbox branches_selection">
             <%= hidden_field_tag 'jobpost[branch_ids][]', nil %>
             <% if f.object.new_record? %>
                 <p class="message">Please select a course from the above list</p>
+                <div class="dynamic_branches_container"></div>
             <% else %>
                 <% if @branches.empty? %>
                     <p class="message" >Please select a course from the above list</p>
+                    <div class="dynamic_branches_container"></div>
                 <% else %>
                     <p class="message" style="display:none" >Please select a course from the above list</p>
-                    <% @branches.each do |branch| %>
+                    <div class="dynamic_branches_container">
+                        <% @branches.each do |branch| %>
                             <label class="checkbox-inline">
                                 <%= check_box_tag 'jobpost[branch_ids][]', branch.id, @jobpost.branch_ids.include?(branch.id), {:id => dom_id(branch), :class => branch.id, "data-course"=>branch.course_id} %>
                                 <%= label_tag dom_id(branch), branch.name %>
                             </label>
-                    <% end %>
+                        <% end %>
+                    </div>
                 <% end %>
             <% end %>
     	 </div>

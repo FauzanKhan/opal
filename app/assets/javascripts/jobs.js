@@ -6,16 +6,51 @@ $('.dates input').datepicker({
     todayHighlight: true
 });
 
+$('#select_all_courses_container').on('change', 'input[type="checkbox"]', function(){
+    if($(this).is(':checked')){
+        $('.courses_selection input[type="checkbox"]').each(function(){
+          this.checked = false;
+          $(this).trigger('change');
+          this.checked = true;
+          $(this).trigger('change');
+        });
+    }
+    else{
+        $('.courses_selection input[type="checkbox"]').each(function(){
+          this.checked = false;
+          $(this).trigger('change');  
+        });
+    }
+});
+
+$('#select_all_branches_container').on('change', 'input[type="checkbox"]', function(){
+    if($(this).is(':checked')){
+        $('.branches_selection .dynamic_branches_container input[type="checkbox"]').each(function(){
+          this.checked = true;
+        });
+    }
+    else{
+        $('.branches_selection .dynamic_branches_container input[type="checkbox"]').each(function(){
+          this.checked = false;
+        });
+    }
+});
+
 $('.courses_selection').on('change', 'input[type="checkbox"]', function(){
+    if ($('.courses_selection input[type="checkbox"]:checked').length == $('.courses_selection input[type="checkbox"]').length) {
+       $('#select_all_courses').prop('checked', true);
+    }
     if($(this).is(':checked')){
         $.ajax({
             url: 'populate_branches',
             data: {course_id: $(this).val()},
             success: function(data, text){
-
+                $('#select_all_branches_container').show();
+                $('.branches_selection .message').hide();
+                $('#select_all_branches').prop('checked', false);
             },
             error: function(xhr, textStatus, errorThrown){
-                alert(+textStatus+"-"+errorThrown)
+                alert(textStatus+"-"+errorThrown)
             }
 
         })
@@ -24,12 +59,27 @@ $('.courses_selection').on('change', 'input[type="checkbox"]', function(){
         var course_id = $(this).val();
         $('.branches_selection input[type="checkbox"]').each(function(){
             if($(this).attr('data-course') == course_id){
-                $(this).parent().remove();
-                if($('.branches_selection label.checkbox-inline').length == 0){
+                $(this).closest('.branches').remove();
+                if($('.dynamic_branches_container').is(':empty')){
                     $('.branches_selection .message').show();
+                    $('#select_all_branches_container').hide();
                 }
             }
-        })
+        });
+        $('#select_all_courses').attr('checked', false);
+    }
+    
+});
+
+$('.branches_selection .dynamic_branches_container').on('change', 'input[type="checkbox"]', function(){
+    debugger;
+    if($(this).is(':checked')){
+        if ($('.dynamic_branches_container input[type="checkbox"]:checked').length == $('.dynamic_branches_container input[type="checkbox"]').length) {
+            $('#select_all_branches').prop('checked', true);
+        }
+    }
+    else{
+        $('#select_all_branches').attr('checked', false);
     }
     
 });
@@ -88,3 +138,7 @@ function shortlist_student(student_id, jobpost_id, link){
     })
 
     $('[data-toggle="tooltip"]').tooltip();
+
+    if(!($('.dynamic_branches_container').is(':empty'))){
+        $('#select_all_branches_container').show();
+    }

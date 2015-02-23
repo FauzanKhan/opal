@@ -45,6 +45,33 @@ $primary_green : rgb(111, 201, 154);
 		label{
 			margin-right:15px;
 			margin-left:-20px;
+			display: inline;
+		}
+	}
+	#select_all_courses_container{
+		margin-left:10px;
+		#select_all_courses{
+			margin-top:2px;
+		}
+	}
+	#select_all_branches_container{
+		margin-left:10px;
+		display:none;
+		#select_all_branches{
+			margin-top:2px;
+		}
+	}
+	.branches{
+		margin-bottom:10px;
+		border-bottom:1px solid #F5F5F5;
+		padding-left:10px;
+		label{
+			margin-bottom: 1px;
+		}
+		b.course_name{
+			width:125px;
+			display:inline-block;
+			font-size:13px;
 		}
 	}
 }
