@@ -92,6 +92,12 @@
 									<span class="fa fa-rocket"></span> Internships
 								<% end %>
 							</li>
+							<li class="divider"></li>
+							<li>
+								<%= link_to jobfeed_student_path(location_id: current_user.location_id) do %>
+									<span class="fa fa-map-marker"></span> Nearby 
+								<% end %>
+							</li>
 						<% else %>
 							<li>
 								<%= link_to new_jobpost_path do %>
