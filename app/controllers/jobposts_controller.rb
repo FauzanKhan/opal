@@ -76,7 +76,7 @@ class JobpostsController < ApplicationController
 		#update_all_user(old_email, new_email)
 		if @jobpost.update_attributes(jobpost_params)
 			flash[:success] = "Job Post Updated"
-      		redirect_to current_user
+      		redirect_to @jobpost
 		else
 			render 'edit'
 		end
