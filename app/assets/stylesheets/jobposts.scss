@@ -50,6 +50,11 @@ $primary_green : rgb(111, 201, 154);
 	}
 	#select_all_courses_container{
 		margin-left:10px;
+		background:#F5F5F5;
+		display:inline-block;
+		padding:5px;
+		border:1px solid #F0F0F0;
+		opacity:.6;
 		#select_all_courses{
 			margin-top:2px;
 		}
@@ -57,6 +62,10 @@ $primary_green : rgb(111, 201, 154);
 	#select_all_branches_container{
 		margin-left:10px;
 		display:none;
+		background:#F5F5F5;
+		padding:5px;
+		border:1px solid #F0F0F0;
+		opacity:.6;
 		#select_all_branches{
 			margin-top:2px;
 		}

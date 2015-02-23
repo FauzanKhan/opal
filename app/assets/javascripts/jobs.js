@@ -43,7 +43,7 @@ $('.courses_selection').on('change', 'input[type="checkbox"]', function(){
             url: 'populate_branches',
             data: {course_id: $(this).val()},
             success: function(data, text){
-                $('#select_all_branches_container').show();
+                $('#select_all_branches_container').css('display', 'inline-block');
                 $('.branches_selection .message').hide();
                 $('#select_all_branches').prop('checked', false);
             },
@@ -58,9 +58,10 @@ $('.courses_selection').on('change', 'input[type="checkbox"]', function(){
         $('.branches_selection input[type="checkbox"]').each(function(){
             if($(this).attr('data-course') == course_id){
                 $(this).closest('.branches').remove();
-                if($('.dynamic_branches_container').is(':empty')){
+                debugger;
+                if($('.dynamic_branches_container').html().trim() == ""){
                     $('.branches_selection .message').show();
-                    $('#select_all_branches_container').hide();
+                    $('#select_all_branches_container').css('display', 'none');
                 }
             }
         });
@@ -147,7 +148,7 @@ function shortlist_student(student_id, jobpost_id, link){
     $('[data-toggle="tooltip"]').tooltip();
 
     if(!($('.dynamic_branches_container').is(':empty'))){
-        $('#select_all_branches_container').show();
+        $('#select_all_branches_container').css('display', 'inline-block');
     }
 
     select_all_courses();
