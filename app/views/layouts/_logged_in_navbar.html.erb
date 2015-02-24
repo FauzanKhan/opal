@@ -24,7 +24,7 @@
 				</li>
 				<li class="search_form col-lg-6 col-md-4 col-sm-2 col-xs-12">
 					<%= form_tag(jobfeed_student_path, :method => "get", id: "search-form") do %>
-						<%= text_field_tag :search, params[:search], :placeholder => "Search Jobs by Position, Location or Company", :class => "form-control" %>
+						<%= text_field_tag :search, params[:search], :placeholder => "Search Jobs by Position, Company or skills", :class => "form-control" %>
 						<%= button_tag(type: "submit", class: "btn btn-sm") do %>
 							<span class="fa fa-search"></span>
 						<% end %>
