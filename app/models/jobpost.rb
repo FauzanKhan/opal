@@ -47,8 +47,8 @@ class Jobpost < ActiveRecord::Base
 	  where("venue LIKE ?", "%#{search}%") |
 	  where("job_profile LIKE ?", "%#{search}%") |
 	  where("other_requirements LIKE ?", "%#{search}%") |
-	  #where("location_id LIKE ?", "%#{search}%") |
-	  where("company+' '+position LIKE?", "%#{search}%")
+	  where("company || ' ' || position LIKE?", "%#{search}%") |
+	  where("position || ' ' || company LIKE?", "%#{search}%") 
 	end
 
 end

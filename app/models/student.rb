@@ -107,6 +107,15 @@ class Student < ActiveRecord::Base
     where("email LIKE?", '%#{search}%' ) 
   end
 
+  def self.search(keyword, college_id)
+    where("college_id LIKE ?", "#{college_id}") &
+    where("email LIKE ?", "#{keyword}") |
+    where("first_name LIKE ?", "%#{keyword}%") |
+    where("last_name LIKE ?", "%#{keyword}%") |
+    where("first_name || ' ' || last_name LIKE ?", "%#{keyword}%")
+    #where("first_name+' '+last_name LIKE?", "%#{keyword}%")
+  end
+
     private
 
       def create_activation_digest

@@ -37,6 +37,7 @@ Rails.application.routes.draw do
   delete 'logout' => 'sessions#destroy'
   post 'job_applications' => 'job_applications#create', as: :submit_application
   get '/job_feed' => 'students#job_feed', as: :jobfeed_student
+  get '/student_search' => 'tpos#search_students', as: :search_students_tpo
   get '/admin_panel' => 'tpos#admin_panel', as: :admin_panel
 
 

@@ -5,6 +5,16 @@
 		<%= link_to @tpo, :class=>"tpo_name" do %>
 			<%= @tpo.first_name %> <%= @tpo.last_name %>
 		<% end %>
+		<% if current_user.user_type == 2 %>
+			<div class="tpo_contact_info">
+				<span class="divider"></span>
+				<p><%= @tpo.email %></p>
+				<span class="divider"></span>
+				<!-- Add phone no. -->
+				<p><span class="fa fa-phone"></span><br/></p>
+				<span class="divider"></span>
+			</div>
+		<% end %>
 		<% if @tpo.email == current_user.email %>
 			<%= link_to new_jobpost_path, :class => "btn btn-block btn-info" do %>
 				<span class="fa fa-plus"> </span> Post a Job

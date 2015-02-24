@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 $primary_blue : rgb(45, 174, 191);
 $primary_green : rgb(111, 201, 154);
+$light_border: #EAEAEA;
 @mixin green_hover{
   	background:$primary_green;
   	color:#FFF;
@@ -26,6 +27,7 @@ $primary_green : rgb(111, 201, 154);
 	border-right:1px solid #EEE;
 	font-size:18px;
 	color:#333;
+	text-align:center;
 	.user_pic_container{
 		width:100%;
 		height:130px;
@@ -188,4 +190,42 @@ $primary_green : rgb(111, 201, 154);
 }
 .user_content{
 	text-align:center;
+}
+.tpo_contact_info{
+	text-align:center;
+	p{
+		padding:2px 3px 2px 6px;
+		margin-bottom:5px;
+		margin-top:5px;
+		font-size:15px;
+		color:#555;
+		text-align:left;
+		span.fa{
+			font-size:15px;
+			margin-right:3px;
+			display:inline;
+			color:#AAA;
+		}
+	}
+	span.divider{
+		display:block;
+		width:80%;
+		margin:0 auto;
+		border-bottom:1px solid #EAEAEA;
+	}
+}
+.student_search_container{
+	background:#FFF;
+	width:98%;
+	margin:0 auto;
+	padding:10px 30px;
+	border:1px solid $light_border;
+	.heading_container{
+		border-bottom:1px solid $light_border;
+		text-align:center;
+		margin-bottom:10px;
+		h1.lead{
+			margin-bottom:5px;
+		}
+	}
 }

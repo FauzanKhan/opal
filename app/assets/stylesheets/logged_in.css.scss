@@ -1,5 +1,6 @@
 $primary_blue : rgb(45, 174, 191);
 $primary_green : rgb(111, 201, 154);
+$light_grey : #EAEAEA;
 @font-face{
 	font-family:transformers_font;
 	src:url(Transformers%20Movie.ttf);
@@ -211,6 +212,7 @@ nav.navbar{
 			margin-top:10px;
 			font-size:18px;
 			color:#333;
+			text-align: center;
 			word-wrap:break-word;
 			.user_pic_container{
 				width:100%;
