@@ -92,14 +92,15 @@ $primary_green : rgb(111, 201, 154);
 		.job_title{
 			clear:both;
 			font-weight:bold;
-			color:#555;
 			border-bottom:1px solid #EEE;
 			.position{
-				margin-left:5px;
+				padding-left:5px;
+				margin-bottom:5px;
 				font-size:20px;
 			}
 			.company{
-				margin-right:5px;
+				padding-right:5px;
+				margin-bottom:5px;
 				font-size:18px;
 			}
 		}
@@ -116,23 +117,24 @@ $primary_green : rgb(111, 201, 154);
 		.job_info{
 			text-align:center;
 			margin-top:10px;
-			color:#777;
+			color:#333;
 			div{
 				margin-bottom:10px;
 			}
 			.heading{
-				font-weight:bold;
-				color:#666;
+				color:#444;
+				background: rgba(250,250,250,.2);
+				padding: 5px;
+				border: 1px solid #FAFAFA;
 			}
 		}
 		.location{
 			text-align:right;
 			display:block;
-			margin-top:0px;
+			margin-top:5px;
 			margin-bottom:15px;
-			font-weight:bold;
 			color:#777;
-			margin-right:15px;
+			margin-right:10px;
 			}
 		.actions{
 			display:block;
@@ -154,6 +156,9 @@ $primary_green : rgb(111, 201, 154);
 			padding-top:5px;
 			font-size:12px;
 			font-weight:lighter;
+		}
+		span.box{
+			padding:5px;
 		}
 	}
 }

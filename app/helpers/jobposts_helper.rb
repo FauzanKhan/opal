@@ -50,6 +50,18 @@ module JobpostsHelper
 		Date.today > jobpost.last_date
 	end
 
+	def is_eligible?
+		student = current_user
+		student_course = student.course_id
+		student_branch = student.branch_id
+		student_percentage = student.percentage
+		j = Jobpost.find(params[:id])
+		eligible_courses = j.course_ids
+		eligible_branches = j.branch_ids
+		eligible_percentage = j.percentage_required
+		student_percentage >= eligible_percentage && eligible_courses.include?(student_course) && eligible_branches.include?(student_branch)
+	end
+
 	def shortlist_applicant
 		applicant_id = params[:applicant_id]
 		jobpost_id = params[:jobpost_id]

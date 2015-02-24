@@ -1,8 +1,8 @@
 <li id="jobpost-<%= jobpost.id %>" class="jobpost_container">
 	<div class="jobpost">
 		<div class="job_title">
-			<div class="position left_aligned"><%= jobpost.position %></div>
-			<div class="company right_aligned"><%= jobpost.company %></div>
+			<div class="position left_aligned lead"><%= jobpost.position %></div>
+			<div class="company right_aligned lead"><%= jobpost.company %></div>
 		</div>
 		<div class="location"><%= Location.find(jobpost.location_id).location %></div>
 		<div class="job_info row">
@@ -19,7 +19,7 @@
 					<span class="fa fa-graduation-cap"></span> Courses  
 				</div>
 				<% jobpost.course_ids.each do |c| %>
-					<%= Course.all.find(c).name  %>, 
+					<span class="box"><%= Course.all.find(c).name  %></span>
 				<% end %>
 			</div>
 			<div class="col-lg-3 col-md-3 col-sm-6">
@@ -27,7 +27,7 @@
 					<span class="fa fa-share-alt"></span> Branches  
 				</div>
 				<% jobpost.branch_ids.each do |b| %>
-					<%= Branch.all.find(b).name %>,  
+					<span class="box"><%= Branch.all.find(b).name %></span>
 				<% end %>
 			</div>
 			<div class="col-lg-3 col-md-3 col-sm-6">

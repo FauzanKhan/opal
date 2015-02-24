@@ -98,10 +98,12 @@
 								<p class="text-danger">This job is an on-campus opportunity, only the students from <%= @colege.college_name %> can apply.</p>
 							<% elsif job_expired? %>
 								<p class="text-danger">The Job has expired</p>
-							<% else %>								
+							<% elsif is_eligible? %>								
 								<%= link_to submit_application_path(jobpost_id: @jobpost.id), :method => :post, :class => "btn btn-md btn-info" do %>
 									<span class="fa fa-sign-in"></span> Apply
 								<% end %>
+							<% else %>
+								<p class="text-danger">You are not eligible to apply for this job</p>
 							<% end %>
 						<% end %>
 				</div>
