@@ -11,7 +11,7 @@ class Jobpost < ActiveRecord::Base
 	has_many :branches, through: :eligible_branches
 
 	has_many :job_applications, dependent: :destroy
-	has_many :students, through: :applications 
+	has_many :students, through: :job_applications 
 
 	validates :tpo_id, presence: true
 

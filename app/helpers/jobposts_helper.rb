@@ -28,6 +28,12 @@ module JobpostsHelper
 		@applications = @applications.page(params[:page]).per(1)
 	end
 
+	def print_selected_applicants
+		@jobpost = Jobpost.find(params[:id])
+		@applications = @jobpost.job_applications.where(shortlisted: 1)
+		@applications = [] if @applications.nil?
+	end
+
 	def already_applied?
 		jobpost = Jobpost.find(params[:id])
 		student = current_user

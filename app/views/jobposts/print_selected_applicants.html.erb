@@ -1,0 +1,26 @@
+
+<% if @applications.any? %>
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<td>Name</td>
+				<td>Email</td>
+				<% if @jobpost.job_type != 1 && @jobpost.job_type != 4 %>
+					<td>College</td>
+				<% end %>
+				<td>Course</td>
+			</tr>
+		</thead>
+		<tbody>
+			<% @applications.each do |a| %>
+				<% applicant = Student.find(a.student_id) %>
+				<tr>
+					<td><%= applicant.first_name+" "+applicant.last_name %></td>
+					<td><%= applicant.email %></td>
+					<td></td>
+					<td></td>
+				<tr>
+			<% end %>
+		</tbody>
+	</table>
+<% end %>

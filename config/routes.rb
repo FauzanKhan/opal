@@ -39,6 +39,7 @@ Rails.application.routes.draw do
   get '/job_feed' => 'students#job_feed', as: :jobfeed_student
   get '/student_search' => 'tpos#search_students', as: :search_students_tpo
   get '/admin_panel' => 'tpos#admin_panel', as: :admin_panel
+  get 'jobposts/:id/print_selected_applicants' => 'jobposts#print_selected_applicants', as: :print_selected_jobpost
 
 
   # Example of regular route:
