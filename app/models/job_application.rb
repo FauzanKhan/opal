@@ -1,4 +1,4 @@
 class JobApplication < ActiveRecord::Base
-	belongs_to :students
-	belongs_to :jobposts
+	belongs_to :student
+	belongs_to :jobpost
 end
