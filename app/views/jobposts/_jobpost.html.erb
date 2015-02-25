@@ -47,11 +47,15 @@
 				<% end %>
 				<%= link_to edit_jobpost_path(jobpost), :class => "btn btn-primary btn-sm" do %>
 					<span class="fa fa-edit"></span> Edit
+				<% end %>
+				<%= link_to jobpost, :class => "btn btn-info btn-sm" do %>
+					<span class="fa fa-eye"></span> View
+				<% end %>   
+			<% else %>
+				<%= link_to jobpost, :class => "btn btn-info btn-md" do %>
+					<span class="fa fa-eye"></span> View & Apply
 				<% end %> 
-			<% end %>
-			<%= link_to jobpost, :class => "btn btn-info btn-sm" do %>
-				<span class="fa fa-eye"></span> <%= current_user.user_type == 1 ? "View" : "View & Apply" %>
-			<% end %>  
+			<% end %> 
 		</div>
 		<div class="author">
 			posted <%= time_ago_in_words(jobpost.created_at) %> ago

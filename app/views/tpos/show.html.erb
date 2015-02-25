@@ -3,6 +3,9 @@
 	<%= render 'tpo_sidebar' %>
 	<div class="col-lg-10 col-md-10 col-sm-10 main_content">
 		<% if @tpo.jobposts.any? %>
+			<div class="pagination_container">
+				<%= paginate @jobposts, :window => 0 %>
+			</div>
 		  <ul class="list-unstyled jobposts_list">
 		  	<li class="lead jobposts_count"><%= current_user == @tpo ? "My" : @tpo.first_name+"'s" %> Jobposts [<%= @tpo.jobposts.count %>]</li>
 		    <%= render @jobposts %>

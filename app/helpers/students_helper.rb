@@ -33,5 +33,7 @@ module StudentsHelper
 					@jobposts = Jobpost.all
 			end
 		end
+		@jobposts = [] if @jobposts.nil?
+		@jobposts = @jobposts.page(params[:page]).per(50)
 	end
 end

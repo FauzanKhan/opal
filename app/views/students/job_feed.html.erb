@@ -6,6 +6,9 @@
 			<p class="lead text-center">Search Results For - <%= params[:search] %></p>
 		<% end %>
 		<% if @jobposts.any? %>
+			<div class="pagination_container">
+		  		<%= paginate @jobposts, :window => 0 %>
+			</div>
 		  <ul class="list-unstyled jobposts_list">
 		    <%= render @jobposts %>
 		  </ul>

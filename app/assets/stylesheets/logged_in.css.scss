@@ -267,3 +267,23 @@ nav.navbar{
 		border-radius:0px;
 	}
 }
+.pagination_container{
+	position: absolute;
+	bottom:-50px;
+	text-align:center;
+	width:100%;
+	span{
+		padding:10px;
+		background:#FFF;
+		border:1px solid #EAEAEA;
+	}
+	span.page.gap, span.first, span.last{
+		display:none;
+	}
+	span.prev{
+		border-right:0px solid #EAEAEA;
+	}
+	span.next{
+		border-left:0px solid #EAEAEA;
+	}
+}

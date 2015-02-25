@@ -59,6 +59,9 @@
 					An email will be sent to the shortlisted/selected candidates notifying them about the corresponding actions.</small>
 				<% end %> 
 			</div>
+			<div class="pagination_container">
+				<%= paginate @applications, :window => 0 %>
+			</div>
 			<table class="table table-bordered application_table" id="<%= @jobpost.id %>"><!-- Jobpost ID givrn as table ID -->
 				<thead>
 					<tr>

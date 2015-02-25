@@ -131,6 +131,7 @@ $primary_green : rgb(111, 201, 154);
 	background:#FFF;
 	border:1px solid #EAEAEA;
 	padding:20px;
+	padding-bottom:50px;
 	.heading_container{
 		text-align: center;
 		border-bottom:1px solid #EAEAEA;
@@ -186,5 +187,8 @@ $primary_green : rgb(111, 201, 154);
 				}
 			}
 		}
+	}
+	.pagination_container{
+		bottom:0px;
 	}
 }

@@ -9,6 +9,7 @@ gem 'hirb'
 gem 'bootstrap-datepicker-rails'
 gem 'ckeditor'
 gem 'carrierwave'
+gem 'kaminari'
 #gem 'rmagick'
 # Use sqlite3 as the database for Active Record
 # Use SCSS for stylesheets

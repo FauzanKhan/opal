@@ -25,6 +25,7 @@ module JobpostsHelper
 			@applications = @jobpost.job_applications
 		end
 		@applications = [] if @applications.nil?
+		@applications = @applications.page(params[:page]).per(1)
 	end
 
 	def already_applied?

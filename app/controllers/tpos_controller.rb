@@ -1,7 +1,7 @@
 class TposController < ApplicationController
 
 	#before_action :admin_user, only: [:index]
-	before_action :logged_in_user, only: [:edit, :update, :show]
+	before_action :logged_in_user, only: [:edit, :update, :show, :destroy, :index]
 	before_action :correct_user, only: [:edit, :update]
 	before_action :admin_user, only: [:destroy, :index]
 	before_action :redirect_if_logged_in, only: [:new]
@@ -19,7 +19,7 @@ class TposController < ApplicationController
 	def show
 		redirect_to admin_panel_path if current_user.user_type == 1 && current_user.admin
 		@tpo = Tpo.find(params[:id])
-		@jobposts = @tpo.jobposts
+		@jobposts = @tpo.jobposts.page(params[:page]).per(50)
 	end
 
 	def update
