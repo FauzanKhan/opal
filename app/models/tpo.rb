@@ -2,7 +2,7 @@ class Tpo < ActiveRecord::Base
 	
 	#self.primary_key = 'email'
 
-	has_many :jobposts, dependent: :destroy #destroy associated job posts when tpo is destroyed 
+	has_many :jobposts, dependent: :destroy #destroy associated job posts when tpo is destroyed
 
 	attr_accessor :remember_token, :activation_token, :reset_token, :image
 
@@ -24,7 +24,7 @@ class Tpo < ActiveRecord::Base
 			   presence: true,
 			   length: {minimum: 3, maximum: 15}
 
-	validates :college, presence: true, uniqueness: {case_sensitive: false}
+	validates :college, presence: true, uniqueness: { case_sensitive: false }
 
 	has_secure_password
 
@@ -81,12 +81,17 @@ class Tpo < ActiveRecord::Base
 		reset_sent_at < 2.hours.ago
 	end
 
-	def update_college_table
+	def create_college
 	    new_college = College.new
 	    new_college.college_name = self.college
 	    new_college.location_id = self.location_id
 	    errors.add(:college, "is already registered with us. You cannot have multiple accounts") if !new_college.save
         new_college.save
+    end
+
+    def update_collge
+    	college = College.find(self.college_id)
+    	college.update_attributes(college_name: self.college, location_id: self.location_id)
     end
 
     private

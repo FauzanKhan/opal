@@ -12,7 +12,8 @@ class JobpostAdditions < ActiveRecord::Migration
   	remove_timestamps :branches
   	remove_timestamps :courses
   	remove_timestamps :eligible_courses
-  	remove_timestamps :locations
-  	drop_table :posts
+    remove_timestamps :eligible_branches
+  	#remove_timestamps :locations
+  	#drop_table :posts
   end
 end

@@ -4,9 +4,8 @@ class CreateTpos < ActiveRecord::Migration
       t.primary_key :email
       t.string :password
       t.string :name
-      t.string :college
+      t.string :college_id
       t.timestamps null: false
     end
-    execute "ALTER TABLE employees ADD PRIMARY KEY (emp_id);"
   end
 end

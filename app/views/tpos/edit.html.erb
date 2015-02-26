@@ -36,14 +36,28 @@
                             </div>
                         </div>
                     </div>
-				    <div class="form-group">
-				        <%= f.label :college, :class => "control-label" %>
-				        <%= f.text_field :college, :class=>'form-control', :placeholder => "College Name", :disabled => "true" %>
-				    </div>
+                    <div class="row">
+	                    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+						    <div class="form-group">
+						        <%= f.label :college, :class => "control-label" %>
+						        <%= f.text_field :college, :class=>'form-control', :placeholder => "College Name" %>
+						    </div>
+						</div>
+						<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+							<div class="form-group">
+				                <%= f.label :location_id, :class => "control-label" %>
+				                <%= f.collection_select(:location_id, Location.all, :id, :location, {}, {:class=>'form-control'}) %>
+				            </div>
+						</div>
+					</div>
 				    <div class="form-group">
                         <%= f.label :job_title, :class => "control-label" %>
                         <%= f.text_field :job_title, :class => "form-control", :placeholder => "Your Job Title"%>
                     </div>
+                    <div class="form-group">
+				        <%= f.label :phone_no, :class => "control-label" %>
+				        <%= f.text_field :phone_no, :class=>'form-control', :placeholder => "Phone No." %>
+				    </div>
 				    <div class="form-group">
 				        <%= f.label :password, :class => "control-label" %>
 				        <%= f.password_field :password, :class => "form-control", :placeholder => "(Unchanged)" %>

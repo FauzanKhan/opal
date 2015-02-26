@@ -287,3 +287,18 @@ nav.navbar{
 		border-left:0px solid #EAEAEA;
 	}
 }
+.ajax_overlay_container{
+	position:relative;
+	.ajax_overlay{
+		background:#FFF;
+		height:200%;
+		width:100%;
+		position:absolute;
+		display:none;
+		img{
+			position:absolute;
+			left:45%;
+			top:12px;
+		}
+	}
+}

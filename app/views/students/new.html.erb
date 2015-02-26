@@ -28,7 +28,7 @@
                         </div>
                         <div class="form-group">
                             <%= f.label :college_id, :class => "control-label" %>
-                            <%= f.collection_select(:college_id, @colleges, :id, :college_name, {}, {:class=>'form-control'}) %>
+                            <%= f.collection_select(:college_id, College.all, :id, :college_name, {}, {:class=>'form-control'}) %>
                         </div>
                         <div class="row">
                         	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -40,7 +40,12 @@
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             	<div class="form-group">
                                     <%= f.label :branch_id, :class => "control-label" %>
-                                    <%= f.collection_select :branch_id, @branches, :id, :name, {}, {:class=>"form-control"} %>
+                                    <div class="ajax_overlay_container">
+                                        <div class="ajax_overlay">
+                                            <%= image_tag 'ajax-loader-white.gif' %>
+                                        </div>
+                                        <%= f.collection_select :branch_id, @branches, :id, :name, {}, {:class=>"form-control"} %>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -4,7 +4,7 @@ class CreateStudents < ActiveRecord::Migration
       t.primary_key :email
       t.string :password
       t.string :name
-      t.integer :college
+      t.integer :college_id
       t.string :course
       t.string :branch
       t.integer :year

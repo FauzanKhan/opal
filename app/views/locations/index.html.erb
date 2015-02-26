@@ -17,7 +17,7 @@
     <tr>
       <td><%= location.id %></td>
       <td><%= location.location %></td>
-      <td><%= location.zone %></td>
+      <td><%= location.zone_id %></td>
       <% if current_user.admin? %>
     	 <td>
         <%= link_to "Delete", location, method: :delete, data: { confirm: "You sure?" } %> | 

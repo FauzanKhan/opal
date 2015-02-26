@@ -11,10 +11,6 @@ class AccountActivationsController < ApplicationController
         flash[:success] = "Account activated!" 
         redirect_to user
       end
-      if(user.user_type == 1)
-        user.update_college_table
-        user.update_column(:college_id, College.find_by(college_name: user.college).id)
-      end
     else
       flash[:danger] = "Invalid activation link"
       redirect_to root_url

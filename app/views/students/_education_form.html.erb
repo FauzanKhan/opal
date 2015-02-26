@@ -14,11 +14,16 @@
 		</thead>
 		<tbody class="current_education_details">
 			<td>
-				<%= f.collection_select(:college_id, @colleges, :id, :college_name, {}, {:class => "form-control"}) %>
+				<%= f.collection_select(:college_id, College.all, :id, :college_name, {}, {:class => "form-control"}) %>
 			</td>
 			<td>
 				<%= f.collection_select(:course_id, Course.all, :id, :name, {}, {:class => "course", :style => "width:50%", :onchange => "pop_branches()"}) %>
-				<%= f.collection_select(:branch_id, @branches, :id, :name, {}, {:class => "branch", :style => "width:48%"}) %>
+				<span class="ajax_overlay_container">
+					<span class="ajax_overlay">
+						<%= image_tag 'ajax-loader-blue.gif' %>
+					</span>
+					<%= f.collection_select(:branch_id, @branches, :id, :name, {}, {:class => "branch", :style => "width:48%"}) %>
+				</span>
 			</td>
 			<td>
 				<%= f.text_field :percentage, :class => "form-control", :placeholder => "%" %>

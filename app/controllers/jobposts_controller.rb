@@ -14,9 +14,6 @@ class JobpostsController < ApplicationController
 		@jobpost = Jobpost.new
 		@courses = Course.all
 		@branches = Branch.all
-		#@jobpost.eligible_courses.each do |c|
-	    #  c.eligible_branch.build
-	    #end
 	end
 
 	def create

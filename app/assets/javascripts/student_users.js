@@ -2,11 +2,15 @@ function pop_branches(){
     $.ajax({
         url: 'populate_branches',
         data: {course_id: $('#student_course_id').val()},
+        beforeSend: function(){
+        	$('.ajax_overlay').show();
+        },
         success: function(data, text){
-
+        	$('.ajax_overlay').css('display', 'none');
         },
         error: function(xhr, textStatus, errorThrown){
-            alert(+textStatus+"-"+errorThrown)
+            alert(+textStatus+"-"+errorThrown);
+            $('.ajax_overlay').css('display', 'none');
         }
 
     })

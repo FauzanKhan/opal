@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150215061350) do
+ActiveRecord::Schema.define(version: 20150226162341) do
 
   create_table "all_users", force: :cascade do |t|
     t.string   "email"
@@ -104,10 +104,11 @@ ActiveRecord::Schema.define(version: 20150215061350) do
   end
 
   add_index "jobposts", ["tpo_id", "created_at"], name: "index_jobposts_on_tpo_id_and_created_at"
+  add_index "jobposts", ["tpo_id"], name: "index_jobposts_on_tpo_id"
 
   create_table "locations", force: :cascade do |t|
     t.string  "location"
-    t.integer "zone"
+    t.integer "zone_id"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -159,7 +160,6 @@ ActiveRecord::Schema.define(version: 20150215061350) do
     t.string   "email"
     t.string   "password"
     t.string   "first_name"
-    t.string   "college"
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
     t.string   "password_digest"
@@ -176,6 +176,8 @@ ActiveRecord::Schema.define(version: 20150215061350) do
     t.integer  "location_id"
     t.integer  "college_id"
     t.string   "image"
+    t.string   "phone_no"
+    t.string   "college"
   end
 
 end

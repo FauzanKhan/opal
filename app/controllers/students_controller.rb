@@ -14,7 +14,7 @@ class StudentsController < ApplicationController
     end
 	
 	def new
-		@colleges = College.where.not(id: 3)
+		@colleges = College.all
 		@student = Student.new
 		@courses = Course.all
 		@branches = Branch.where(course_id: Course.first.id)

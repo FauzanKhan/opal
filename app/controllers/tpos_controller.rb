@@ -1,6 +1,5 @@
 class TposController < ApplicationController
 
-	#before_action :admin_user, only: [:index]
 	before_action :logged_in_user, only: [:edit, :update, :show, :destroy, :index]
 	before_action :correct_user, only: [:edit, :update]
 	before_action :admin_user, only: [:destroy, :index]
@@ -24,11 +23,9 @@ class TposController < ApplicationController
 
 	def update
 		@tpo = Tpo.find(params[:id])
-		#old_email = @tpo.email
-		#new_email = params[:tpo][:email]
-		#update_all_user(old_email, new_email)
 		if @tpo.update_attributes(update_tpo_params)
-			flash[:success] = "Profile updated"
+			@tpo.update_collge
+			flash[:success] = "Profile successfully updated"
       		redirect_to @tpo
 		else
 			render 'edit'
@@ -39,12 +36,12 @@ class TposController < ApplicationController
 		@tpo = Tpo.new(tpo_params)
 		@tpo.first_name = params[:tpo][:first_name].titleize
 		@tpo.last_name = params[:tpo][:last_name].titleize
-		@tpo.college = params[:tpo][:college].titleize
 		if @tpo.save
-			#log_in @tpo
+			@tpo.create_college
+        	@tpo.update_column(:college_id, College.find_by(college_name: college).id)
 			@tpo.send_activation_email
 			flash[:info] = "Please check your email to activate your account"
-			redirect_to root_url #@tpo
+			redirect_to root_url
 		else
 			render 'new'
 		end
@@ -66,12 +63,13 @@ class TposController < ApplicationController
 	end
 	
 	private
+
 		def tpo_params
-			params.require(:tpo).permit(:email, :password, :first_name, :last_name, :college, :location_id)
+			params.require(:tpo).permit(:email, :password, :first_name, :last_name, :location_id, :college)
 		end
 
 		def update_tpo_params
-			params.require(:tpo).permit(:password, :first_name, :last_name, :job_title, :image)
+			params.require(:tpo).permit(:password, :first_name, :last_name, :job_title, :image, :phone_no, :college, :location_id)
 		end
 
 		def correct_user
@@ -82,8 +80,4 @@ class TposController < ApplicationController
 			end
 		end
 
-		#def update_all_user(old_email, new_email)
-		#	@user = AllUser.find_by(email: old_email)
-		#	@user.update_column(:email, new_email)
-		#end
 end
